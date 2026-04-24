@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-04-24T01:29:07.662839Z",
+  "month": "2026-04",
+  "budget": {
+    "aws": 3000.0,
+    "gcp": 2000.0,
+    "total": 5000.0
+  },
+  "aws": {
+    "total": 0.0,
+    "services": [],
+    "daily": [
+      {
+        "date": "2026-04-11",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-12",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-13",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-14",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-15",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-16",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-17",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-18",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-19",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-20",
+        "amount": -0.0
+      },
+      {
+        "date": "2026-04-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-04-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-04-23",
+        "amount": 0.0
+      }
+    ]
+  },
+  "gcp": {
+    "total": 0.06,
+    "services": [
+      {
+        "name": "Vertex AI",
+        "amount": 0.06
+      },
+      {
+        "name": "Compute Engine",
+        "amount": 0.0
+      },
+      {
+        "name": "VM Manager",
+        "amount": 0.0
+      },
+      {
+        "name": "Networking",
+        "amount": 0.0
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-04-17",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-04-20",
+        "amount": 0.01
+      },
+      {
+        "date": "2026-04-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-04-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-04-23",
+        "amount": 0.06
+      }
+    ]
+  }
+}
