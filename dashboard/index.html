@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChipChop — Cloud Costs</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f1014;
+      --surface:   #181a1f;
+      --border:    rgba(255,255,255,0.08);
+      --text:      #e8e9ec;
+      --muted:     #6b7280;
+      --aws:       #e8940a;
+      --aws-dim:   rgba(232,148,10,0.12);
+      --gcp:       #4a90d9;
+      --gcp-dim:   rgba(74,144,217,0.12);
+      --success:   #4ade80;
+      --warn:      #fb923c;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2rem;
+    }
+    .header h1 {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .header .meta {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .metric-value {
+      font-size: 26px;
+      font-weight: 600;
+      font-family: "SF Mono", "Fira Code", monospace;
+      letter-spacing: -0.02em;
+    }
+    .metric-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .color-aws     { color: var(--aws); }
+    .color-gcp     { color: var(--gcp); }
+    .color-success { color: var(--success); }
+    .color-warn    { color: var(--warn); }
+
+    .row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .card-title {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .trend-wrap { position: relative; height: 200px; }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .provider-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .provider-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .badge-aws { background: var(--aws-dim); color: var(--aws); }
+    .badge-gcp { background: var(--gcp-dim); color: var(--gcp); }
+
+    .budget-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .budget-bar-labels .spent {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-weight: 600;
+    }
+    .budget-bar-labels .limit { color: var(--muted); }
+    .bar-track {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .bar-fill { height: 100%; border-radius: 3px; }
+    .bar-aws { background: var(--aws); }
+    .bar-gcp { background: var(--gcp); }
+
+    .service-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+    .service-name {
+      font-size: 12px;
+      color: var(--muted);
+      width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+    }
+    .service-bar-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .service-bar-fill { height: 100%; border-radius: 2px; }
+    .service-amount {
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      color: var(--text);
+      width: 52px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .error {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 13px;
+      color: #f87171;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .row { grid-template-columns: 1fr; }
+      .provider-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading">loading cost data...</div>
+</div>
+
+<script>
+const fmt  = v => '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+const pct  = (v, total) => Math.min(100, Math.round((v / total) * 100));
+const clamp = (v, max) => Math.min(100, Math.round((v / max) * 100));
+const shortName = s => s.replace(/^Amazon\s+|^AWS\s+|^Google\s+/i, '').slice(0, 22);
+
+async function render() {
+  const app = document.getElementById('app');
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json not found — run the GitHub Action first');
+    const d = await res.json();
+
+    const totalSpent = d.aws.total + d.gcp.total;
+    const remaining  = d.budget.total - totalSpent;
+    const remainPct  = pct(remaining, d.budget.total);
+
+    app.innerHTML = `
+      <div class="header">
+        <h1>ChipChop — cloud costs</h1>
+        <span class="meta">
+          ${d.month} &nbsp;·&nbsp; updated ${new Date(d.generated_at).toLocaleString()}
+        </span>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total spend MTD</div>
+          <div class="metric-value">${fmt(totalSpent)}</div>
+          <div class="metric-sub">of ${fmt(d.budget.total)} budget</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">AWS spend MTD</div>
+          <div class="metric-value color-aws">${fmt(d.aws.total)}</div>
+          <div class="metric-sub">${pct(d.aws.total, d.budget.aws)}% of ${fmt(d.budget.aws)} budget</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">GCP spend MTD</div>
+          <div class="metric-value color-gcp">${fmt(d.gcp.total)}</div>
+          <div class="metric-sub">${pct(d.gcp.total, d.budget.gcp)}% of ${fmt(d.budget.gcp)} budget</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Budget remaining</div>
+          <div class="metric-value ${remainPct < 20 ? 'color-warn' : 'color-success'}">${fmt(remaining)}</div>
+          <div class="metric-sub">${remainPct}% left this month</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <div class="card-title">Daily spend — last 14 days</div>
+          <div class="legend">
+            <span class="legend-item"><span class="legend-dot" style="background:var(--aws)"></span>AWS</span>
+            <span class="legend-item"><span class="legend-dot" style="background:var(--gcp)"></span>GCP</span>
+          </div>
+          <div class="trend-wrap">
+            <canvas id="trendChart" role="img" aria-label="Line chart of daily AWS and GCP spend over the last 14 days">Daily spend trend.</canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Total budget usage</div>
+          <div class="trend-wrap">
+            <canvas id="donutChart" role="img" aria-label="Donut chart showing AWS, GCP, and remaining budget">Budget breakdown.</canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-cards">
+        <div class="card">
+          <div class="provider-header">
+            <span class="badge badge-aws">AWS</span>
+            <span style="font-size:12px;color:var(--muted)">by service</span>
+          </div>
+          <div class="budget-bar-labels">
+            <span class="spent color-aws">${fmt(d.aws.total)}</span>
+            <span class="limit">budget ${fmt(d.budget.aws)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-aws" style="width:${clamp(d.aws.total, d.budget.aws)}%"></div></div>
+          ${d.aws.services.map(s => {
+            const w = clamp(s.amount, d.aws.services[0].amount);
+            return `<div class="service-row">
+              <span class="service-name">${shortName(s.name)}</span>
+              <div class="service-bar-track"><div class="service-bar-fill bar-aws" style="width:${w}%"></div></div>
+              <span class="service-amount">${fmt(s.amount)}</span>
+            </div>`;
+          }).join('')}
+        </div>
+
+        <div class="card">
+          <div class="provider-header">
+            <span class="badge badge-gcp">GCP</span>
+            <span style="font-size:12px;color:var(--muted)">by service</span>
+          </div>
+          <div class="budget-bar-labels">
+            <span class="spent color-gcp">${fmt(d.gcp.total)}</span>
+            <span class="limit">budget ${fmt(d.budget.gcp)}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-gcp" style="width:${clamp(d.gcp.total, d.budget.gcp)}%"></div></div>
+          ${d.gcp.services.map(s => {
+            const w = clamp(s.amount, d.gcp.services[0]?.amount || 1);
+            return `<div class="service-row">
+              <span class="service-name">${shortName(s.name)}</span>
+              <div class="service-bar-track"><div class="service-bar-fill bar-gcp" style="width:${w}%"></div></div>
+              <span class="service-amount">${fmt(s.amount)}</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="footer">auto-refreshes every 6 hours via github actions</div>
+    `;
+
+    // trend chart
+    const awsDays = d.aws.daily.map(x => x.amount);
+    const gcpDays = d.gcp.daily.map(x => x.amount);
+    const labels  = d.aws.daily.map(x => x.date.slice(5));  // MM-DD
+
+    new Chart(document.getElementById('trendChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'AWS', data: awsDays, borderColor: '#e8940a', backgroundColor: 'rgba(232,148,10,0.07)', borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35 },
+          { label: 'GCP', data: gcpDays, borderColor: '#4a90d9', backgroundColor: 'rgba(74,144,217,0.07)', borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, maxTicksLimit: 7 } },
+          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
+        }
+      }
+    });
+
+    // donut chart
+    new Chart(document.getElementById('donutChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['AWS', 'GCP', 'Remaining'],
+        datasets: [{
+          data: [d.aws.total, d.gcp.total, Math.max(0, remaining)],
+          backgroundColor: ['#e8940a', '#4a90d9', 'rgba(255,255,255,0.07)'],
+          borderColor: ['#0f1014'],
+          borderWidth: 3,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } }
+        },
+        cutout: '72%',
+      }
+    });
+
+  } catch (err) {
+    app.innerHTML = `
+      <div class="header"><h1>ChipChop — cloud costs</h1></div>
+      <div class="error">
+        <strong>Could not load data.json</strong><br/>
+        ${err.message}<br/><br/>
+        Run the GitHub Action manually from the Actions tab to generate it.
+      </div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>

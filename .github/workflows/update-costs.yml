@@ -1,0 +1,50 @@
+name: update cloud costs
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:          # lets you trigger it manually from GitHub UI
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch_costs.py"
+
+permissions:
+  contents: write             # needed to commit data.json back to the repo
+
+jobs:
+  fetch-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install dependencies
+        run: pip install -r requirements.txt
+
+      - name: fetch costs
+        env:
+          AWS_ACCESS_KEY_ID:       ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:   ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION:              ${{ secrets.AWS_REGION }}
+          GCP_SERVICE_ACCOUNT_JSON: ${{ secrets.GCP_SERVICE_ACCOUNT_JSON }}
+          GCP_BILLING_PROJECT:     ${{ secrets.GCP_BILLING_PROJECT }}
+          GCP_BQ_DATASET:          ${{ secrets.GCP_BQ_DATASET }}
+          GCP_BQ_TABLE:            ${{ secrets.GCP_BQ_TABLE }}
+          AWS_BUDGET:              ${{ secrets.AWS_BUDGET }}
+          GCP_BUDGET:              ${{ secrets.GCP_BUDGET }}
+        run: python scripts/fetch_costs.py
+
+      - name: commit and push data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard/data.json
+          git diff --cached --quiet || git commit -m "chore: update cost data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
