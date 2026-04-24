@@ -19,7 +19,7 @@ GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]                # e.g. gcp_
 AWS_MONTHLY_BUDGET  = float(os.environ.get("AWS_BUDGET",  "3000"))
 GCP_MONTHLY_BUDGET  = float(os.environ.get("GCP_BUDGET",  "2000"))
 
-OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "dashboard", "data.json")
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
 
 # ─── helpers ───────────────────────────────────────────────────────────────────
 def month_range():

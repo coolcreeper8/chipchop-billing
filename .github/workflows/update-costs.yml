@@ -45,6 +45,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dashboard/data.json
+          git add data.json
           git diff --cached --quiet || git commit -m "chore: update cost data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
