@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T01:45:27.225987Z",
+  "generated_at": "2026-04-24T08:02:26.948539Z",
   "month": "2026-04",
   "budget": {
     "aws": 3000.0,
@@ -65,22 +65,22 @@
     ]
   },
   "gcp": {
-    "total": 0.06,
+    "total": 0.16,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 0.06
+        "amount": 0.16
       },
       {
         "name": "Compute Engine",
         "amount": 0.0
       },
       {
-        "name": "VM Manager",
+        "name": "Networking",
         "amount": 0.0
       },
       {
-        "name": "Networking",
+        "name": "VM Manager",
         "amount": 0.0
       }
     ],
@@ -103,7 +103,7 @@
       },
       {
         "date": "2026-04-23",
-        "amount": 0.06
+        "amount": 0.16
       }
     ]
   }
