@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T07:15:22.932856Z",
+  "generated_at": "2026-04-25T13:03:01.470481Z",
   "month": "2026-04",
   "budget": {
     "aws": 3000.0,
@@ -72,15 +72,15 @@
         "amount": 0.17
       },
       {
-        "name": "VM Manager",
-        "amount": 0.0
-      },
-      {
         "name": "Compute Engine",
         "amount": 0.0
       },
       {
         "name": "Networking",
+        "amount": 0.0
+      },
+      {
+        "name": "VM Manager",
         "amount": 0.0
       }
     ],
@@ -108,6 +108,10 @@
       {
         "date": "2026-04-24",
         "amount": 0.01
+      },
+      {
+        "date": "2026-04-25",
+        "amount": 0.0
       }
     ]
   }
