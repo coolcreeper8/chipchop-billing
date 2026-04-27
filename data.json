@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T13:51:27.472335Z",
+  "generated_at": "2026-04-27T19:20:25.314487Z",
   "month": "2026-04",
   "budget": {
     "aws": 3000.0,
@@ -72,11 +72,11 @@
         "amount": 0.22
       },
       {
-        "name": "Networking",
+        "name": "Compute Engine",
         "amount": 0.0
       },
       {
-        "name": "Compute Engine",
+        "name": "Networking",
         "amount": 0.0
       },
       {
