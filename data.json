@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T08:23:55.280006Z",
+  "generated_at": "2026-04-27T13:51:27.472335Z",
   "month": "2026-04",
   "budget": {
     "aws": 3000.0,
@@ -65,18 +65,18 @@
     ]
   },
   "gcp": {
-    "total": 0.17,
+    "total": 0.22,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 0.17
-      },
-      {
-        "name": "Compute Engine",
-        "amount": 0.0
+        "amount": 0.22
       },
       {
         "name": "Networking",
+        "amount": 0.0
+      },
+      {
+        "name": "Compute Engine",
         "amount": 0.0
       },
       {
@@ -116,6 +116,10 @@
       {
         "date": "2026-04-26",
         "amount": 0.0
+      },
+      {
+        "date": "2026-04-27",
+        "amount": 0.06
       }
     ]
   }
