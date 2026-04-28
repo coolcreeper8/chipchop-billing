@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T19:20:25.314487Z",
+  "generated_at": "2026-04-28T02:49:35.201689Z",
   "month": "2026-04",
   "budget": {
     "aws": 3000.0,
@@ -10,10 +10,6 @@
     "total": 0.0,
     "services": [],
     "daily": [
-      {
-        "date": "2026-04-14",
-        "amount": -0.0
-      },
       {
         "date": "2026-04-15",
         "amount": -0.0
@@ -61,6 +57,10 @@
       {
         "date": "2026-04-26",
         "amount": -0.0
+      },
+      {
+        "date": "2026-04-27",
+        "amount": -0.0
       }
     ]
   },
@@ -76,11 +76,11 @@
         "amount": 0.0
       },
       {
-        "name": "Networking",
+        "name": "VM Manager",
         "amount": 0.0
       },
       {
-        "name": "VM Manager",
+        "name": "Networking",
         "amount": 0.0
       }
     ],
