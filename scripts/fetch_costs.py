@@ -24,9 +24,9 @@ OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
 # ─── helpers ───────────────────────────────────────────────────────────────────
 def month_range():
     today = date.today()
-    start = today.replace(day=1).isoformat()
-    end   = today.isoformat()
-    return start, end
+    start = today.replace(day=1)
+    end   = today + timedelta(days=1)  # exclusive end, always after start
+    return start.isoformat(), end.isoformat()
 
 def prev_14_days():
     today = date.today()
