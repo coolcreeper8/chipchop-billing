@@ -5,35 +5,34 @@ from datetime import datetime, date, timedelta
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
-# ─── config ────────────────────────────────────────────────────────────────────
-# set these as GitHub Secrets, they land as env vars in the Action
 AWS_ACCESS_KEY_ID     = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 AWS_REGION            = os.environ.get("AWS_REGION", "us-east-1")
 
-GCP_SERVICE_ACCOUNT_JSON = os.environ["GCP_SERVICE_ACCOUNT_JSON"]   # full JSON string
-GCP_BILLING_PROJECT      = os.environ["GCP_BILLING_PROJECT"]         # project that owns the BQ dataset
-GCP_BQ_DATASET           = os.environ["GCP_BQ_DATASET"]              # e.g. billing_export
-GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]                # e.g. gcp_billing_export_v1_XXXXXX
+GCP_SERVICE_ACCOUNT_JSON = os.environ["GCP_SERVICE_ACCOUNT_JSON"]
+GCP_BILLING_PROJECT      = os.environ["GCP_BILLING_PROJECT"]
+GCP_BQ_DATASET           = os.environ["GCP_BQ_DATASET"]
+GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]
 
 AWS_MONTHLY_BUDGET  = float(os.environ.get("AWS_BUDGET",  "3000"))
 GCP_MONTHLY_BUDGET  = float(os.environ.get("GCP_BUDGET",  "2000"))
 
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
 
-# ─── helpers ───────────────────────────────────────────────────────────────────
 def month_range():
     today = date.today()
     start = today.replace(day=1)
-    end   = today + timedelta(days=1)
-    print(f"DEBUG: today={today}, start={start}, end={end}")
+    if today.month == 12:
+        end = date(today.year + 1, 1, 1)
+    else:
+        end = date(today.year, today.month + 1, 1)
+    print(f"DEBUG: start={start}, end={end}", flush=True)
     return start.isoformat(), end.isoformat()
 
 def prev_14_days():
     today = date.today()
     return [(today - timedelta(days=i)).isoformat() for i in range(13, -1, -1)]
 
-# ─── AWS ───────────────────────────────────────────────────────────────────────
 def fetch_aws():
     ce = boto3.client(
         "ce",
@@ -42,8 +41,6 @@ def fetch_aws():
         aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     )
     start, end = month_range()
-
-    # total + per-service breakdown
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
@@ -59,11 +56,10 @@ def fetch_aws():
         services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
         total += amount
     services.sort(key=lambda x: x["amount"], reverse=True)
-
-    # daily trend for last 14 days
     days = prev_14_days()
+    daily_end = date.today() + timedelta(days=1)
     daily_resp = ce.get_cost_and_usage(
-        TimePeriod={"Start": days[0], "End": end},
+        TimePeriod={"Start": days[0], "End": daily_end.isoformat()},
         Granularity="DAILY",
         Metrics=["UnblendedCost"],
     )
@@ -73,10 +69,8 @@ def fetch_aws():
             "date":   r["TimePeriod"]["Start"],
             "amount": round(float(r["Total"]["UnblendedCost"]["Amount"]), 2),
         })
-
     return {"total": round(total, 2), "services": services[:8], "daily": daily}
 
-# ─── GCP ───────────────────────────────────────────────────────────────────────
 def fetch_gcp():
     creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
     creds = service_account.Credentials.from_service_account_info(
@@ -84,12 +78,9 @@ def fetch_gcp():
         scopes=["https://www.googleapis.com/auth/cloud-platform"],
     )
     client = bigquery.Client(project=GCP_BILLING_PROJECT, credentials=creds)
-
     today = date.today()
     month_start = today.replace(day=1).isoformat()
     table = f"`{GCP_BILLING_PROJECT}.{GCP_BQ_DATASET}.{GCP_BQ_TABLE}`"
-
-    # total + per-service breakdown
     service_query = f"""
         SELECT
             service.description AS service_name,
@@ -107,8 +98,6 @@ def fetch_gcp():
     for row in client.query(service_query).result():
         services.append({"name": row.service_name, "amount": float(row.total_cost)})
         total += float(row.total_cost)
-
-    # daily trend for last 14 days
     cutoff = (today - timedelta(days=13)).isoformat()
     daily_query = f"""
         SELECT
@@ -123,19 +112,15 @@ def fetch_gcp():
     daily = []
     for row in client.query(daily_query).result():
         daily.append({"date": str(row.day), "amount": float(row.total_cost)})
-
     return {"total": round(total, 2), "services": services, "daily": daily}
 
-# ─── main ──────────────────────────────────────────────────────────────────────
 def main():
-    print("fetching AWS costs...")
+    print("fetching AWS costs...", flush=True)
     aws = fetch_aws()
-    print(f"  AWS total: ${aws['total']}")
-
-    print("fetching GCP costs...")
+    print(f"  AWS total: ${aws['total']}", flush=True)
+    print("fetching GCP costs...", flush=True)
     gcp = fetch_gcp()
-    print(f"  GCP total: ${gcp['total']}")
-
+    print(f"  GCP total: ${gcp['total']}", flush=True)
     output = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "month": date.today().strftime("%Y-%m"),
@@ -147,11 +132,10 @@ def main():
         "aws": aws,
         "gcp": gcp,
     }
-
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:
         json.dump(output, f, indent=2)
-    print(f"wrote {OUTPUT_PATH}")
+    print(f"wrote {OUTPUT_PATH}", flush=True)
 
 if __name__ == "__main__":
     main()
