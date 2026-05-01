@@ -25,7 +25,8 @@ OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
 def month_range():
     today = date.today()
     start = today.replace(day=1)
-    end   = today + timedelta(days=1)  # exclusive end, always after start
+    end   = today + timedelta(days=1)
+    print(f"DEBUG: today={today}, start={start}, end={end}")
     return start.isoformat(), end.isoformat()
 
 def prev_14_days():
