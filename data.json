@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T02:52:34.069105Z",
+  "generated_at": "2026-05-12T08:39:05.162231Z",
   "month": "2026-05",
   "budget": {
     "aws": 3000.0,
@@ -69,11 +69,11 @@
     ]
   },
   "gcp": {
-    "total": 2.16,
+    "total": 2.22,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 2.16
+        "amount": 2.22
       }
     ],
     "daily": [
@@ -127,7 +127,11 @@
       },
       {
         "date": "2026-05-11",
-        "amount": 0.02
+        "amount": 0.08
+      },
+      {
+        "date": "2026-05-12",
+        "amount": 0.0
       }
     ]
   }
