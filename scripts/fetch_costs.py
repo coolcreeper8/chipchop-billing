@@ -54,12 +54,12 @@ def fetch_aws():
     total_resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
-        Metrics=["UnblendedCost"],
+        Metrics=["AmortizedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "LINKED_ACCOUNT"}],
     )
     total = 0.0
     for g in total_resp["ResultsByTime"][0]["Groups"]:
-        amt = float(g["Metrics"]["UnblendedCost"]["Amount"])
+        amt = float(g["Metrics"]["AmortizedCost"]["Amount"])
         print(f"  DEBUG account {g['Keys'][0]}: ${amt}")
         total += amt
 
@@ -67,12 +67,12 @@ def fetch_aws():
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
-        Metrics=["UnblendedCost"],
+        Metrics=["AmortizedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
     )
     services = []
     for group in resp["ResultsByTime"][0]["Groups"]:
-        amount = float(group["Metrics"]["UnblendedCost"]["Amount"])
+        amount = float(group["Metrics"]["AmortizedCost"]["Amount"])
         if amount < 0.01:
             continue
         services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
@@ -82,13 +82,13 @@ def fetch_aws():
     daily_resp = ce.get_cost_and_usage(
         TimePeriod={"Start": days[0], "End": daily_end.isoformat()},
         Granularity="DAILY",
-        Metrics=["UnblendedCost"],
+        Metrics=["AmortizedCost"],
     )
     daily = []
     for r in daily_resp["ResultsByTime"]:
         daily.append({
             "date":   r["TimePeriod"]["Start"],
-            "amount": round(float(r["Total"]["UnblendedCost"]["Amount"]), 2),
+            "amount": round(float(r["Total"]["AmortizedCost"]["Amount"]), 2),
         })
     return {"total": round(max(total, 0.0), 2), "services": services[:8], "daily": daily}
 
