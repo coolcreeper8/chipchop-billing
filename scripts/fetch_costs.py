@@ -26,7 +26,6 @@ def month_range():
         end = date(today.year + 1, 1, 1)
     else:
         end = date(today.year, today.month + 1, 1)
-    print(f"DEBUG: start={start}, end={end}", flush=True)
     return start.isoformat(), end.isoformat()
 
 def prev_14_days():
@@ -34,93 +33,50 @@ def prev_14_days():
     return [(today - timedelta(days=i)).isoformat() for i in range(13, -1, -1)]
 
 def fetch_aws():
-    sts = boto3.client(
-        "sts",
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-    )
-    identity = sts.get_caller_identity()
-    account_id = identity['Account']
-    print(f"  AWS account ID in use: {account_id}")
+    kwargs = {"aws_access_key_id": AWS_ACCESS_KEY_ID, "aws_secret_access_key": AWS_SECRET_ACCESS_KEY}
 
-    # check budgets for real billing-system total
-    try:
-        budgets_client = boto3.client("budgets", region_name="us-east-1",
-            aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-        b_resp = budgets_client.describe_budgets(AccountId=account_id)
-        for b in b_resp.get("Budgets", []):
-            actual = b.get("CalculatedSpend", {}).get("ActualSpend", {})
-            print(f"  DEBUG budget '{b['BudgetName']}': actual={actual.get('Amount')} {actual.get('Unit')}")
-    except Exception as e:
-        print(f"  DEBUG budgets error: {e}")
+    # Real total from Budgets API — CE data warehouse is unavailable for this account
+    account_id = boto3.client("sts", region_name="us-east-1", **kwargs).get_caller_identity()["Account"]
+    b_resp = boto3.client("budgets", region_name="us-east-1", **kwargs).describe_budgets(AccountId=account_id)
+    total = 0.0
+    for b in b_resp.get("Budgets", []):
+        actual = b.get("CalculatedSpend", {}).get("ActualSpend", {})
+        if actual.get("Amount"):
+            total = float(actual["Amount"])
+            break
 
-    # check for alternate billing views
-    try:
-        billing_client = boto3.client("billing", region_name="us-east-1",
-            aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-        views = billing_client.list_billing_views(activeTimeRange={
-            "activeAfterInclusive": f"{date.today().replace(day=1).isoformat()}T00:00:00Z",
-            "activeBeforeInclusive": f"{date.today().isoformat()}T23:59:59Z",
-        })
-        print(f"  DEBUG billing views: {[v.get('arn') for v in views.get('billingViews', [])]}")
-    except Exception as e:
-        print(f"  DEBUG billing views error: {e}")
-
-    ce = boto3.client(
-        "ce",
-        region_name="us-east-1",  # Cost Explorer is only available in us-east-1
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-    )
+    # Service breakdown and daily trend from CE
+    ce = boto3.client("ce", region_name="us-east-1", **kwargs)
     start, end = month_range()
 
-    billing_view_arn = "arn:aws:billing::679617709218:billingview/primary"
-
-    # total across all linked accounts using primary billing view
-    total_resp = ce.get_cost_and_usage(
-        TimePeriod={"Start": start, "End": end},
-        Granularity="MONTHLY",
-        Metrics=["AmortizedCost"],
-        GroupBy=[{"Type": "DIMENSION", "Key": "LINKED_ACCOUNT"}],
-        BillingViewArn=billing_view_arn,
-    )
-    total = 0.0
-    for g in total_resp["ResultsByTime"][0]["Groups"]:
-        amt = float(g["Metrics"]["AmortizedCost"]["Amount"])
-        print(f"  DEBUG account {g['Keys'][0]}: ${amt}")
-        total += amt
-
-    # per-service breakdown using primary billing view
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
-        Metrics=["AmortizedCost"],
+        Metrics=["UnblendedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
-        BillingViewArn=billing_view_arn,
     )
     services = []
     for group in resp["ResultsByTime"][0]["Groups"]:
-        amount = float(group["Metrics"]["AmortizedCost"]["Amount"])
-        print(f"  DEBUG service {group['Keys'][0]}: ${amount}")
+        amount = float(group["Metrics"]["UnblendedCost"]["Amount"])
         if amount < 0.01:
             continue
         services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
     services.sort(key=lambda x: x["amount"], reverse=True)
+
     days = prev_14_days()
-    daily_end = date.today() + timedelta(days=1)
     daily_resp = ce.get_cost_and_usage(
-        TimePeriod={"Start": days[0], "End": daily_end.isoformat()},
+        TimePeriod={"Start": days[0], "End": (date.today() + timedelta(days=1)).isoformat()},
         Granularity="DAILY",
-        Metrics=["AmortizedCost"],
-        BillingViewArn=billing_view_arn,
+        Metrics=["UnblendedCost"],
     )
     daily = []
     for r in daily_resp["ResultsByTime"]:
         daily.append({
             "date":   r["TimePeriod"]["Start"],
-            "amount": round(float(r["Total"]["AmortizedCost"]["Amount"]), 2),
+            "amount": round(max(float(r["Total"]["UnblendedCost"]["Amount"]), 0.0), 2),
         })
-    return {"total": round(max(total, 0.0), 2), "services": services[:8], "daily": daily}
+
+    return {"total": round(total, 2), "services": services[:8], "daily": daily}
 
 def fetch_gcp():
     creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
