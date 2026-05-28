@@ -50,16 +50,20 @@ def fetch_aws():
     )
     start, end = month_range()
 
-    # total (fetched independently so it's never affected by the per-service filter)
+    # total across all linked accounts in the org
     total_resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
         Metrics=["UnblendedCost"],
+        GroupBy=[{"Type": "DIMENSION", "Key": "LINKED_ACCOUNT"}],
     )
-    print(f"  DEBUG raw total_resp: {json.dumps(total_resp['ResultsByTime'], default=str)}")
-    total = float(total_resp["ResultsByTime"][0]["Total"]["UnblendedCost"]["Amount"])
+    total = sum(
+        float(g["Metrics"]["UnblendedCost"]["Amount"])
+        for g in total_resp["ResultsByTime"][0]["Groups"]
+    )
+    print(f"  DEBUG linked accounts: {[g['Keys'][0] for g in total_resp['ResultsByTime'][0]['Groups']]}")
 
-    # per-service breakdown
+    # per-service breakdown across all linked accounts
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
