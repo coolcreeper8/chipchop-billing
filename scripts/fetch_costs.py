@@ -34,13 +34,31 @@ def prev_14_days():
     return [(today - timedelta(days=i)).isoformat() for i in range(13, -1, -1)]
 
 def fetch_aws():
+    sts = boto3.client(
+        "sts",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    )
+    identity = sts.get_caller_identity()
+    print(f"  AWS account ID in use: {identity['Account']}")
+
     ce = boto3.client(
         "ce",
-        region_name=AWS_REGION,
+        region_name="us-east-1",  # Cost Explorer is only available in us-east-1
         aws_access_key_id=AWS_ACCESS_KEY_ID,
         aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     )
     start, end = month_range()
+
+    # total (fetched independently so it's never affected by the per-service filter)
+    total_resp = ce.get_cost_and_usage(
+        TimePeriod={"Start": start, "End": end},
+        Granularity="MONTHLY",
+        Metrics=["UnblendedCost"],
+    )
+    total = float(total_resp["ResultsByTime"][0]["Total"]["UnblendedCost"]["Amount"])
+
+    # per-service breakdown
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
@@ -48,13 +66,11 @@ def fetch_aws():
         GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
     )
     services = []
-    total = 0.0
     for group in resp["ResultsByTime"][0]["Groups"]:
         amount = float(group["Metrics"]["UnblendedCost"]["Amount"])
         if amount < 0.01:
             continue
         services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
-        total += amount
     services.sort(key=lambda x: x["amount"], reverse=True)
     days = prev_14_days()
     daily_end = date.today() + timedelta(days=1)
@@ -69,7 +85,7 @@ def fetch_aws():
             "date":   r["TimePeriod"]["Start"],
             "amount": round(float(r["Total"]["UnblendedCost"]["Amount"]), 2),
         })
-    return {"total": round(total, 2), "services": services[:8], "daily": daily}
+    return {"total": round(max(total, 0.0), 2), "services": services[:8], "daily": daily}
 
 def fetch_gcp():
     creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
