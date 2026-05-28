@@ -101,6 +101,7 @@ def fetch_aws():
     services = []
     for group in resp["ResultsByTime"][0]["Groups"]:
         amount = float(group["Metrics"]["AmortizedCost"]["Amount"])
+        print(f"  DEBUG service {group['Keys'][0]}: ${amount}")
         if amount < 0.01:
             continue
         services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
