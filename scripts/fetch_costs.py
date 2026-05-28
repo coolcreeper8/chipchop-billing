@@ -40,7 +40,31 @@ def fetch_aws():
         aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     )
     identity = sts.get_caller_identity()
-    print(f"  AWS account ID in use: {identity['Account']}")
+    account_id = identity['Account']
+    print(f"  AWS account ID in use: {account_id}")
+
+    # check budgets for real billing-system total
+    try:
+        budgets_client = boto3.client("budgets", region_name="us-east-1",
+            aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+        b_resp = budgets_client.describe_budgets(AccountId=account_id)
+        for b in b_resp.get("Budgets", []):
+            actual = b.get("CalculatedSpend", {}).get("ActualSpend", {})
+            print(f"  DEBUG budget '{b['BudgetName']}': actual={actual.get('Amount')} {actual.get('Unit')}")
+    except Exception as e:
+        print(f"  DEBUG budgets error: {e}")
+
+    # check for alternate billing views
+    try:
+        billing_client = boto3.client("billing", region_name="us-east-1",
+            aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+        views = billing_client.list_billing_views(activeTimeRange={
+            "activeAfterInclusive": f"{date.today().replace(day=1).isoformat()}T00:00:00Z",
+            "activeBeforeInclusive": f"{date.today().isoformat()}T23:59:59Z",
+        })
+        print(f"  DEBUG billing views: {[v.get('arn') for v in views.get('billingViews', [])]}")
+    except Exception as e:
+        print(f"  DEBUG billing views error: {e}")
 
     ce = boto3.client(
         "ce",
