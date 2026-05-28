@@ -57,11 +57,11 @@ def fetch_aws():
         Metrics=["UnblendedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "LINKED_ACCOUNT"}],
     )
-    total = sum(
-        float(g["Metrics"]["UnblendedCost"]["Amount"])
-        for g in total_resp["ResultsByTime"][0]["Groups"]
-    )
-    print(f"  DEBUG linked accounts: {[g['Keys'][0] for g in total_resp['ResultsByTime'][0]['Groups']]}")
+    total = 0.0
+    for g in total_resp["ResultsByTime"][0]["Groups"]:
+        amt = float(g["Metrics"]["UnblendedCost"]["Amount"])
+        print(f"  DEBUG account {g['Keys'][0]}: ${amt}")
+        total += amt
 
     # per-service breakdown across all linked accounts
     resp = ce.get_cost_and_usage(
