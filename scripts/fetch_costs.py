@@ -45,6 +45,15 @@ def fetch_aws():
             total = float(actual["Amount"])
             break
 
+    # Check for Cost and Usage Report (CUR) in S3
+    try:
+        cur_client = boto3.client("cur", region_name="us-east-1", **kwargs)
+        reports = cur_client.describe_report_definitions()
+        for r in reports.get("ReportDefinitions", []):
+            print(f"  DEBUG CUR report: {r['ReportName']} -> s3://{r['S3Bucket']}/{r.get('S3Prefix','')}")
+    except Exception as e:
+        print(f"  DEBUG CUR error: {e}")
+
     # Service breakdown and daily trend from CE
     ce = boto3.client("ce", region_name="us-east-1", **kwargs)
     start, end = month_range()
