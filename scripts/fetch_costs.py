@@ -56,6 +56,7 @@ def fetch_aws():
         Granularity="MONTHLY",
         Metrics=["UnblendedCost"],
     )
+    print(f"  DEBUG raw total_resp: {json.dumps(total_resp['ResultsByTime'], default=str)}")
     total = float(total_resp["ResultsByTime"][0]["Total"]["UnblendedCost"]["Amount"])
 
     # per-service breakdown
