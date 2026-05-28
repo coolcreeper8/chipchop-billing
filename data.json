@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T06:29:06.481714Z",
+  "generated_at": "2026-05-28T06:33:41.966262Z",
   "month": "2026-05",
   "budget": {
     "aws": 3000.0,
@@ -7,60 +7,60 @@
     "total": 5000.0
   },
   "aws": {
-    "total": 0.0,
+    "total": 177.69,
     "services": [],
     "daily": [
       {
         "date": "2026-05-15",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-16",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-17",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-18",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-19",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-20",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-21",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-22",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-23",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-24",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-25",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-26",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-27",
-        "amount": -0.0
+        "amount": 0.0
       },
       {
         "date": "2026-05-28",
