@@ -74,12 +74,15 @@ def fetch_aws():
     )
     start, end = month_range()
 
-    # total across all linked accounts in the org
+    billing_view_arn = "arn:aws:billing::679617709218:billingview/primary"
+
+    # total across all linked accounts using primary billing view
     total_resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
         Metrics=["AmortizedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "LINKED_ACCOUNT"}],
+        BillingViewArn=billing_view_arn,
     )
     total = 0.0
     for g in total_resp["ResultsByTime"][0]["Groups"]:
@@ -87,12 +90,13 @@ def fetch_aws():
         print(f"  DEBUG account {g['Keys'][0]}: ${amt}")
         total += amt
 
-    # per-service breakdown across all linked accounts
+    # per-service breakdown using primary billing view
     resp = ce.get_cost_and_usage(
         TimePeriod={"Start": start, "End": end},
         Granularity="MONTHLY",
         Metrics=["AmortizedCost"],
         GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
+        BillingViewArn=billing_view_arn,
     )
     services = []
     for group in resp["ResultsByTime"][0]["Groups"]:
@@ -107,6 +111,7 @@ def fetch_aws():
         TimePeriod={"Start": days[0], "End": daily_end.isoformat()},
         Granularity="DAILY",
         Metrics=["AmortizedCost"],
+        BillingViewArn=billing_view_arn,
     )
     daily = []
     for r in daily_resp["ResultsByTime"]:
