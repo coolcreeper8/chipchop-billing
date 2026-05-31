@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T02:09:43.960234Z",
+  "generated_at": "2026-05-31T02:13:27.248070Z",
   "month": "2026-05",
   "budget": {
     "aws": 3000.0,
@@ -8,59 +8,84 @@
   },
   "aws": {
     "total": 192.71,
-    "services": [],
+    "services": [
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 152.76
+      },
+      {
+        "name": "AWS Business Support+",
+        "amount": 29.0
+      },
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 7.14
+      },
+      {
+        "name": "AWS Cost Explorer",
+        "amount": 3.01
+      },
+      {
+        "name": "Amazon Simple Storage Service",
+        "amount": 0.41
+      },
+      {
+        "name": "AWS Secrets Manager",
+        "amount": 0.38
+      }
+    ],
     "daily": [
       {
         "date": "2026-05-18",
-        "amount": 0.0
+        "amount": 4.7
       },
       {
         "date": "2026-05-19",
-        "amount": 0.0
+        "amount": 14.14
       },
       {
         "date": "2026-05-20",
-        "amount": 0.0
+        "amount": 4.09
       },
       {
         "date": "2026-05-21",
-        "amount": 0.0
+        "amount": 1.91
       },
       {
         "date": "2026-05-22",
-        "amount": 0.0
+        "amount": 9.71
       },
       {
         "date": "2026-05-23",
-        "amount": 0.0
+        "amount": 2.04
       },
       {
         "date": "2026-05-24",
-        "amount": 0.0
+        "amount": 1.91
       },
       {
         "date": "2026-05-25",
-        "amount": 0.0
+        "amount": 1.91
       },
       {
         "date": "2026-05-26",
-        "amount": 0.0
+        "amount": 2.43
       },
       {
         "date": "2026-05-27",
-        "amount": 0.0
+        "amount": 6.07
       },
       {
         "date": "2026-05-28",
-        "amount": 0.0
+        "amount": 5.99
       },
       {
         "date": "2026-05-29",
-        "amount": 0.0
+        "amount": 3.39
       },
       {
         "date": "2026-05-30",
-        "amount": 0.0
+        "amount": 0.86
       },
       {
         "date": "2026-05-31",
