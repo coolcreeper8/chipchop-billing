@@ -59,7 +59,13 @@ def _read_cur_s3(report, kwargs):
     ]
 
     if not csv_keys:
-        print(f"  No CUR CSV files found under s3://{bucket}/{s3_prefix} for {month_tag}")
+        all_keys = [
+            obj["Key"]
+            for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix)
+            for obj in page.get("Contents", [])
+        ]
+        print(f"  No CSV.gz for {month_tag} under s3://{bucket}/{s3_prefix}")
+        print(f"  All objects found ({len(all_keys)}): {all_keys[:20]}")
         return None
 
     services: dict[str, float] = {}
