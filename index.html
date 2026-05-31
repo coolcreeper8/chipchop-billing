@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChipChop — Cloud Costs</title>
+  <link rel="icon" type="image/png" href="dashboard/chipchoplogo.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,10 +40,23 @@
     .header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       margin-bottom: 1.5rem;
     }
-    .header h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
+    .header-left { display: flex; align-items: center; gap: 2px; }
+    .header-logo {
+      height: 40px;
+      mix-blend-mode: screen;
+      display: block;
+    }
+    .header-sub {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-left: 4px;
+    }
     .header .meta { font-size: 12px; color: var(--muted); font-family: "SF Mono", "Fira Code", monospace; }
 
     .tabs {
@@ -280,7 +294,7 @@ async function render() {
     renderAll(app, dd, hist);
   } catch (err) {
     app.innerHTML = `
-      <div class="header"><h1>ChipChop — cloud costs</h1></div>
+      <div class="header"><div class="header-left"><img src="dashboard/chipchoplogo.png" class="header-logo" alt="ChipChop"><span class="header-sub">cloud costs</span></div></div>
       <div class="error">
         <strong>Could not load data.json</strong><br/>
         ${err.message}<br/><br/>
@@ -360,7 +374,10 @@ async function renderAll(app, d, hist) {
 
   app.innerHTML = `
     <div class="header">
-      <h1>ChipChop — cloud costs</h1>
+      <div class="header-left">
+        <img src="dashboard/chipchoplogo.png" class="header-logo" alt="ChipChop">
+        <span class="header-sub">cloud costs</span>
+      </div>
       <span class="meta">${d.month} &nbsp;·&nbsp; updated ${new Date(d.generated_at).toLocaleString()}</span>
     </div>
 
