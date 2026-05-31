@@ -2,6 +2,7 @@ import boto3
 import csv
 import gzip
 import io
+import zipfile
 import json
 import os
 from datetime import datetime, date, timedelta
@@ -55,17 +56,11 @@ def _read_cur_s3(report, kwargs):
         obj["Key"]
         for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix)
         for obj in page.get("Contents", [])
-        if month_tag in obj["Key"] and obj["Key"].endswith(".csv.gz")
+        if month_tag in obj["Key"] and obj["Key"].endswith((".csv.gz", ".csv.zip"))
     ]
 
     if not csv_keys:
-        all_keys = [
-            obj["Key"]
-            for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix)
-            for obj in page.get("Contents", [])
-        ]
-        print(f"  No CSV.gz for {month_tag} under s3://{bucket}/{s3_prefix}")
-        print(f"  All objects found ({len(all_keys)}): {all_keys[:20]}")
+        print(f"  No CUR CSV files found under s3://{bucket}/{s3_prefix} for {month_tag}")
         return None
 
     services: dict[str, float] = {}
@@ -75,9 +70,13 @@ def _read_cur_s3(report, kwargs):
     for key in csv_keys:
         print(f"  Reading CUR: s3://{bucket}/{key}", flush=True)
         body = s3.get_object(Bucket=bucket, Key=key)["Body"].read()
-        with gzip.GzipFile(fileobj=io.BytesIO(body)) as gz:
-            reader = csv.DictReader(io.TextIOWrapper(gz, encoding="utf-8"))
-            for row in reader:
+        if key.endswith(".csv.zip"):
+            zf = zipfile.ZipFile(io.BytesIO(body))
+            text = io.TextIOWrapper(zf.open(zf.namelist()[0]), encoding="utf-8")
+        else:
+            text = io.TextIOWrapper(gzip.GzipFile(fileobj=io.BytesIO(body)), encoding="utf-8")
+        reader = csv.DictReader(text)
+        for row in reader:
                 try:
                     cost = float(row.get("lineItem/UnblendedCost") or 0)
                 except ValueError:
