@@ -1,4 +1,7 @@
 import boto3
+import csv
+import gzip
+import io
 import json
 import os
 from datetime import datetime, date, timedelta
@@ -32,6 +35,63 @@ def prev_14_days():
     today = date.today()
     return [(today - timedelta(days=i)).isoformat() for i in range(13, -1, -1)]
 
+def _read_cur_s3(report, kwargs):
+    """Read CUR CSV.gz files from S3 and return (service_list, daily_amounts_by_date)."""
+    if report.get("Format", "textCSV") != "textCSV":
+        print(f"  CUR report '{report['ReportName']}' uses {report.get('Format')} format; only textCSV is supported")
+        return None
+
+    bucket = report["S3Bucket"]
+    raw_prefix = report.get("S3Prefix", "").strip("/")
+    report_name = report["ReportName"]
+    s3_prefix = f"{raw_prefix}/{report_name}/" if raw_prefix else f"{report_name}/"
+
+    s3 = boto3.client("s3", region_name="us-east-1", **kwargs)
+    today = date.today()
+    month_tag = today.strftime("%Y%m")
+
+    paginator = s3.get_paginator("list_objects_v2")
+    csv_keys = [
+        obj["Key"]
+        for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix)
+        for obj in page.get("Contents", [])
+        if month_tag in obj["Key"] and obj["Key"].endswith(".csv.gz")
+    ]
+
+    if not csv_keys:
+        print(f"  No CUR CSV files found under s3://{bucket}/{s3_prefix} for {month_tag}")
+        return None
+
+    services: dict[str, float] = {}
+    daily: dict[str, float] = {}
+    month_start = today.replace(day=1).isoformat()
+
+    for key in csv_keys:
+        print(f"  Reading CUR: s3://{bucket}/{key}", flush=True)
+        body = s3.get_object(Bucket=bucket, Key=key)["Body"].read()
+        with gzip.GzipFile(fileobj=io.BytesIO(body)) as gz:
+            reader = csv.DictReader(io.TextIOWrapper(gz, encoding="utf-8"))
+            for row in reader:
+                try:
+                    cost = float(row.get("lineItem/UnblendedCost") or 0)
+                except ValueError:
+                    continue
+                if cost < 0.0001:
+                    continue
+                service = row.get("product/ProductName") or row.get("lineItem/ProductCode", "")
+                usage_date = (row.get("lineItem/UsageStartDate") or "")[:10]
+                if service:
+                    services[service] = services.get(service, 0.0) + cost
+                if usage_date >= month_start:
+                    daily[usage_date] = daily.get(usage_date, 0.0) + cost
+
+    service_list = sorted(
+        [{"name": k, "amount": round(v, 2)} for k, v in services.items() if v >= 0.01],
+        key=lambda x: x["amount"], reverse=True,
+    )
+    return service_list[:8], {k: round(v, 2) for k, v in daily.items()}
+
+
 def fetch_aws():
     kwargs = {"aws_access_key_id": AWS_ACCESS_KEY_ID, "aws_secret_access_key": AWS_SECRET_ACCESS_KEY}
 
@@ -45,47 +105,64 @@ def fetch_aws():
             total = float(actual["Amount"])
             break
 
-    # Check for Cost and Usage Report (CUR) in S3
+    # Try CUR first for service breakdown and daily costs
+    services = []
+    cur_daily: dict[str, float] = {}
     try:
         cur_client = boto3.client("cur", region_name="us-east-1", **kwargs)
-        reports = cur_client.describe_report_definitions()
-        for r in reports.get("ReportDefinitions", []):
-            print(f"  DEBUG CUR report: {r['ReportName']} -> s3://{r['S3Bucket']}/{r.get('S3Prefix','')}")
+        reports = cur_client.describe_report_definitions().get("ReportDefinitions", [])
+        print(f"  Found {len(reports)} CUR report(s)", flush=True)
+        for report in reports:
+            result = _read_cur_s3(report, kwargs)
+            if result:
+                services, cur_daily = result
+                print(f"  CUR gave {len(services)} services, {len(cur_daily)} daily entries", flush=True)
+                break
     except Exception as e:
-        print(f"  DEBUG CUR error: {e}")
+        print(f"  CUR unavailable: {e}", flush=True)
 
-    # Service breakdown and daily trend from CE
+    # Fall back to CE for service breakdown if CUR yielded nothing
     ce = boto3.client("ce", region_name="us-east-1", **kwargs)
-    start, end = month_range()
+    if not services:
+        start, end = month_range()
+        try:
+            resp = ce.get_cost_and_usage(
+                TimePeriod={"Start": start, "End": end},
+                Granularity="MONTHLY",
+                Metrics=["UnblendedCost"],
+                GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
+            )
+            for group in resp["ResultsByTime"][0]["Groups"]:
+                amount = float(group["Metrics"]["UnblendedCost"]["Amount"])
+                if amount < 0.01:
+                    continue
+                services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
+            services.sort(key=lambda x: x["amount"], reverse=True)
+            services = services[:8]
+        except Exception as e:
+            print(f"  CE service breakdown failed: {e}", flush=True)
 
-    resp = ce.get_cost_and_usage(
-        TimePeriod={"Start": start, "End": end},
-        Granularity="MONTHLY",
-        Metrics=["UnblendedCost"],
-        GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}],
-    )
-    services = []
-    for group in resp["ResultsByTime"][0]["Groups"]:
-        amount = float(group["Metrics"]["UnblendedCost"]["Amount"])
-        if amount < 0.01:
-            continue
-        services.append({"name": group["Keys"][0], "amount": round(amount, 2)})
-    services.sort(key=lambda x: x["amount"], reverse=True)
-
+    # Build daily list for last 14 days, merging CUR data where available
     days = prev_14_days()
-    daily_resp = ce.get_cost_and_usage(
-        TimePeriod={"Start": days[0], "End": (date.today() + timedelta(days=1)).isoformat()},
-        Granularity="DAILY",
-        Metrics=["UnblendedCost"],
-    )
-    daily = []
-    for r in daily_resp["ResultsByTime"]:
-        daily.append({
-            "date":   r["TimePeriod"]["Start"],
-            "amount": round(max(float(r["Total"]["UnblendedCost"]["Amount"]), 0.0), 2),
-        })
+    if cur_daily:
+        daily = [{"date": d, "amount": cur_daily.get(d, 0.0)} for d in days]
+    else:
+        try:
+            daily_resp = ce.get_cost_and_usage(
+                TimePeriod={"Start": days[0], "End": (date.today() + timedelta(days=1)).isoformat()},
+                Granularity="DAILY",
+                Metrics=["UnblendedCost"],
+            )
+            daily = [
+                {"date": r["TimePeriod"]["Start"],
+                 "amount": round(max(float(r["Total"]["UnblendedCost"]["Amount"]), 0.0), 2)}
+                for r in daily_resp["ResultsByTime"]
+            ]
+        except Exception as e:
+            print(f"  CE daily trend failed: {e}", flush=True)
+            daily = [{"date": d, "amount": 0.0} for d in days]
 
-    return {"total": round(total, 2), "services": services[:8], "daily": daily}
+    return {"total": round(total, 2), "services": services, "daily": daily}
 
 def fetch_gcp():
     creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
