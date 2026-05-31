@@ -30,21 +30,31 @@ jobs:
 
       - name: fetch costs
         env:
-          AWS_ACCESS_KEY_ID:       ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY:   ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION:              ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID:        ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:    ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION:               ${{ secrets.AWS_REGION }}
           GCP_SERVICE_ACCOUNT_JSON: ${{ secrets.GCP_SERVICE_ACCOUNT_JSON }}
-          GCP_BILLING_PROJECT:     ${{ secrets.GCP_BILLING_PROJECT }}
-          GCP_BQ_DATASET:          ${{ secrets.GCP_BQ_DATASET }}
-          GCP_BQ_TABLE:            ${{ secrets.GCP_BQ_TABLE }}
-          AWS_BUDGET:              ${{ secrets.AWS_BUDGET }}
-          GCP_BUDGET:              ${{ secrets.GCP_BUDGET }}
+          GCP_BILLING_PROJECT:      ${{ secrets.GCP_BILLING_PROJECT }}
+          GCP_BQ_DATASET:           ${{ secrets.GCP_BQ_DATASET }}
+          GCP_BQ_TABLE:             ${{ secrets.GCP_BQ_TABLE }}
+          AWS_BUDGET:               ${{ secrets.AWS_BUDGET }}
+          GCP_BUDGET:               ${{ secrets.GCP_BUDGET }}
+          # optional — leave unset to skip that provider
+          ANTHROPIC_API_KEY:        ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_BUDGET:         ${{ secrets.ANTHROPIC_BUDGET }}
+          OPENAI_API_KEY:           ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BUDGET:            ${{ secrets.OPENAI_BUDGET }}
+          AZURE_TENANT_ID:          ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID:          ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET:      ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID:    ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_BUDGET:             ${{ secrets.AZURE_BUDGET }}
         run: python scripts/fetch_costs.py
 
-      - name: commit and push data.json
+      - name: commit and push data.json and history.json
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json history.json
           git diff --cached --quiet || git commit -m "chore: update cost data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

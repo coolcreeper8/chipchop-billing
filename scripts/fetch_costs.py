@@ -5,6 +5,7 @@ import io
 import zipfile
 import json
 import os
+import requests
 from datetime import datetime, date, timedelta
 from google.cloud import bigquery
 from google.oauth2 import service_account
@@ -18,10 +19,21 @@ GCP_BILLING_PROJECT      = os.environ["GCP_BILLING_PROJECT"]
 GCP_BQ_DATASET           = os.environ["GCP_BQ_DATASET"]
 GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]
 
-AWS_MONTHLY_BUDGET  = float(os.environ.get("AWS_BUDGET",  "3000"))
-GCP_MONTHLY_BUDGET  = float(os.environ.get("GCP_BUDGET",  "2000"))
+ANTHROPIC_API_KEY        = os.environ.get("ANTHROPIC_API_KEY", "")
+OPENAI_API_KEY           = os.environ.get("OPENAI_API_KEY", "")
+AZURE_TENANT_ID          = os.environ.get("AZURE_TENANT_ID", "")
+AZURE_CLIENT_ID          = os.environ.get("AZURE_CLIENT_ID", "")
+AZURE_CLIENT_SECRET      = os.environ.get("AZURE_CLIENT_SECRET", "")
+AZURE_SUBSCRIPTION_ID    = os.environ.get("AZURE_SUBSCRIPTION_ID", "")
 
-OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
+AWS_MONTHLY_BUDGET       = float(os.environ.get("AWS_BUDGET",       "3000"))
+GCP_MONTHLY_BUDGET       = float(os.environ.get("GCP_BUDGET",       "2000"))
+ANTHROPIC_MONTHLY_BUDGET = float(os.environ.get("ANTHROPIC_BUDGET", "0"))
+OPENAI_MONTHLY_BUDGET    = float(os.environ.get("OPENAI_BUDGET",    "0"))
+AZURE_MONTHLY_BUDGET     = float(os.environ.get("AZURE_BUDGET",     "0"))
+
+OUTPUT_PATH  = os.path.join(os.path.dirname(__file__), "..", "data.json")
+HISTORY_PATH = os.path.join(os.path.dirname(__file__), "..", "history.json")
 
 def month_range():
     today = date.today()
@@ -169,6 +181,176 @@ def fetch_aws():
 
     return {"total": round(total, 2), "services": services, "daily": daily}
 
+def fetch_anthropic():
+    """Fetch Claude API spending via Anthropic Usage API."""
+    if not ANTHROPIC_API_KEY:
+        return None
+    today = date.today()
+    month_start = today.replace(day=1).isoformat()
+    days = prev_14_days()
+    headers = {
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+    }
+    # Monthly usage grouped by model
+    resp = requests.get(
+        "https://api.anthropic.com/v1/usage",
+        headers=headers,
+        params={"start_date": month_start, "end_date": today.isoformat()},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    # Each entry has model, input_tokens, output_tokens, and cost fields.
+    # Exact field names — verify against console.anthropic.com/docs/api/usage.
+    services = []
+    total = 0.0
+    for entry in data.get("data", []):
+        cost = float(entry.get("cost_usd") or entry.get("total_cost") or 0)
+        model = entry.get("model", "unknown")
+        if cost >= 0.01:
+            services.append({"name": model, "amount": round(cost, 2)})
+            total += cost
+    services.sort(key=lambda x: x["amount"], reverse=True)
+    # Daily trend
+    daily_resp = requests.get(
+        "https://api.anthropic.com/v1/usage",
+        headers=headers,
+        params={"start_date": days[0], "end_date": today.isoformat(), "granularity": "day"},
+        timeout=30,
+    )
+    daily_resp.raise_for_status()
+    daily_map = {}
+    for entry in daily_resp.json().get("data", []):
+        d = (entry.get("date") or entry.get("start_date") or "")[:10]
+        cost = float(entry.get("cost_usd") or entry.get("total_cost") or 0)
+        if d:
+            daily_map[d] = daily_map.get(d, 0.0) + cost
+    daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
+    return {"total": round(total, 2), "services": services[:8], "daily": daily}
+
+
+def fetch_openai():
+    """Fetch OpenAI API spending via OpenAI Billing Usage API."""
+    if not OPENAI_API_KEY:
+        return None
+    today = date.today()
+    month_start = today.replace(day=1).isoformat()
+    days = prev_14_days()
+    headers = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
+    resp = requests.get(
+        "https://api.openai.com/v1/dashboard/billing/usage",
+        headers=headers,
+        params={
+            "start_date": month_start,
+            "end_date": (today + timedelta(days=1)).isoformat(),
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    # total_usage is in cents
+    total = round(data.get("total_usage", 0) / 100, 2)
+    # Service breakdown and daily costs from daily_costs entries
+    model_costs: dict[str, float] = {}
+    daily_map: dict[str, float] = {}
+    resp14 = requests.get(
+        "https://api.openai.com/v1/dashboard/billing/usage",
+        headers=headers,
+        params={
+            "start_date": days[0],
+            "end_date": (today + timedelta(days=1)).isoformat(),
+        },
+        timeout=30,
+    )
+    resp14.raise_for_status()
+    for day_entry in resp14.json().get("daily_costs", []):
+        day_str = date.fromtimestamp(day_entry["timestamp"]).isoformat()
+        for item in day_entry.get("line_items", []):
+            cost = item.get("cost", 0) / 100
+            model_costs[item.get("name", "unknown")] = model_costs.get(item.get("name", "unknown"), 0.0) + cost
+            daily_map[day_str] = daily_map.get(day_str, 0.0) + cost
+    services = sorted(
+        [{"name": k, "amount": round(v, 2)} for k, v in model_costs.items() if v >= 0.01],
+        key=lambda x: x["amount"], reverse=True,
+    )[:8]
+    daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
+    return {"total": total, "services": services, "daily": daily}
+
+
+def _azure_token():
+    resp = requests.post(
+        f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/oauth2/v2.0/token",
+        data={
+            "grant_type":    "client_credentials",
+            "client_id":     AZURE_CLIENT_ID,
+            "client_secret": AZURE_CLIENT_SECRET,
+            "scope":         "https://management.azure.com/.default",
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    return resp.json()["access_token"]
+
+
+def fetch_azure():
+    """Fetch Azure spending via Cost Management Query API."""
+    if not all([AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_SUBSCRIPTION_ID]):
+        return None
+    today = date.today()
+    month_start = today.replace(day=1).isoformat()
+    days = prev_14_days()
+    token = _azure_token()
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    url = (
+        f"https://management.azure.com/subscriptions/{AZURE_SUBSCRIPTION_ID}"
+        f"/providers/Microsoft.CostManagement/query?api-version=2023-11-01"
+    )
+    # Monthly by service
+    resp = requests.post(url, headers=headers, timeout=30, json={
+        "type": "ActualCost",
+        "timeframe": "Custom",
+        "timePeriod": {"from": month_start + "T00:00:00Z", "to": today.isoformat() + "T23:59:59Z"},
+        "dataset": {
+            "granularity": "None",
+            "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},
+            "grouping": [{"type": "Dimension", "name": "ServiceName"}],
+        },
+    })
+    resp.raise_for_status()
+    props = resp.json()["properties"]
+    cols = [c["name"] for c in props["columns"]]
+    cost_idx, svc_idx = cols.index("Cost"), cols.index("ServiceName")
+    services, total = [], 0.0
+    for row in props["rows"]:
+        cost = float(row[cost_idx])
+        if cost >= 0.01:
+            services.append({"name": row[svc_idx], "amount": round(cost, 2)})
+            total += cost
+    services.sort(key=lambda x: x["amount"], reverse=True)
+    # Daily trend
+    daily_resp = requests.post(url, headers=headers, timeout=30, json={
+        "type": "ActualCost",
+        "timeframe": "Custom",
+        "timePeriod": {"from": days[0] + "T00:00:00Z", "to": today.isoformat() + "T23:59:59Z"},
+        "dataset": {
+            "granularity": "Daily",
+            "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},
+        },
+    })
+    daily_resp.raise_for_status()
+    dprops = daily_resp.json()["properties"]
+    dcols = [c["name"] for c in dprops["columns"]]
+    dcost_idx, ddate_idx = dcols.index("Cost"), dcols.index("UsageDate")
+    daily_map = {}
+    for row in dprops["rows"]:
+        raw = str(row[ddate_idx])  # YYYYMMDD integer
+        d = f"{raw[:4]}-{raw[4:6]}-{raw[6:]}"
+        daily_map[d] = round(float(row[dcost_idx]), 2)
+    daily = [{"date": d, "amount": daily_map.get(d, 0.0)} for d in days]
+    return {"total": round(total, 2), "services": services[:8], "daily": daily}
+
+
 def fetch_gcp():
     creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
     creds = service_account.Credentials.from_service_account_info(
@@ -212,28 +394,93 @@ def fetch_gcp():
         daily.append({"date": str(row.day), "amount": float(row.total_cost)})
     return {"total": round(total, 2), "services": services, "daily": daily}
 
+def update_history(output):
+    try:
+        with open(HISTORY_PATH) as f:
+            history = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        history = {"months": []}
+    month = output["month"]
+    entry = {"month": month}
+    for key in ("aws", "gcp", "anthropic", "openai", "azure"):
+        if output.get(key):
+            entry[key] = {"total": output[key]["total"], "services": output[key]["services"]}
+    months = history["months"]
+    for i, m in enumerate(months):
+        if m["month"] == month:
+            months[i] = entry
+            break
+    else:
+        months.append(entry)
+    months.sort(key=lambda x: x["month"])
+    with open(HISTORY_PATH, "w") as f:
+        json.dump(history, f, indent=2)
+    print(f"wrote {HISTORY_PATH}", flush=True)
+
+
 def main():
     print("fetching AWS costs...", flush=True)
     aws = fetch_aws()
     print(f"  AWS total: ${aws['total']}", flush=True)
+
     print("fetching GCP costs...", flush=True)
     gcp = fetch_gcp()
     print(f"  GCP total: ${gcp['total']}", flush=True)
+
+    anthropic, openai, azure = None, None, None
+
+    if ANTHROPIC_API_KEY:
+        print("fetching Anthropic costs...", flush=True)
+        try:
+            anthropic = fetch_anthropic()
+            print(f"  Anthropic total: ${anthropic['total']}", flush=True)
+        except Exception as e:
+            print(f"  Anthropic fetch failed: {e}", flush=True)
+
+    if OPENAI_API_KEY:
+        print("fetching OpenAI costs...", flush=True)
+        try:
+            openai = fetch_openai()
+            print(f"  OpenAI total: ${openai['total']}", flush=True)
+        except Exception as e:
+            print(f"  OpenAI fetch failed: {e}", flush=True)
+
+    if AZURE_TENANT_ID:
+        print("fetching Azure costs...", flush=True)
+        try:
+            azure = fetch_azure()
+            print(f"  Azure total: ${azure['total']}", flush=True)
+        except Exception as e:
+            print(f"  Azure fetch failed: {e}", flush=True)
+
+    active_budgets = (
+        AWS_MONTHLY_BUDGET + GCP_MONTHLY_BUDGET
+        + (ANTHROPIC_MONTHLY_BUDGET if anthropic else 0)
+        + (OPENAI_MONTHLY_BUDGET    if openai    else 0)
+        + (AZURE_MONTHLY_BUDGET     if azure     else 0)
+    )
     output = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "month": date.today().strftime("%Y-%m"),
         "budget": {
-            "aws":   AWS_MONTHLY_BUDGET,
-            "gcp":   GCP_MONTHLY_BUDGET,
-            "total": AWS_MONTHLY_BUDGET + GCP_MONTHLY_BUDGET,
+            "aws":       AWS_MONTHLY_BUDGET,
+            "gcp":       GCP_MONTHLY_BUDGET,
+            "anthropic": ANTHROPIC_MONTHLY_BUDGET,
+            "openai":    OPENAI_MONTHLY_BUDGET,
+            "azure":     AZURE_MONTHLY_BUDGET,
+            "total":     active_budgets,
         },
-        "aws": aws,
-        "gcp": gcp,
+        "aws":       aws,
+        "gcp":       gcp,
+        "anthropic": anthropic,
+        "openai":    openai,
+        "azure":     azure,
     }
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:
         json.dump(output, f, indent=2)
     print(f"wrote {OUTPUT_PATH}", flush=True)
+    update_history(output)
 
 if __name__ == "__main__":
     main()
