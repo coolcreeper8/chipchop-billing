@@ -37,8 +37,8 @@ def prev_14_days():
 
 def _read_cur_s3(report, kwargs):
     """Read CUR CSV.gz files from S3 and return (service_list, daily_amounts_by_date)."""
-    if report.get("Format", "textCSV") != "textCSV":
-        print(f"  CUR report '{report['ReportName']}' uses {report.get('Format')} format; only textCSV is supported")
+    if report.get("Format", "textCSV") not in ("textCSV", "textORcsv"):
+        print(f"  CUR report '{report['ReportName']}' uses {report.get('Format')} format; only textCSV/textORcsv is supported")
         return None
 
     bucket = report["S3Bucket"]
