@@ -26,11 +26,14 @@ AZURE_CLIENT_ID          = os.environ.get("AZURE_CLIENT_ID", "")
 AZURE_CLIENT_SECRET      = os.environ.get("AZURE_CLIENT_SECRET", "")
 AZURE_SUBSCRIPTION_ID    = os.environ.get("AZURE_SUBSCRIPTION_ID", "")
 
-AWS_MONTHLY_BUDGET       = float(os.environ.get("AWS_BUDGET",       "3000"))
-GCP_MONTHLY_BUDGET       = float(os.environ.get("GCP_BUDGET",       "2000"))
-ANTHROPIC_MONTHLY_BUDGET = float(os.environ.get("ANTHROPIC_BUDGET", "0"))
-OPENAI_MONTHLY_BUDGET    = float(os.environ.get("OPENAI_BUDGET",    "0"))
-AZURE_MONTHLY_BUDGET     = float(os.environ.get("AZURE_BUDGET",     "0"))
+def _budget(key, default):
+    return float(os.environ.get(key) or default)
+
+AWS_MONTHLY_BUDGET       = _budget("AWS_BUDGET",       3000)
+GCP_MONTHLY_BUDGET       = _budget("GCP_BUDGET",       2000)
+ANTHROPIC_MONTHLY_BUDGET = _budget("ANTHROPIC_BUDGET", 0)
+OPENAI_MONTHLY_BUDGET    = _budget("OPENAI_BUDGET",    0)
+AZURE_MONTHLY_BUDGET     = _budget("AZURE_BUDGET",     0)
 
 OUTPUT_PATH  = os.path.join(os.path.dirname(__file__), "..", "data.json")
 HISTORY_PATH = os.path.join(os.path.dirname(__file__), "..", "history.json")
