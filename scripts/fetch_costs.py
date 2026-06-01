@@ -64,18 +64,20 @@ def _read_cur_s3(report, kwargs):
 
     s3 = boto3.client("s3", region_name="us-east-1", **kwargs)
     today = date.today()
-    month_tag = today.strftime("%Y%m")
-
+    # Use the billing-period START date as the S3 prefix so we only match the
+    # current month's directory (e.g. 20260601-...) and never accidentally pick
+    # up last month's directory whose end date shares the same YYYYMM prefix.
+    month_first = today.replace(day=1).strftime("%Y%m%d")
     paginator = s3.get_paginator("list_objects_v2")
     csv_keys = [
         obj["Key"]
-        for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix)
+        for page in paginator.paginate(Bucket=bucket, Prefix=s3_prefix + month_first)
         for obj in page.get("Contents", [])
-        if month_tag in obj["Key"] and obj["Key"].endswith((".csv.gz", ".csv.zip"))
+        if obj["Key"].endswith((".csv.gz", ".csv.zip"))
     ]
 
     if not csv_keys:
-        print(f"  No CUR CSV files found under s3://{bucket}/{s3_prefix} for {month_tag}")
+        print(f"  No CUR CSV files found under s3://{bucket}/{s3_prefix}{month_first}*/")
         return None
 
     services: dict[str, float] = {}
@@ -92,18 +94,18 @@ def _read_cur_s3(report, kwargs):
             text = io.TextIOWrapper(gzip.GzipFile(fileobj=io.BytesIO(body)), encoding="utf-8")
         reader = csv.DictReader(text)
         for row in reader:
-                try:
-                    cost = float(row.get("lineItem/UnblendedCost") or 0)
-                except ValueError:
-                    continue
-                if cost < 0.0001:
-                    continue
-                service = row.get("product/ProductName") or row.get("lineItem/ProductCode", "")
-                usage_date = (row.get("lineItem/UsageStartDate") or "")[:10]
-                if service:
-                    services[service] = services.get(service, 0.0) + cost
-                if usage_date >= month_start:
-                    daily[usage_date] = daily.get(usage_date, 0.0) + cost
+            try:
+                cost = float(row.get("lineItem/UnblendedCost") or 0)
+            except ValueError:
+                continue
+            if cost < 0.0001:
+                continue
+            service    = row.get("product/ProductName") or row.get("lineItem/ProductCode", "")
+            usage_date = (row.get("lineItem/UsageStartDate") or "")[:10]
+            if service and usage_date >= month_start:
+                services[service] = services.get(service, 0.0) + cost
+            if usage_date >= month_start:
+                daily[usage_date] = daily.get(usage_date, 0.0) + cost
 
     service_list = sorted(
         [{"name": k, "amount": round(v, 2)} for k, v in services.items() if v >= 0.01],
