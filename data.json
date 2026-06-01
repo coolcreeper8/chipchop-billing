@@ -1,29 +1,32 @@
 {
-  "generated_at": "2026-05-31T02:13:27.248070Z",
-  "month": "2026-05",
+  "generated_at": "2026-06-01T17:43:53.025692Z",
+  "month": "2026-06",
   "budget": {
     "aws": 3000.0,
     "gcp": 2000.0,
+    "anthropic": 1000.0,
+    "openai": 1000.0,
+    "azure": 0.0,
     "total": 5000.0
   },
   "aws": {
-    "total": 192.71,
+    "total": 32.6,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 152.76
+        "amount": 174.28
       },
       {
         "name": "AWS Business Support+",
-        "amount": 29.0
+        "amount": 58.0
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 7.14
+        "amount": 7.54
       },
       {
         "name": "AWS Cost Explorer",
-        "amount": 3.01
+        "amount": 3.09
       },
       {
         "name": "Amazon Simple Storage Service",
@@ -31,81 +34,72 @@
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.38
+        "amount": 0.4
       }
     ],
     "daily": [
       {
-        "date": "2026-05-18",
-        "amount": 4.7
-      },
-      {
         "date": "2026-05-19",
-        "amount": 14.14
+        "amount": 0.0
       },
       {
         "date": "2026-05-20",
-        "amount": 4.09
+        "amount": 0.0
       },
       {
         "date": "2026-05-21",
-        "amount": 1.91
+        "amount": 0.0
       },
       {
         "date": "2026-05-22",
-        "amount": 9.71
+        "amount": 0.0
       },
       {
         "date": "2026-05-23",
-        "amount": 2.04
+        "amount": 0.0
       },
       {
         "date": "2026-05-24",
-        "amount": 1.91
+        "amount": 0.0
       },
       {
         "date": "2026-05-25",
-        "amount": 1.91
+        "amount": 0.0
       },
       {
         "date": "2026-05-26",
-        "amount": 2.43
+        "amount": 0.0
       },
       {
         "date": "2026-05-27",
-        "amount": 6.07
+        "amount": 0.0
       },
       {
         "date": "2026-05-28",
-        "amount": 5.99
+        "amount": 0.0
       },
       {
         "date": "2026-05-29",
-        "amount": 3.39
+        "amount": 0.0
       },
       {
         "date": "2026-05-30",
-        "amount": 0.86
+        "amount": 0.0
       },
       {
         "date": "2026-05-31",
         "amount": 0.0
+      },
+      {
+        "date": "2026-06-01",
+        "amount": 32.6
       }
     ]
   },
   "gcp": {
-    "total": 2.31,
-    "services": [
-      {
-        "name": "Vertex AI",
-        "amount": 2.31
-      }
-    ],
+    "total": 0.0,
+    "services": [],
     "daily": [
-      {
-        "date": "2026-05-18",
-        "amount": 0.07
-      },
       {
         "date": "2026-05-19",
         "amount": 0.01
@@ -153,7 +147,18 @@
       {
         "date": "2026-05-30",
         "amount": 0.0
+      },
+      {
+        "date": "2026-05-31",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-01",
+        "amount": 0.0
       }
     ]
-  }
+  },
+  "anthropic": null,
+  "openai": null,
+  "azure": null
 }

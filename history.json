@@ -1,1 +1,40 @@
-{"months": []}
+{
+  "months": [
+    {
+      "month": "2026-06",
+      "aws": {
+        "total": 32.6,
+        "services": [
+          {
+            "name": "Amazon Elastic Compute Cloud",
+            "amount": 174.28
+          },
+          {
+            "name": "AWS Business Support+",
+            "amount": 58.0
+          },
+          {
+            "name": "Amazon Virtual Private Cloud",
+            "amount": 7.54
+          },
+          {
+            "name": "AWS Cost Explorer",
+            "amount": 3.09
+          },
+          {
+            "name": "Amazon Simple Storage Service",
+            "amount": 0.41
+          },
+          {
+            "name": "AWS Secrets Manager",
+            "amount": 0.4
+          }
+        ]
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      }
+    }
+  ]
+}
