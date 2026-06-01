@@ -185,100 +185,87 @@ def fetch_aws():
     return {"total": round(total, 2), "services": services, "daily": daily}
 
 def fetch_anthropic():
-    """Fetch Claude API spending via Anthropic Usage API."""
+    """Fetch Claude API spending via Anthropic Cost Admin API.
+    Requires an Admin API key (sk-ant-admin...) — NOT a regular API key.
+    Get one at: console.anthropic.com → Settings → Admin Keys.
+    """
     if not ANTHROPIC_API_KEY:
         return None
     today = date.today()
-    month_start = today.replace(day=1).isoformat()
+    month_start = today.replace(day=1)
     days = prev_14_days()
     headers = {
         "x-api-key": ANTHROPIC_API_KEY,
         "anthropic-version": "2023-06-01",
     }
-    # Monthly usage grouped by model
     resp = requests.get(
-        "https://api.anthropic.com/v1/usage",
-        headers=headers,
-        params={"start_date": month_start, "end_date": today.isoformat()},
-        timeout=30,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    # Each entry has model, input_tokens, output_tokens, and cost fields.
-    # Exact field names — verify against console.anthropic.com/docs/api/usage.
-    services = []
-    total = 0.0
-    for entry in data.get("data", []):
-        cost = float(entry.get("cost_usd") or entry.get("total_cost") or 0)
-        model = entry.get("model", "unknown")
-        if cost >= 0.01:
-            services.append({"name": model, "amount": round(cost, 2)})
-            total += cost
-    services.sort(key=lambda x: x["amount"], reverse=True)
-    # Daily trend
-    daily_resp = requests.get(
-        "https://api.anthropic.com/v1/usage",
-        headers=headers,
-        params={"start_date": days[0], "end_date": today.isoformat(), "granularity": "day"},
-        timeout=30,
-    )
-    daily_resp.raise_for_status()
-    daily_map = {}
-    for entry in daily_resp.json().get("data", []):
-        d = (entry.get("date") or entry.get("start_date") or "")[:10]
-        cost = float(entry.get("cost_usd") or entry.get("total_cost") or 0)
-        if d:
-            daily_map[d] = daily_map.get(d, 0.0) + cost
-    daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
-    return {"total": round(total, 2), "services": services[:8], "daily": daily}
-
-
-def fetch_openai():
-    """Fetch OpenAI API spending via OpenAI Billing Usage API."""
-    if not OPENAI_API_KEY:
-        return None
-    today = date.today()
-    month_start = today.replace(day=1).isoformat()
-    days = prev_14_days()
-    headers = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
-    resp = requests.get(
-        "https://api.openai.com/v1/dashboard/billing/usage",
+        "https://api.anthropic.com/v1/organizations/cost_report",
         headers=headers,
         params={
-            "start_date": month_start,
-            "end_date": (today + timedelta(days=1)).isoformat(),
+            "starting_at":  month_start.strftime("%Y-%m-%dT00:00:00Z"),
+            "ending_at":    today.strftime("%Y-%m-%dT23:59:59Z"),
+            "bucket_width": "1d",
+            "group_by[]":   "description",
         },
         timeout=30,
     )
     resp.raise_for_status()
-    data = resp.json()
-    # total_usage is in cents
-    total = round(data.get("total_usage", 0) / 100, 2)
-    # Service breakdown and daily costs from daily_costs entries
     model_costs: dict[str, float] = {}
-    daily_map: dict[str, float] = {}
-    resp14 = requests.get(
-        "https://api.openai.com/v1/dashboard/billing/usage",
-        headers=headers,
-        params={
-            "start_date": days[0],
-            "end_date": (today + timedelta(days=1)).isoformat(),
-        },
-        timeout=30,
-    )
-    resp14.raise_for_status()
-    for day_entry in resp14.json().get("daily_costs", []):
-        day_str = date.fromtimestamp(day_entry["timestamp"]).isoformat()
-        for item in day_entry.get("line_items", []):
-            cost = item.get("cost", 0) / 100
-            model_costs[item.get("name", "unknown")] = model_costs.get(item.get("name", "unknown"), 0.0) + cost
-            daily_map[day_str] = daily_map.get(day_str, 0.0) + cost
+    daily_map:   dict[str, float] = {}
+    for bucket in resp.json().get("data", []):
+        day = (bucket.get("start_time") or "")[:10]
+        for result in bucket.get("results", []):
+            # cost is in cents as a decimal string
+            cost_usd = float(result.get("cost", "0") or "0") / 100
+            model = result.get("model") or result.get("description", "unknown")
+            if cost_usd > 0:
+                model_costs[model] = model_costs.get(model, 0.0) + cost_usd
+                daily_map[day]     = daily_map.get(day, 0.0) + cost_usd
     services = sorted(
         [{"name": k, "amount": round(v, 2)} for k, v in model_costs.items() if v >= 0.01],
         key=lambda x: x["amount"], reverse=True,
     )[:8]
     daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
-    return {"total": total, "services": services, "daily": daily}
+    return {"total": round(sum(model_costs.values()), 2), "services": services, "daily": daily}
+
+
+def fetch_openai():
+    """Fetch OpenAI API spending via OpenAI Organization Costs API.
+    Requires an Admin API key — NOT a regular inference API key.
+    Get one at: platform.openai.com → Settings → Organization → Admin API keys.
+    """
+    if not OPENAI_API_KEY:
+        return None
+    from datetime import timezone
+    today = date.today()
+    month_start = today.replace(day=1)
+    days = prev_14_days()
+    headers = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
+    start_ts = int(datetime(month_start.year, month_start.month, month_start.day, tzinfo=timezone.utc).timestamp())
+    end_ts   = int(datetime(today.year, today.month, today.day, 23, 59, 59, tzinfo=timezone.utc).timestamp())
+    resp = requests.get(
+        "https://api.openai.com/v1/organization/costs",
+        headers=headers,
+        params={"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d"},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    model_costs: dict[str, float] = {}
+    daily_map:   dict[str, float] = {}
+    for bucket in resp.json().get("data", []):
+        day = date.fromtimestamp(bucket.get("start_time", 0)).isoformat()
+        for result in bucket.get("results", []):
+            cost = float((result.get("amount") or {}).get("value", 0) or 0)
+            model = result.get("line_item") or result.get("model_id") or "unknown"
+            if cost > 0:
+                model_costs[model] = model_costs.get(model, 0.0) + cost
+                daily_map[day]     = daily_map.get(day, 0.0) + cost
+    services = sorted(
+        [{"name": k, "amount": round(v, 2)} for k, v in model_costs.items() if v >= 0.01],
+        key=lambda x: x["amount"], reverse=True,
+    )[:8]
+    daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
+    return {"total": round(sum(model_costs.values()), 2), "services": services, "daily": daily}
 
 
 def _azure_token():
