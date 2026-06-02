@@ -4,29 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChipChop — Cloud Costs</title>
-  <link rel="icon" type="image/png" href="dashboard/chipchoplogo.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0f1014;
-      --surface:   #181a1f;
-      --border:    rgba(255,255,255,0.08);
-      --text:      #e8e9ec;
-      --muted:     #6b7280;
-      --aws:       #e8940a;
-      --aws-dim:   rgba(232,148,10,0.12);
-      --gcp:       #4a90d9;
-      --gcp-dim:   rgba(74,144,217,0.12);
-      --anthropic: #c96442;
-      --ant-dim:   rgba(201,100,66,0.12);
-      --openai:    #10a37f;
-      --oai-dim:   rgba(16,163,127,0.12);
-      --azure:     #0089d6;
-      --az-dim:    rgba(0,137,214,0.12);
-      --success:   #4ade80;
-      --warn:      #fb923c;
+      --bg:             #0f1014;
+      --surface:        #181a1f;
+      --border:         rgba(255,255,255,0.08);
+      --text:           #e8e9ec;
+      --muted:          #6b7280;
+      --aws:            #e8940a;
+      --aws-dim:        rgba(232,148,10,0.12);
+      --gcp:            #4a90d9;
+      --gcp-dim:        rgba(74,144,217,0.12);
+      --azure:          #0078d4;
+      --azure-dim:      rgba(0,120,212,0.12);
+      --openai:         #10a37f;
+      --openai-dim:     rgba(16,163,127,0.12);
+      --anthropic:      #c96442;
+      --anthropic-dim:  rgba(201,100,66,0.12);
+      --success:        #4ade80;
+      --warn:           #fb923c;
     }
 
     body {
@@ -37,264 +36,291 @@
       padding: 2rem;
     }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .header-left { display: flex; align-items: center; gap: 2px; }
-    .header-logo {
-      height: 40px;
-      mix-blend-mode: screen;
-      display: block;
-    }
-    .header-sub {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-left: 4px;
-    }
-    .header .meta { font-size: 12px; color: var(--muted); font-family: "SF Mono", "Fira Code", monospace; }
-
-    .tabs {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0;
-    }
-    .tab {
-      padding: 6px 14px;
-      font-size: 13px;
-      color: var(--muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color 0.15s;
-    }
-    .tab:hover { color: var(--text); }
-    .tab.active { color: var(--text); border-bottom-color: var(--text); }
-
-    .view { display: none; }
-    .view.active { display: block; }
+    .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; }
+    .header h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
+    .header .meta { font-size: 12px; color: var(--muted); font-family: "SF Mono", monospace; }
 
     .metric-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 12px;
       margin-bottom: 1.5rem;
     }
-    .metric-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-    }
-    .metric-label {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-    }
-    .metric-value {
-      font-size: 26px;
-      font-weight: 600;
-      font-family: "SF Mono", "Fira Code", monospace;
-      letter-spacing: -0.02em;
-    }
-    .metric-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+    .metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .metric-value { font-size: 26px; font-weight: 600; font-family: "SF Mono", monospace; letter-spacing: -0.02em; }
+    .metric-sub   { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
     .color-aws       { color: var(--aws); }
     .color-gcp       { color: var(--gcp); }
-    .color-anthropic { color: var(--anthropic); }
-    .color-openai    { color: var(--openai); }
     .color-azure     { color: var(--azure); }
+    .color-openai    { color: var(--openai); }
+    .color-anthropic { color: var(--anthropic); }
     .color-success   { color: var(--success); }
     .color-warn      { color: var(--warn); }
 
-    .row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .chart-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; margin-bottom: 12px; }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem;
-    }
-    .card-title {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-    }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .card-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
 
-    .trend-wrap { position: relative; height: 200px; }
-    .chart-wrap { position: relative; height: 260px; }
+    .trend-wrap   { position: relative; height: 200px; }
+    .history-wrap { position: relative; height: 220px; }
 
-    .legend { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
     .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
-    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+    .legend-dot  { width: 10px; height: 10px; border-radius: 2px; }
 
-    .provider-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
+    .provider-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
     .provider-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-    .badge {
-      font-size: 11px; font-weight: 600; padding: 2px 8px;
-      border-radius: 4px; letter-spacing: 0.04em;
-    }
-    .badge-aws       { background: var(--aws-dim);  color: var(--aws); }
-    .badge-gcp       { background: var(--gcp-dim);  color: var(--gcp); }
-    .badge-anthropic { background: var(--ant-dim);  color: var(--anthropic); }
-    .badge-openai    { background: var(--oai-dim);  color: var(--openai); }
-    .badge-azure     { background: var(--az-dim);   color: var(--azure); }
+    .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.04em; }
+    .badge-aws       { background: var(--aws-dim);       color: var(--aws); }
+    .badge-gcp       { background: var(--gcp-dim);       color: var(--gcp); }
+    .badge-azure     { background: var(--azure-dim);     color: var(--azure); }
+    .badge-openai    { background: var(--openai-dim);    color: var(--openai); }
+    .badge-anthropic { background: var(--anthropic-dim); color: var(--anthropic); }
 
-    .budget-bar-labels {
-      display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;
-    }
-    .budget-bar-labels .spent { font-family: "SF Mono", "Fira Code", monospace; font-weight: 600; }
+    .budget-bar-labels { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+    .budget-bar-labels .spent { font-family: "SF Mono", monospace; font-weight: 600; }
     .budget-bar-labels .limit { color: var(--muted); }
-    .bar-track {
-      height: 5px; background: rgba(255,255,255,0.06);
-      border-radius: 3px; overflow: hidden; margin-bottom: 16px;
-    }
-    .bar-fill    { height: 100%; border-radius: 3px; }
+    .bar-track { height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 16px; }
+    .bar-fill  { height: 100%; border-radius: 3px; }
     .bar-aws       { background: var(--aws); }
     .bar-gcp       { background: var(--gcp); }
-    .bar-anthropic { background: var(--anthropic); }
-    .bar-openai    { background: var(--openai); }
     .bar-azure     { background: var(--azure); }
+    .bar-openai    { background: var(--openai); }
+    .bar-anthropic { background: var(--anthropic); }
 
-    .service-row { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
-    .service-name {
-      font-size: 12px; color: var(--muted); width: 100px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0;
-    }
-    .service-bar-track {
-      flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden;
-    }
-    .service-bar-fill { height: 100%; border-radius: 2px; }
-    .service-amount {
-      font-size: 12px; font-family: "SF Mono", "Fira Code", monospace;
-      color: var(--text); width: 52px; text-align: right; flex-shrink: 0;
-    }
+    .service-row       { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+    .service-name      { font-size: 12px; color: var(--muted); width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+    .service-bar-track { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .service-bar-fill  { height: 100%; border-radius: 2px; }
+    .service-amount    { font-size: 12px; font-family: "SF Mono", monospace; color: var(--text); width: 56px; text-align: right; flex-shrink: 0; }
+    .no-services       { font-size: 12px; color: var(--muted); font-style: italic; }
 
-    /* history table */
-    .history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .history-table th {
-      text-align: left; font-size: 11px; color: var(--muted); text-transform: uppercase;
-      letter-spacing: 0.06em; padding: 0 12px 10px 0; border-bottom: 1px solid var(--border);
-    }
-    .history-table td {
-      padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border);
-      font-family: "SF Mono", "Fira Code", monospace;
-    }
-    .history-table tr:last-child td { border-bottom: none; }
-    .history-table .month-col { color: var(--muted); font-size: 12px; }
-    .history-table .total-col { color: var(--text); font-weight: 600; }
-    .history-table .cumul-col { color: var(--success); }
-
-    .footer {
-      margin-top: 1.5rem; font-size: 11px; color: var(--muted);
-      text-align: center; font-family: "SF Mono", "Fira Code", monospace;
-    }
-
-    .loading {
-      display: flex; align-items: center; justify-content: center;
-      height: 60vh; font-size: 14px; color: var(--muted);
-    }
-    .error {
-      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
-      border-radius: 8px; padding: 1rem; font-size: 13px; color: #f87171; margin: 2rem 0;
-    }
+    .footer  { margin-top: 1.5rem; font-size: 11px; color: var(--muted); text-align: center; font-family: "SF Mono", monospace; }
+    .loading { display: flex; align-items: center; justify-content: center; height: 60vh; font-size: 14px; color: var(--muted); }
+    .error   { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 1rem; font-size: 13px; color: #f87171; margin: 2rem 0; }
 
     @media (max-width: 768px) {
-      .metric-grid { grid-template-columns: 1fr 1fr; }
-      .row { grid-template-columns: 1fr; }
-      .provider-cards { grid-template-columns: 1fr; }
+      .chart-row      { grid-template-columns: 1fr; }
+      .provider-grid  { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-<div id="app">
-  <div class="loading">loading cost data...</div>
-</div>
+<div id="app"><div class="loading">loading cost data...</div></div>
 
 <script>
-const fmt       = v => '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-const fmtFull   = v => '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const pct       = (v, total) => Math.min(100, Math.round((v / total) * 100));
-const clamp     = (v, max)   => Math.min(100, Math.round((v / (max || 1)) * 100));
-const shortName = s => s.replace(/^Amazon\s+|^AWS\s+|^Google\s+/i, '').slice(0, 22);
+const fmt       = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+const fmtDec    = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const pct       = (v, t) => t > 0 ? Math.min(100, Math.round((v / t) * 100)) : 0;
+const clamp     = (v, m) => m > 0 ? Math.min(100, Math.round((v / m) * 100)) : 0;
+const shortName = s => s.replace(/^Amazon\s+|^AWS\s+|^Google\s+|^Azure\s+/i, '').replace(/\s*\(.*?\)/g, '').trim().slice(0, 24);
 
-const COLORS = {
-  aws:       { hex: '#e8940a', rgba: 'rgba(232,148,10,0.07)'   },
-  gcp:       { hex: '#4a90d9', rgba: 'rgba(74,144,217,0.07)'   },
-  anthropic: { hex: '#c96442', rgba: 'rgba(201,100,66,0.07)'   },
-  openai:    { hex: '#10a37f', rgba: 'rgba(16,163,127,0.07)'   },
-  azure:     { hex: '#0089d6', rgba: 'rgba(0,137,214,0.07)'    },
-};
+const ALL_PROVIDERS = [
+  { key: 'aws',       label: 'AWS',       badge: 'badge-aws',       bar: 'bar-aws',       color: '#e8940a' },
+  { key: 'gcp',       label: 'GCP',       badge: 'badge-gcp',       bar: 'bar-gcp',       color: '#4a90d9' },
+  { key: 'azure',     label: 'Azure',     badge: 'badge-azure',     bar: 'bar-azure',     color: '#0078d4' },
+  { key: 'openai',    label: 'OpenAI',    badge: 'badge-openai',    bar: 'bar-openai',    color: '#10a37f' },
+  { key: 'anthropic', label: 'Anthropic', badge: 'badge-anthropic', bar: 'bar-anthropic', color: '#c96442' },
+];
 
-function providerCard(key, label, data, budget) {
-  if (!data) return '';
-  const top = data.services[0]?.amount || 1;
+function providerCard(d, p) {
+  const data     = d[p.key];
+  const budget   = d.budget[p.key] || 0;
+  const services = data.services || [];
+  const maxAmt   = services[0]?.amount || 1;
   return `
     <div class="card">
       <div class="provider-header">
-        <span class="badge badge-${key}">${label}</span>
+        <span class="badge ${p.badge}">${p.label}</span>
         <span style="font-size:12px;color:var(--muted)">by service</span>
       </div>
       <div class="budget-bar-labels">
-        <span class="spent color-${key}">${fmt(data.total)}</span>
-        <span class="limit">${budget > 0 ? 'budget ' + fmt(budget) : 'no budget set'}</span>
+        <span class="spent" style="color:${p.color}">${fmtDec(data.total)}</span>
+        ${budget > 0 ? `<span class="limit">budget ${fmt(budget)}</span>` : ''}
       </div>
-      ${budget > 0 ? `<div class="bar-track"><div class="bar-fill bar-${key}" style="width:${clamp(data.total, budget)}%"></div></div>` : ''}
-      ${data.services.map(s => `
-        <div class="service-row">
-          <span class="service-name">${shortName(s.name)}</span>
-          <div class="service-bar-track"><div class="service-bar-fill bar-${key}" style="width:${clamp(s.amount, top)}%"></div></div>
-          <span class="service-amount">${fmt(s.amount)}</span>
-        </div>`).join('')}
+      ${budget > 0 ? `<div class="bar-track"><div class="bar-fill ${p.bar}" style="width:${clamp(data.total, budget)}%"></div></div>` : ''}
+      ${services.length > 0
+        ? services.map(s => `
+          <div class="service-row">
+            <span class="service-name">${shortName(s.name)}</span>
+            <div class="service-bar-track"><div class="service-bar-fill ${p.bar}" style="width:${clamp(s.amount, maxAmt)}%"></div></div>
+            <span class="service-amount">${fmtDec(s.amount)}</span>
+          </div>`).join('')
+        : '<p class="no-services">No service detail yet</p>'
+      }
     </div>`;
-}
-
-let trendChartInst = null;
-
-function buildTrendDatasets(d) {
-  const providers = ['aws', 'gcp', 'anthropic', 'openai', 'azure'];
-  const labels = ['AWS', 'GCP', 'Anthropic', 'OpenAI', 'Azure'];
-  return providers
-    .map((key, i) => d[key] ? {
-      label: labels[i],
-      data: d[key].daily.map(x => x.amount),
-      borderColor: COLORS[key].hex,
-      backgroundColor: COLORS[key].rgba,
-      borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35,
-    } : null)
-    .filter(Boolean);
 }
 
 async function render() {
   const app = document.getElementById('app');
   try {
-    const t = Date.now();
-    const [dataRes, histRes] = await Promise.all([
-      fetch('data.json?t=' + t),
-      fetch('history.json?t=' + t).catch(() => null),
-    ]);
-    if (!dataRes.ok) throw new Error('data.json not found — run the GitHub Action first');
-    const [dd, hist] = await Promise.all([
-      dataRes.json(),
-      histRes?.ok ? histRes.json() : Promise.resolve({ months: [] }),
-    ]);
-    renderAll(app, dd, hist);
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json not found — run the GitHub Action first');
+    const d = await res.json();
+
+    let historyMonths = [];
+    try {
+      const hr = await fetch('history.json?t=' + Date.now());
+      if (hr.ok) { const h = await hr.json(); historyMonths = h.months || []; }
+    } catch (_) {}
+
+    const active      = ALL_PROVIDERS.filter(p => d[p.key] != null);
+    const totalSpent  = active.reduce((s, p) => s + (d[p.key]?.total || 0), 0);
+    const remaining   = d.budget.total - totalSpent;
+    const remainPct   = pct(remaining, d.budget.total);
+
+    const legendHtml = active.map(p =>
+      `<span class="legend-item"><span class="legend-dot" style="background:${p.color}"></span>${p.label}</span>`
+    ).join('');
+
+    const metricCards = [
+      `<div class="metric-card">
+        <div class="metric-label">Total spend MTD</div>
+        <div class="metric-value">${fmt(totalSpent)}</div>
+        <div class="metric-sub">of ${fmt(d.budget.total)} budget</div>
+      </div>`,
+      ...active.map(p => `
+      <div class="metric-card">
+        <div class="metric-label">${p.label} MTD</div>
+        <div class="metric-value" style="color:${p.color}">${fmtDec(d[p.key].total)}</div>
+        ${d.budget[p.key] > 0
+          ? `<div class="metric-sub">${pct(d[p.key].total, d.budget[p.key])}% of ${fmt(d.budget[p.key])}</div>`
+          : '<div class="metric-sub">&nbsp;</div>'}
+      </div>`),
+      `<div class="metric-card">
+        <div class="metric-label">Budget remaining</div>
+        <div class="metric-value ${remainPct < 20 ? 'color-warn' : 'color-success'}">${fmt(Math.max(0, remaining))}</div>
+        <div class="metric-sub">${remainPct}% left this month</div>
+      </div>`,
+    ].join('');
+
+    const hasHistory = historyMonths.length > 0;
+
+    app.innerHTML = `
+      <div class="header">
+        <h1>ChipChop — cloud costs</h1>
+        <span class="meta">${d.month} &nbsp;·&nbsp; updated ${new Date(d.generated_at).toLocaleString()}</span>
+      </div>
+
+      <div class="metric-grid">${metricCards}</div>
+
+      <div class="chart-row">
+        <div class="card">
+          <div class="card-title">Daily spend — last 14 days</div>
+          <div class="legend">${legendHtml}</div>
+          <div class="trend-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Month-to-date budget usage</div>
+          <div class="trend-wrap"><canvas id="donutChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="provider-grid">
+        ${active.map(p => providerCard(d, p)).join('')}
+      </div>
+
+      ${hasHistory ? `
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-title">Monthly spend — past ${historyMonths.length} months</div>
+        <div class="legend">${legendHtml}</div>
+        <div class="history-wrap"><canvas id="historyChart"></canvas></div>
+      </div>` : ''}
+
+      <div class="footer">auto-refreshes every 6 hours via github actions</div>
+    `;
+
+    // ── trend chart ──────────────────────────────────────────────────────
+    const trendLabels = (() => {
+      const src = active.find(p => d[p.key]?.daily?.length > 0);
+      return src ? d[src.key].daily.map(x => x.date.slice(5)) : [];
+    })();
+
+    new Chart(document.getElementById('trendChart'), {
+      type: 'line',
+      data: {
+        labels: trendLabels,
+        datasets: active.map(p => ({
+          label: p.label,
+          data: (d[p.key].daily || []).map(x => x.amount),
+          borderColor: p.color,
+          backgroundColor: p.color + '12',
+          borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35,
+        }))
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { mode: 'index', intersect: false,
+            callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}` } } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, maxTicksLimit: 7 } },
+          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
+        }
+      }
+    });
+
+    // ── donut chart ──────────────────────────────────────────────────────
+    new Chart(document.getElementById('donutChart'), {
+      type: 'doughnut',
+      data: {
+        labels: [...active.map(p => p.label), 'Remaining'],
+        datasets: [{
+          data: [...active.map(p => d[p.key].total), Math.max(0, remaining)],
+          backgroundColor: [...active.map(p => p.color), 'rgba(255,255,255,0.07)'],
+          borderColor: '#0f1014', borderWidth: 3,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ` ${ctx.label}: $${Number(ctx.parsed).toFixed(2)}` } } },
+        cutout: '72%',
+      }
+    });
+
+    // ── history chart ────────────────────────────────────────────────────
+    if (hasHistory) {
+      new Chart(document.getElementById('historyChart'), {
+        type: 'bar',
+        data: {
+          labels: historyMonths.map(m => m.month),
+          datasets: ALL_PROVIDERS.map(p => ({
+            label: p.label,
+            data: historyMonths.map(m => {
+              const v = m[p.key];
+              return typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0);
+            }),
+            backgroundColor: p.color + 'cc',
+            borderColor: p.color,
+            borderWidth: 1,
+            borderRadius: 3,
+          }))
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false },
+            tooltip: { mode: 'index', intersect: false,
+              callbacks: { label: ctx => ` ${ctx.dataset.label}: $${Number(ctx.parsed.y).toFixed(2)}` } } },
+          scales: {
+            x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 } } },
+            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
+          }
+        }
+      });
+    }
+
   } catch (err) {
     app.innerHTML = `
-      <div class="header"><div class="header-left"><img src="dashboard/chipchoplogo.png" class="header-logo" alt="ChipChop"><span class="header-sub">cloud costs</span></div></div>
+      <div class="header"><h1>ChipChop — cloud costs</h1></div>
       <div class="error">
         <strong>Could not load data.json</strong><br/>
         ${err.message}<br/><br/>
@@ -302,213 +328,6 @@ async function render() {
       </div>`;
   }
 }
-
-async function renderAll(app, d, hist) {
-  const providers = [
-    { key: 'aws',       label: 'AWS',       budget: d.budget.aws       },
-    { key: 'gcp',       label: 'GCP',       budget: d.budget.gcp       },
-    { key: 'anthropic', label: 'Anthropic', budget: d.budget.anthropic },
-    { key: 'openai',    label: 'OpenAI',    budget: d.budget.openai    },
-    { key: 'azure',     label: 'Azure',     budget: d.budget.azure     },
-  ].filter(p => d[p.key]);
-
-  const totalSpent  = providers.reduce((s, p) => s + d[p.key].total, 0);
-  const totalBudget = d.budget.total;
-  const remaining   = totalBudget - totalSpent;
-  const remainPct   = pct(remaining, totalBudget);
-
-  const activeDailyLabels = d.aws.daily.map(x => x.date.slice(5));
-
-  // legend items for trend chart
-  const legendHtml = providers.map(p =>
-    `<span class="legend-item"><span class="legend-dot" style="background:${COLORS[p.key].hex}"></span>${p.label}</span>`
-  ).join('');
-
-  // metric cards — one per active provider plus total and remaining
-  const metricCards = [
-    `<div class="metric-card">
-       <div class="metric-label">Total spend MTD</div>
-       <div class="metric-value">${fmt(totalSpent)}</div>
-       <div class="metric-sub">of ${fmt(totalBudget)} budget</div>
-     </div>`,
-    ...providers.map(p => `
-      <div class="metric-card">
-        <div class="metric-label">${p.label} MTD</div>
-        <div class="metric-value color-${p.key}">${fmt(d[p.key].total)}</div>
-        <div class="metric-sub">${p.budget > 0 ? pct(d[p.key].total, p.budget) + '% of ' + fmt(p.budget) + ' budget' : 'no budget set'}</div>
-      </div>`),
-    `<div class="metric-card">
-       <div class="metric-label">Budget remaining</div>
-       <div class="metric-value ${remainPct < 20 ? 'color-warn' : 'color-success'}">${fmt(remaining)}</div>
-       <div class="metric-sub">${remainPct}% left this month</div>
-     </div>`,
-  ].join('');
-
-  // provider service cards (2-column grid)
-  const providerCardsHtml = providers.map(p =>
-    providerCard(p.key, p.label, d[p.key], p.budget)
-  ).join('');
-
-  // history table rows
-  const months = hist.months || [];
-  const cumuls = [];
-  let running = 0;
-  for (const m of months) {
-    const mTotal = ['aws','gcp','anthropic','openai','azure']
-      .reduce((s, k) => s + (m[k]?.total || 0), 0);
-    running += mTotal;
-    cumuls.push({ month: m.month, mTotal, cumul: running, data: m });
-  }
-
-  const histTableRows = [...cumuls].reverse().map(({ month, mTotal, cumul, data }) => {
-    const cells = ['aws','gcp','anthropic','openai','azure']
-      .map(k => `<td style="color:${COLORS[k].hex}">${data[k] ? fmtFull(data[k].total) : '—'}</td>`)
-      .join('');
-    return `<tr>
-      <td class="month-col">${month}</td>
-      ${cells}
-      <td class="total-col">${fmtFull(mTotal)}</td>
-      <td class="cumul-col">${fmtFull(cumul)}</td>
-    </tr>`;
-  }).join('');
-
-  app.innerHTML = `
-    <div class="header">
-      <div class="header-left">
-        <img src="dashboard/chipchoplogo.png" class="header-logo" alt="ChipChop">
-        <span class="header-sub">cloud costs</span>
-      </div>
-      <span class="meta">${d.month} &nbsp;·&nbsp; updated ${new Date(d.generated_at).toLocaleString()}</span>
-    </div>
-
-    <div class="tabs">
-      <div class="tab active" data-tab="month">This Month</div>
-      <div class="tab" data-tab="history">History</div>
-    </div>
-
-    <div id="view-month" class="view active">
-      <div class="metric-grid" style="grid-template-columns: repeat(${Math.min(providers.length + 2, 4)}, 1fr)">
-        ${metricCards}
-      </div>
-
-      <div class="row">
-        <div class="card">
-          <div class="card-title">Daily spend — last 14 days</div>
-          <div class="legend">${legendHtml}</div>
-          <div class="trend-wrap">
-            <canvas id="trendChart">Daily spend trend.</canvas>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title">Total budget usage</div>
-          <div class="trend-wrap">
-            <canvas id="donutChart">Budget breakdown.</canvas>
-          </div>
-        </div>
-      </div>
-
-      <div class="provider-cards">${providerCardsHtml}</div>
-      <div class="footer">auto-refreshes every 6 hours via github actions</div>
-    </div>
-
-    <div id="view-history" class="view">
-      <div class="card" style="margin-bottom:12px">
-        <div class="card-title">Monthly spend by provider</div>
-        <div class="chart-wrap"><canvas id="historyChart">Monthly spend history.</canvas></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Month-by-month breakdown</div>
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th style="color:var(--aws)">AWS</th>
-              <th style="color:var(--gcp)">GCP</th>
-              <th style="color:var(--anthropic)">Anthropic</th>
-              <th style="color:var(--openai)">OpenAI</th>
-              <th style="color:var(--azure)">Azure</th>
-              <th>Total</th>
-              <th style="color:var(--success)">Cumulative</th>
-            </tr>
-          </thead>
-          <tbody>${histTableRows || '<tr><td colspan="8" style="color:var(--muted);padding:1rem 0">No history yet — data accumulates each run.</td></tr>'}</tbody>
-        </table>
-      </div>
-      <div class="footer">history.json updated every 6 hours via github actions</div>
-    </div>
-  `;
-
-  // tab switching
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('view-' + tab.dataset.tab).classList.add('active');
-    });
-  });
-
-  // trend chart
-  new Chart(document.getElementById('trendChart'), {
-    type: 'line',
-    data: { labels: activeDailyLabels, datasets: buildTrendDatasets(d) },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, maxTicksLimit: 7 } },
-        y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
-      }
-    }
-  });
-
-  // donut chart
-  new Chart(document.getElementById('donutChart'), {
-    type: 'doughnut',
-    data: {
-      labels: [...providers.map(p => p.label), 'Remaining'],
-      datasets: [{
-        data: [...providers.map(p => d[p.key].total), Math.max(0, remaining)],
-        backgroundColor: [...providers.map(p => COLORS[p.key].hex), 'rgba(255,255,255,0.07)'],
-        borderColor: ['#0f1014'],
-        borderWidth: 3,
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } }
-      },
-      cutout: '72%',
-    }
-  });
-
-  // history stacked bar chart
-  if (months.length > 0) {
-    const histLabels = months.map(m => m.month);
-    const histDatasets = ['aws','gcp','anthropic','openai','azure'].map(key => ({
-      label: key.charAt(0).toUpperCase() + key.slice(1),
-      data: months.map(m => m[key]?.total || 0),
-      backgroundColor: COLORS[key].hex,
-      borderRadius: 3,
-    }));
-    new Chart(document.getElementById('historyChart'), {
-      type: 'bar',
-      data: { labels: histLabels, datasets: histDatasets },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-        scales: {
-          x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 } } },
-          y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
-        }
-      }
-    });
-  }
-}
-
 render();
 </script>
 </body>
