@@ -3,7 +3,7 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 40.27,
+        "total": 43.39,
         "services": [
           {
             "name": "AWS Business Support+",
@@ -11,21 +11,26 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 11.0
+            "amount": 13.91
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 0.26
+            "amount": 0.45
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.01
+            "amount": 0.02
           }
         ]
       },
       "gcp": {
-        "total": 0.0,
-        "services": []
+        "total": 0.1,
+        "services": [
+          {
+            "name": "Vertex AI",
+            "amount": 0.1
+          }
+        ]
       },
       "anthropic": {
         "total": 0,
