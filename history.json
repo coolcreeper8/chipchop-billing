@@ -22,6 +22,19 @@
       "gcp": {
         "total": 0.0,
         "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      },
+      "openai": {
+        "total": 0.87,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 0.87
+          }
+        ]
       }
     }
   ]
