@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T03:53:37.025484Z",
+  "generated_at": "2026-06-02T10:22:07.934913Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 32.6,
+    "total": 40.27,
     "services": [
       {
         "name": "AWS Business Support+",
@@ -18,11 +18,15 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 3.52
+        "amount": 11.0
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 0.07
+        "amount": 0.26
+      },
+      {
+        "name": "AWS Secrets Manager",
+        "amount": 0.01
       }
     ],
     "daily": [
@@ -76,7 +80,7 @@
       },
       {
         "date": "2026-06-01",
-        "amount": 32.6
+        "amount": 40.27
       },
       {
         "date": "2026-06-02",
@@ -138,6 +142,10 @@
       },
       {
         "date": "2026-06-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-02",
         "amount": 0.0
       }
     ]
