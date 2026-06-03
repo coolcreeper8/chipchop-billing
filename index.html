@@ -358,7 +358,10 @@ async function render() {
     app.innerHTML = `
     <div class="shell">
       <div class="header">
-        <div><h1>ChipChop — cloud costs</h1><sub>${d.month}</sub></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="dashboard/chipchoplogo.png" alt="ChipChop" style="height:36px;width:auto">
+          <div><h1>ChipChop — cloud costs</h1><sub>${d.month}</sub></div>
+        </div>
         <div class="header-right">updated ${new Date(d.generated_at).toLocaleString()}</div>
       </div>
 
