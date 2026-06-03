@@ -24,11 +24,11 @@
         ]
       },
       "gcp": {
-        "total": 0.1,
+        "total": 0.17,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 0.1
+            "amount": 0.17
           }
         ]
       },
@@ -37,11 +37,11 @@
         "services": []
       },
       "openai": {
-        "total": 0.87,
+        "total": 0.89,
         "services": [
           {
             "name": "unknown",
-            "amount": 0.87
+            "amount": 0.89
           }
         ]
       }
