@@ -1,9 +1,133 @@
 {
   "months": [
     {
+      "month": "2025-12",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2026-01",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2026-02",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2026-03",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2026-04",
+      "aws": {
+        "total": 418.11,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.28,
+        "services": [
+          {
+            "name": "Vertex AI",
+            "amount": 0.27
+          }
+        ]
+      },
+      "openai": {
+        "total": 0.301,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2026-05",
+      "aws": {
+        "total": 213.17,
+        "services": []
+      },
+      "gcp": {
+        "total": 2.31,
+        "services": [
+          {
+            "name": "Vertex AI",
+            "amount": 2.31
+          }
+        ]
+      },
+      "openai": {
+        "total": 0.0369,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0.0,
+        "services": []
+      }
+    },
+    {
       "month": "2026-06",
       "aws": {
-        "total": 43.39,
+        "total": 44.04,
         "services": [
           {
             "name": "AWS Business Support+",
@@ -11,15 +135,15 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 13.91
+            "amount": 14.45
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 0.45
+            "amount": 0.56
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.02
+            "amount": 0.03
           }
         ]
       },
