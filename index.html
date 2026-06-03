@@ -9,23 +9,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:             #0f1014;
-      --surface:        #181a1f;
-      --border:         rgba(255,255,255,0.08);
-      --text:           #e8e9ec;
-      --muted:          #6b7280;
-      --aws:            #e8940a;
-      --aws-dim:        rgba(232,148,10,0.12);
-      --gcp:            #4a90d9;
-      --gcp-dim:        rgba(74,144,217,0.12);
-      --azure:          #0078d4;
-      --azure-dim:      rgba(0,120,212,0.12);
-      --openai:         #10a37f;
-      --openai-dim:     rgba(16,163,127,0.12);
-      --anthropic:      #c96442;
-      --anthropic-dim:  rgba(201,100,66,0.12);
-      --success:        #4ade80;
-      --warn:           #fb923c;
+      --bg:            #0f1014;
+      --surface:       #181a1f;
+      --surface2:      #1e2026;
+      --border:        rgba(255,255,255,0.07);
+      --text:          #e8e9ec;
+      --muted:         #6b7280;
+      --aws:           #e8940a;
+      --gcp:           #4a90d9;
+      --azure:         #0078d4;
+      --openai:        #10a37f;
+      --anthropic:     #c96442;
+      --success:       #4ade80;
+      --warn:          #fb923c;
     }
 
     body {
@@ -33,83 +29,150 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+    }
+
+    /* ── shell ── */
+    .shell {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
     }
 
-    .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; }
-    .header h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
-    .header .meta { font-size: 12px; color: var(--muted); font-family: "SF Mono", monospace; }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
-      margin-bottom: 1.5rem;
+    /* ── header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
     }
-    .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
-    .metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
-    .metric-value { font-size: 26px; font-weight: 600; font-family: "SF Mono", monospace; letter-spacing: -0.02em; }
-    .metric-sub   { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .header-left h1  { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .header-left sub { font-size: 12px; color: var(--muted); margin-top: 2px; display: block; font-family: "SF Mono", monospace; }
+    .header-right    { font-size: 11px; color: var(--muted); font-family: "SF Mono", monospace; }
 
-    .color-aws       { color: var(--aws); }
-    .color-gcp       { color: var(--gcp); }
-    .color-azure     { color: var(--azure); }
-    .color-openai    { color: var(--openai); }
-    .color-anthropic { color: var(--anthropic); }
-    .color-success   { color: var(--success); }
-    .color-warn      { color: var(--warn); }
+    /* ── tabs ── */
+    .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+    .tab {
+      font-size: 13px; font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px 6px 0 0;
+      cursor: pointer;
+      color: var(--muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.15s;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--text); border-bottom-color: #e8e9ec; }
 
-    .chart-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
-    .card-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+    /* ── summary strip ── */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: 1.6fr repeat(5, 1fr) 1.2fr;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .summary-card.total { background: var(--surface2); }
+    .s-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+    .s-value { font-size: 22px; font-weight: 700; font-family: "SF Mono", monospace; letter-spacing: -0.02em; }
+    .s-sub   { font-size: 10px; color: var(--muted); margin-top: 3px; }
 
-    .trend-wrap   { position: relative; height: 200px; }
-    .history-wrap { position: relative; height: 220px; }
+    /* ── card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .card-title {
+      font-size: 11px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
 
+    /* ── two-col layout ── */
+    .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+    /* ── chart wrappers ── */
+    .chart-wrap-md { position: relative; height: 200px; }
+    .chart-wrap-lg { position: relative; height: 260px; }
+
+    /* ── legend ── */
     .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
-    .legend-dot  { width: 10px; height: 10px; border-radius: 2px; }
+    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+    .legend-dot  { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
 
-    .provider-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .provider-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-    .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.04em; }
-    .badge-aws       { background: var(--aws-dim);       color: var(--aws); }
-    .badge-gcp       { background: var(--gcp-dim);       color: var(--gcp); }
-    .badge-azure     { background: var(--azure-dim);     color: var(--azure); }
-    .badge-openai    { background: var(--openai-dim);    color: var(--openai); }
-    .badge-anthropic { background: var(--anthropic-dim); color: var(--anthropic); }
+    /* ── provider grid ── */
+    .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
 
-    .budget-bar-labels { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
-    .budget-bar-labels .spent { font-family: "SF Mono", monospace; font-weight: 600; }
-    .budget-bar-labels .limit { color: var(--muted); }
-    .bar-track { height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 16px; }
-    .bar-fill  { height: 100%; border-radius: 3px; }
+    .provider-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .badge-aws       { background: rgba(232,148,10,0.15);  color: var(--aws); }
+    .badge-gcp       { background: rgba(74,144,217,0.15);  color: var(--gcp); }
+    .badge-azure     { background: rgba(0,120,212,0.15);   color: var(--azure); }
+    .badge-openai    { background: rgba(16,163,127,0.15);  color: var(--openai); }
+    .badge-anthropic { background: rgba(201,100,66,0.15);  color: var(--anthropic); }
+
+    .budget-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+    .budget-row .spent { font-family: "SF Mono", monospace; font-weight: 600; }
+    .budget-row .limit { color: var(--muted); }
+    .bar-track  { height: 4px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+    .bar-fill   { height: 100%; border-radius: 3px; }
     .bar-aws       { background: var(--aws); }
     .bar-gcp       { background: var(--gcp); }
     .bar-azure     { background: var(--azure); }
     .bar-openai    { background: var(--openai); }
     .bar-anthropic { background: var(--anthropic); }
 
-    .service-row       { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
-    .service-name      { font-size: 12px; color: var(--muted); width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
-    .service-bar-track { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-    .service-bar-fill  { height: 100%; border-radius: 2px; }
-    .service-amount    { font-size: 12px; font-family: "SF Mono", monospace; color: var(--text); width: 56px; text-align: right; flex-shrink: 0; }
-    .no-services       { font-size: 12px; color: var(--muted); font-style: italic; }
+    .svc-row       { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .svc-name      { font-size: 11px; color: var(--muted); width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+    .svc-bar-track { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .svc-bar-fill  { height: 100%; border-radius: 2px; }
+    .svc-amt       { font-size: 11px; font-family: "SF Mono", monospace; width: 54px; text-align: right; flex-shrink: 0; }
+    .svc-empty     { font-size: 11px; color: var(--muted); font-style: italic; }
 
-    .footer  { margin-top: 1.5rem; font-size: 11px; color: var(--muted); text-align: center; font-family: "SF Mono", monospace; }
+    /* ── history tab ── */
+    .history-section { margin-bottom: 24px; }
+    .section-title {
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hist-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 16px; }
+    .hist-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 6px 12px 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+    .hist-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: "SF Mono", monospace; }
+    .hist-table tr:last-child td { border-bottom: none; }
+    .hist-table .month-col { color: var(--muted); font-family: inherit; }
+    .hist-table .total-col { font-weight: 600; }
+
+    /* ── footer ── */
+    .footer { margin-top: 2rem; font-size: 11px; color: var(--muted); text-align: center; font-family: "SF Mono", monospace; }
+
+    /* ── states ── */
     .loading { display: flex; align-items: center; justify-content: center; height: 60vh; font-size: 14px; color: var(--muted); }
     .error   { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 1rem; font-size: 13px; color: #f87171; margin: 2rem 0; }
 
-    @media (max-width: 768px) {
-      .chart-row      { grid-template-columns: 1fr; }
-      .provider-grid  { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .summary-strip { grid-template-columns: 1fr 1fr; }
+      .two-col       { grid-template-columns: 1fr; }
+      .provider-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .shell         { padding: 1rem; }
+      .provider-grid { grid-template-columns: 1fr; }
+      .summary-strip { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -117,133 +180,176 @@
 <div id="app"><div class="loading">loading cost data...</div></div>
 
 <script>
-const fmt       = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-const fmtDec    = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-const pct       = (v, t) => t > 0 ? Math.min(100, Math.round((v / t) * 100)) : 0;
-const clamp     = (v, m) => m > 0 ? Math.min(100, Math.round((v / m) * 100)) : 0;
-const shortName = s => s.replace(/^Amazon\s+|^AWS\s+|^Google\s+|^Azure\s+/i, '').replace(/\s*\(.*?\)/g, '').trim().slice(0, 24);
+const fmt    = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+const fmtDec = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const pct    = (v, t) => t > 0 ? Math.min(100, Math.round(v / t * 100)) : 0;
+const clamp  = (v, m) => m > 0 ? Math.min(100, Math.round(v / m * 100)) : 0;
+const trim   = s => s.replace(/^(Amazon|AWS|Google|Azure|Microsoft)\s+/i, '').replace(/\s*\(.*?\)/g,'').trim().slice(0, 26);
 
-const ALL_PROVIDERS = [
-  { key: 'aws',       label: 'AWS',       badge: 'badge-aws',       bar: 'bar-aws',       color: '#e8940a' },
-  { key: 'gcp',       label: 'GCP',       badge: 'badge-gcp',       bar: 'bar-gcp',       color: '#4a90d9' },
-  { key: 'azure',     label: 'Azure',     badge: 'badge-azure',     bar: 'bar-azure',     color: '#0078d4' },
-  { key: 'openai',    label: 'OpenAI',    badge: 'badge-openai',    bar: 'bar-openai',    color: '#10a37f' },
-  { key: 'anthropic', label: 'Anthropic', badge: 'badge-anthropic', bar: 'bar-anthropic', color: '#c96442' },
+const PROVIDERS = [
+  { key:'aws',       label:'AWS',       badge:'badge-aws',       bar:'bar-aws',       color:'#e8940a' },
+  { key:'gcp',       label:'GCP',       badge:'badge-gcp',       bar:'bar-gcp',       color:'#4a90d9' },
+  { key:'azure',     label:'Azure',     badge:'badge-azure',     bar:'bar-azure',     color:'#0078d4' },
+  { key:'openai',    label:'OpenAI',    badge:'badge-openai',    bar:'bar-openai',    color:'#10a37f' },
+  { key:'anthropic', label:'Anthropic', badge:'badge-anthropic', bar:'bar-anthropic', color:'#c96442' },
 ];
 
 function providerCard(d, p) {
-  const data     = d[p.key];
-  const budget   = d.budget[p.key] || 0;
-  const services = data.services || [];
-  const maxAmt   = services[0]?.amount || 1;
+  const data   = d[p.key], budget = d.budget[p.key] || 0;
+  const svcs   = data.services || [], maxA = svcs[0]?.amount || 1;
   return `
-    <div class="card">
-      <div class="provider-header">
-        <span class="badge ${p.badge}">${p.label}</span>
-        <span style="font-size:12px;color:var(--muted)">by service</span>
-      </div>
-      <div class="budget-bar-labels">
-        <span class="spent" style="color:${p.color}">${fmtDec(data.total)}</span>
-        ${budget > 0 ? `<span class="limit">budget ${fmt(budget)}</span>` : ''}
-      </div>
-      ${budget > 0 ? `<div class="bar-track"><div class="bar-fill ${p.bar}" style="width:${clamp(data.total, budget)}%"></div></div>` : ''}
-      ${services.length > 0
-        ? services.map(s => `
-          <div class="service-row">
-            <span class="service-name">${shortName(s.name)}</span>
-            <div class="service-bar-track"><div class="service-bar-fill ${p.bar}" style="width:${clamp(s.amount, maxAmt)}%"></div></div>
-            <span class="service-amount">${fmtDec(s.amount)}</span>
-          </div>`).join('')
-        : '<p class="no-services">No service detail yet</p>'
-      }
-    </div>`;
+  <div class="card">
+    <div class="provider-header">
+      <span class="badge ${p.badge}">${p.label}</span>
+      <span style="font-size:11px;color:var(--muted)">by service</span>
+    </div>
+    <div class="budget-row">
+      <span class="spent" style="color:${p.color}">${fmtDec(data.total)}</span>
+      ${budget > 0 ? `<span class="limit">${fmt(budget)} budget</span>` : ''}
+    </div>
+    ${budget > 0 ? `<div class="bar-track"><div class="bar-fill ${p.bar}" style="width:${clamp(data.total,budget)}%"></div></div>` : '<div style="height:14px"></div>'}
+    ${svcs.length
+      ? svcs.map(s => `
+        <div class="svc-row">
+          <span class="svc-name">${trim(s.name)}</span>
+          <div class="svc-bar-track"><div class="svc-bar-fill ${p.bar}" style="width:${clamp(s.amount,maxA)}%"></div></div>
+          <span class="svc-amt">${fmtDec(s.amount)}</span>
+        </div>`).join('')
+      : '<p class="svc-empty">No breakdown yet</p>'}
+  </div>`;
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
 }
 
 async function render() {
   const app = document.getElementById('app');
   try {
-    const res = await fetch('data.json?t=' + Date.now());
-    if (!res.ok) throw new Error('data.json not found — run the GitHub Action first');
-    const d = await res.json();
+    const [dataRes] = await Promise.all([fetch('data.json?t=' + Date.now())]);
+    if (!dataRes.ok) throw new Error('data.json not found — run the GitHub Action first');
+    const d = await dataRes.json();
 
     let historyMonths = [];
     try {
       const hr = await fetch('history.json?t=' + Date.now());
-      if (hr.ok) { const h = await hr.json(); historyMonths = h.months || []; }
-    } catch (_) {}
+      if (hr.ok) historyMonths = (await hr.json()).months || [];
+    } catch(_) {}
 
-    const active      = ALL_PROVIDERS.filter(p => d[p.key] != null);
-    const totalSpent  = active.reduce((s, p) => s + (d[p.key]?.total || 0), 0);
-    const remaining   = d.budget.total - totalSpent;
-    const remainPct   = pct(remaining, d.budget.total);
-
+    const active     = PROVIDERS.filter(p => d[p.key] != null);
+    const totalSpent = active.reduce((s, p) => s + (d[p.key]?.total || 0), 0);
+    const remaining  = Math.max(0, d.budget.total - totalSpent);
     const legendHtml = active.map(p =>
       `<span class="legend-item"><span class="legend-dot" style="background:${p.color}"></span>${p.label}</span>`
     ).join('');
 
-    const metricCards = [
-      `<div class="metric-card">
-        <div class="metric-label">Total spend MTD</div>
-        <div class="metric-value">${fmt(totalSpent)}</div>
-        <div class="metric-sub">of ${fmt(d.budget.total)} budget</div>
+    // Summary strip — total | each provider | remaining
+    const summaryCards = [
+      `<div class="summary-card total">
+        <div class="s-label">Total MTD</div>
+        <div class="s-value">${fmt(totalSpent)}</div>
+        <div class="s-sub">of ${fmt(d.budget.total)} budget</div>
       </div>`,
       ...active.map(p => `
-      <div class="metric-card">
-        <div class="metric-label">${p.label} MTD</div>
-        <div class="metric-value" style="color:${p.color}">${fmtDec(d[p.key].total)}</div>
-        ${d.budget[p.key] > 0
-          ? `<div class="metric-sub">${pct(d[p.key].total, d.budget[p.key])}% of ${fmt(d.budget[p.key])}</div>`
-          : '<div class="metric-sub">&nbsp;</div>'}
+      <div class="summary-card">
+        <div class="s-label">${p.label}</div>
+        <div class="s-value" style="color:${p.color};font-size:18px">${fmtDec(d[p.key].total)}</div>
+        <div class="s-sub">${d.budget[p.key] > 0 ? pct(d[p.key].total, d.budget[p.key]) + '% of budget' : '&nbsp;'}</div>
       </div>`),
-      `<div class="metric-card">
-        <div class="metric-label">Budget remaining</div>
-        <div class="metric-value ${remainPct < 20 ? 'color-warn' : 'color-success'}">${fmt(Math.max(0, remaining))}</div>
-        <div class="metric-sub">${remainPct}% left this month</div>
+      `<div class="summary-card">
+        <div class="s-label">Remaining</div>
+        <div class="s-value" style="color:${remaining / d.budget.total < 0.2 ? 'var(--warn)' : 'var(--success)'}">
+          ${fmt(remaining)}
+        </div>
+        <div class="s-sub">${pct(remaining, d.budget.total)}% left</div>
       </div>`,
     ].join('');
 
-    const hasHistory = historyMonths.length > 0;
+    // History table rows
+    const histTableRows = historyMonths.slice().reverse().map(m => {
+      const row = active.map(p => {
+        const v = m[p.key];
+        const val = typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0);
+        return `<td style="color:${p.color}">${val > 0 ? fmtDec(val) : '<span style="color:var(--muted)">—</span>'}</td>`;
+      }).join('');
+      const tot = active.reduce((s, p) => {
+        const v = m[p.key]; return s + (typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0));
+      }, 0);
+      return `<tr>
+        <td class="month-col">${m.month}</td>
+        ${row}
+        <td class="total-col">${fmtDec(tot)}</td>
+      </tr>`;
+    }).join('');
 
     app.innerHTML = `
+    <div class="shell">
       <div class="header">
-        <h1>ChipChop — cloud costs</h1>
-        <span class="meta">${d.month} &nbsp;·&nbsp; updated ${new Date(d.generated_at).toLocaleString()}</span>
+        <div class="header-left">
+          <h1>ChipChop — cloud costs</h1>
+          <sub>${d.month}</sub>
+        </div>
+        <div class="header-right">updated ${new Date(d.generated_at).toLocaleString()}</div>
       </div>
 
-      <div class="metric-grid">${metricCards}</div>
+      <div class="tabs">
+        <button class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+        <button class="tab" data-tab="history" onclick="switchTab('history')">History</button>
+      </div>
 
-      <div class="chart-row">
-        <div class="card">
-          <div class="card-title">Daily spend — last 14 days</div>
+      <!-- OVERVIEW TAB -->
+      <div class="tab-panel active" id="tab-overview">
+        <div class="summary-strip">${summaryCards}</div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title">Daily spend — last 14 days</div>
+            <div class="legend">${legendHtml}</div>
+            <div class="chart-wrap-md"><canvas id="trendChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Budget usage</div>
+            <div class="chart-wrap-md"><canvas id="donutChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="provider-grid">
+          ${active.map(p => providerCard(d, p)).join('')}
+        </div>
+      </div>
+
+      <!-- HISTORY TAB -->
+      <div class="tab-panel" id="tab-history">
+        ${historyMonths.length > 0 ? `
+        <div class="card history-section">
+          <div class="card-title">Monthly spend by provider</div>
           <div class="legend">${legendHtml}</div>
-          <div class="trend-wrap"><canvas id="trendChart"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-title">Month-to-date budget usage</div>
-          <div class="trend-wrap"><canvas id="donutChart"></canvas></div>
-        </div>
-      </div>
+          <div class="chart-wrap-lg"><canvas id="historyChart"></canvas></div>
 
-      <div class="provider-grid">
-        ${active.map(p => providerCard(d, p)).join('')}
+          <table class="hist-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                ${active.map(p => `<th style="color:${p.color}">${p.label}</th>`).join('')}
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>${histTableRows}</tbody>
+          </table>
+        </div>` : `
+        <div class="card" style="text-align:center;padding:3rem;color:var(--muted)">
+          History will appear here after the first full month completes.<br/>
+          <span style="font-size:11px;margin-top:8px;display:block">The backfill job will also attempt to populate past months on the next workflow run.</span>
+        </div>`}
       </div>
-
-      ${hasHistory ? `
-      <div class="card" style="margin-bottom:12px">
-        <div class="card-title">Monthly spend — past ${historyMonths.length} months</div>
-        <div class="legend">${legendHtml}</div>
-        <div class="history-wrap"><canvas id="historyChart"></canvas></div>
-      </div>` : ''}
 
       <div class="footer">auto-refreshes every 6 hours via github actions</div>
-    `;
+    </div>`;
 
     // ── trend chart ──────────────────────────────────────────────────────
-    const trendLabels = (() => {
-      const src = active.find(p => d[p.key]?.daily?.length > 0);
-      return src ? d[src.key].daily.map(x => x.date.slice(5)) : [];
-    })();
-
+    const trendSrc = active.find(p => d[p.key]?.daily?.length > 0);
+    const trendLabels = trendSrc ? d[trendSrc.key].daily.map(x => x.date.slice(5)) : [];
     new Chart(document.getElementById('trendChart'), {
       type: 'line',
       data: {
@@ -251,8 +357,7 @@ async function render() {
         datasets: active.map(p => ({
           label: p.label,
           data: (d[p.key].daily || []).map(x => x.amount),
-          borderColor: p.color,
-          backgroundColor: p.color + '12',
+          borderColor: p.color, backgroundColor: p.color + '14',
           borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35,
         }))
       },
@@ -262,8 +367,8 @@ async function render() {
           tooltip: { mode: 'index', intersect: false,
             callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}` } } },
         scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, maxTicksLimit: 7 } },
-          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
+          x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, maxTicksLimit: 7 } },
+          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, callback: v => '$' + v }, beginAtZero: true }
         }
       }
     });
@@ -273,36 +378,32 @@ async function render() {
       type: 'doughnut',
       data: {
         labels: [...active.map(p => p.label), 'Remaining'],
-        datasets: [{
-          data: [...active.map(p => d[p.key].total), Math.max(0, remaining)],
-          backgroundColor: [...active.map(p => p.color), 'rgba(255,255,255,0.07)'],
-          borderColor: '#0f1014', borderWidth: 3,
-        }]
+        datasets: [{ data: [...active.map(p => d[p.key].total), remaining],
+          backgroundColor: [...active.map(p => p.color), 'rgba(255,255,255,0.06)'],
+          borderColor: '#0f1014', borderWidth: 3 }]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false },
           tooltip: { callbacks: { label: ctx => ` ${ctx.label}: $${Number(ctx.parsed).toFixed(2)}` } } },
-        cutout: '72%',
+        cutout: '74%'
       }
     });
 
-    // ── history chart ────────────────────────────────────────────────────
-    if (hasHistory) {
+    // ── history chart (only rendered if tab is visited, lazy-init pattern) ──
+    window._historyData = { months: historyMonths, active };
+    document.querySelector('[data-tab="history"]').addEventListener('click', () => {
+      if (window._histChartDone || !document.getElementById('historyChart')) return;
+      window._histChartDone = true;
+      const { months, active: act } = window._historyData;
       new Chart(document.getElementById('historyChart'), {
         type: 'bar',
         data: {
-          labels: historyMonths.map(m => m.month),
-          datasets: ALL_PROVIDERS.map(p => ({
+          labels: months.map(m => m.month),
+          datasets: PROVIDERS.map(p => ({
             label: p.label,
-            data: historyMonths.map(m => {
-              const v = m[p.key];
-              return typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0);
-            }),
-            backgroundColor: p.color + 'cc',
-            borderColor: p.color,
-            borderWidth: 1,
-            borderRadius: 3,
+            data: months.map(m => { const v = m[p.key]; return typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0); }),
+            backgroundColor: p.color + 'cc', borderColor: p.color, borderWidth: 1, borderRadius: 3,
           }))
         },
         options: {
@@ -311,20 +412,19 @@ async function render() {
             tooltip: { mode: 'index', intersect: false,
               callbacks: { label: ctx => ` ${ctx.dataset.label}: $${Number(ctx.parsed.y).toFixed(2)}` } } },
           scales: {
-            x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 } } },
-            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 11 }, callback: v => '$' + v }, beginAtZero: true }
+            x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 } } },
+            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, callback: v => '$' + v }, beginAtZero: true }
           }
         }
       });
-    }
+    }, { once: true });
 
-  } catch (err) {
+  } catch(err) {
     app.innerHTML = `
-      <div class="header"><h1>ChipChop — cloud costs</h1></div>
-      <div class="error">
-        <strong>Could not load data.json</strong><br/>
-        ${err.message}<br/><br/>
-        Run the GitHub Action manually from the Actions tab to generate it.
+      <div class="shell">
+        <div class="header"><div class="header-left"><h1>ChipChop — cloud costs</h1></div></div>
+        <div class="error"><strong>Could not load data.json</strong><br/>${err.message}<br/><br/>
+        Run the GitHub Action manually from the Actions tab to generate it.</div>
       </div>`;
   }
 }
