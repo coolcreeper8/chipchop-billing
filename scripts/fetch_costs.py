@@ -410,6 +410,42 @@ def update_history(output):
     print(f"wrote {HISTORY_PATH}", flush=True)
 
 
+def _aws_budget_history(kwargs):
+    """Return {YYYY-MM: amount} for all past months from budget performance history."""
+    try:
+        account_id = boto3.client("sts", region_name="us-east-1", **kwargs).get_caller_identity()["Account"]
+        budgets_client = boto3.client("budgets", region_name="us-east-1", **kwargs)
+        budgets = budgets_client.describe_budgets(AccountId=account_id).get("Budgets", [])
+        if not budgets:
+            return {}
+        budget_name = budgets[0]["BudgetName"]
+        # fetch up to 12 months of performance history
+        from datetime import timezone
+        end_dt   = datetime.now(tz=timezone.utc)
+        start_dt = end_dt.replace(month=1, day=1) if end_dt.month > 6 else \
+                   datetime(end_dt.year - 1, end_dt.month + 6, 1, tzinfo=timezone.utc)
+        resp = budgets_client.describe_budget_performance_history(
+            AccountId=account_id,
+            BudgetName=budget_name,
+            TimePeriod={"Start": start_dt, "End": end_dt},
+        )
+        result = {}
+        for entry in resp.get("BudgetPerformanceHistory", {}).get("BudgetedAndActualAmountsList", []):
+            actual = float(entry.get("ActualAmount", {}).get("Amount", 0) or 0)
+            period_start = entry.get("TimePeriod", {}).get("Start")
+            if period_start and actual > 0:
+                if isinstance(period_start, str):
+                    label = period_start[:7]
+                else:
+                    label = period_start.strftime("%Y-%m")
+                result[label] = round(actual, 2)
+        print(f"  AWS budget history: {result}", flush=True)
+        return result
+    except Exception as e:
+        print(f"  AWS budget history failed: {e}", flush=True)
+        return {}
+
+
 def backfill_history():
     """Query past months for providers that support it and write to history.json."""
     try:
@@ -426,9 +462,18 @@ def backfill_history():
     print(f"  Backfilling {len(to_fill)} past months...", flush=True)
     kwargs = {"aws_access_key_id": AWS_ACCESS_KEY_ID, "aws_secret_access_key": AWS_SECRET_ACCESS_KEY}
 
+    # Fetch AWS budget performance history once for all months
+    aws_history = _aws_budget_history(kwargs)
+
     for m_start, m_end, m_label in to_fill:
         entry = {"month": m_label}
         print(f"    {m_label}...", flush=True)
+
+        # AWS — use budget performance history (real data, unlike CE which is broken)
+        aws_total = aws_history.get(m_label, 0.0)
+        entry["aws"] = {"total": aws_total, "services": []}
+        if aws_total > 0:
+            print(f"      AWS from budget history: ${aws_total}", flush=True)
 
         # GCP — BigQuery has full history
         try:
@@ -454,18 +499,6 @@ def backfill_history():
             }
         except Exception as e:
             print(f"      GCP: {e}", flush=True)
-
-        # AWS — CE (best-effort; returns near-zero for this account but worth trying)
-        try:
-            ce = boto3.client("ce", region_name="us-east-1", **kwargs)
-            r = ce.get_cost_and_usage(
-                TimePeriod={"Start": m_start, "End": m_end},
-                Granularity="MONTHLY", Metrics=["UnblendedCost"],
-            )
-            aws_total = max(float(r["ResultsByTime"][0]["Total"]["UnblendedCost"]["Amount"]), 0.0)
-            entry["aws"] = {"total": round(aws_total, 2), "services": []}
-        except Exception as e:
-            print(f"      AWS: {e}", flush=True)
 
         # OpenAI
         if OPENAI_API_KEY:
