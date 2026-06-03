@@ -51,6 +51,16 @@ def prev_14_days():
     today = date.today()
     return [(today - timedelta(days=i)).isoformat() for i in range(13, -1, -1)]
 
+def past_months(n=6):
+    """Returns list of (start, end, YYYY-MM) for last n completed months."""
+    today = date.today()
+    months = []
+    for i in range(1, n + 1):
+        first = (today.replace(day=1) - timedelta(days=i * 28)).replace(day=1)
+        last  = date(first.year + 1, 1, 1) if first.month == 12 else date(first.year, first.month + 1, 1)
+        months.append((first.isoformat(), last.isoformat(), first.strftime("%Y-%m")))
+    return list(reversed(months))
+
 def _read_cur_s3(report, kwargs):
     """Read CUR CSV.gz files from S3 and return (service_list, daily_amounts_by_date)."""
     if report.get("Format", "textCSV") not in ("textCSV", "textORcsv"):
@@ -454,8 +464,12 @@ def backfill_history():
     except (FileNotFoundError, json.JSONDecodeError):
         history = {"months": []}
 
-    existing = {m["month"] for m in history.get("months", [])}
-    to_fill  = [(s, e, lbl) for s, e, lbl in past_months(6) if lbl not in existing]
+    # Re-process any month that's missing OR where AWS is still zero (from old CE attempt)
+    has_real_aws = {
+        m["month"] for m in history.get("months", [])
+        if (m.get("aws") or {}).get("total", 0) > 0
+    }
+    to_fill = [(s, e, lbl) for s, e, lbl in past_months(6) if lbl not in has_real_aws]
     if not to_fill:
         return
 
@@ -540,7 +554,15 @@ def backfill_history():
             except Exception as e:
                 print(f"      Anthropic: {e}", flush=True)
 
-        history["months"].append(entry)
+        # Overwrite existing entry or append new one
+        replaced = False
+        for i, m in enumerate(history["months"]):
+            if m["month"] == m_label:
+                history["months"][i] = entry
+                replaced = True
+                break
+        if not replaced:
+            history["months"].append(entry)
 
     history["months"].sort(key=lambda x: x["month"])
     with open(HISTORY_PATH, "w") as f:
