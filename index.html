@@ -9,112 +9,81 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:            #0f1014;
-      --surface:       #181a1f;
-      --surface2:      #1e2026;
-      --border:        rgba(255,255,255,0.07);
-      --text:          #e8e9ec;
-      --muted:         #6b7280;
-      --aws:           #e8940a;
-      --gcp:           #4a90d9;
-      --azure:         #0078d4;
-      --openai:        #10a37f;
-      --anthropic:     #c96442;
-      --success:       #4ade80;
-      --warn:          #fb923c;
+      --bg:        #0f1014;
+      --surface:   #181a1f;
+      --surface2:  #1e2026;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #e8e9ec;
+      --muted:     #6b7280;
+      --aws:       #e8940a;
+      --gcp:       #4a90d9;
+      --azure:     #0078d4;
+      --openai:    #10a37f;
+      --anthropic: #c96442;
+      --success:   #4ade80;
+      --warn:      #fb923c;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-    /* ── shell ── */
-    .shell {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
-    /* ── header ── */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    .header-left h1  { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-    .header-left sub { font-size: 12px; color: var(--muted); margin-top: 2px; display: block; font-family: "SF Mono", monospace; }
-    .header-right    { font-size: 11px; color: var(--muted); font-family: "SF Mono", monospace; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .header h1  { font-size: 17px; font-weight: 600; }
+    .header sub { font-size: 12px; color: var(--muted); font-family: "SF Mono", monospace; display: block; margin-top: 2px; }
+    .header-right { font-size: 11px; color: var(--muted); font-family: "SF Mono", monospace; }
 
-    /* ── tabs ── */
-    .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0; }
-    .tab {
-      font-size: 13px; font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 6px 6px 0 0;
-      cursor: pointer;
-      color: var(--muted);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color 0.15s;
-    }
+    /* tabs */
+    .tabs { display: flex; gap: 2px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .tab { font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 6px 6px 0 0; cursor: pointer; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
     .tab:hover { color: var(--text); }
-    .tab.active { color: var(--text); border-bottom-color: #e8e9ec; }
-
+    .tab.active { color: var(--text); border-bottom-color: var(--text); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── summary strip ── */
-    .summary-strip {
-      display: grid;
-      grid-template-columns: 1.6fr repeat(5, 1fr) 1.2fr;
-      gap: 10px;
-      margin-bottom: 1.25rem;
+    /* summary strip */
+    .summary-strip { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr) 1.1fr; gap: 10px; margin-bottom: 1.25rem; }
+    .sc { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .sc.total { background: var(--surface2); }
+    .sc-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+    .sc-value { font-size: 22px; font-weight: 700; font-family: "SF Mono", monospace; }
+    .sc-sub   { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+    /* generic card */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .card-title { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+
+    .two-col { display: grid; grid-template-columns: 1.7fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .chart-wrap-md { position: relative; height: 210px; }
+    .chart-wrap-lg { position: relative; height: 270px; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); cursor: pointer; user-select: none; transition: opacity 0.15s; }
+    .legend-item.hidden { opacity: 0.35; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+    /* chart toggles */
+    .chart-controls { display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .ctoggle {
+      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 5px;
+      cursor: pointer; border: 1px solid var(--border);
+      background: none; color: var(--muted); transition: all 0.15s;
     }
-    .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-    }
-    .summary-card.total { background: var(--surface2); }
-    .s-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
-    .s-value { font-size: 22px; font-weight: 700; font-family: "SF Mono", monospace; letter-spacing: -0.02em; }
-    .s-sub   { font-size: 10px; color: var(--muted); margin-top: 3px; }
+    .ctoggle:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .ctoggle.active { color: var(--text); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+    .ctoggle.scale-btn { margin-left: auto; font-size: 10px; padding: 3px 8px; }
 
-    /* ── card ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem;
-    }
-    .card-title {
-      font-size: 11px; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-    }
+    /* budget bars (replaces donut) */
+    .budget-provider-row { margin-bottom: 14px; }
+    .budget-provider-row:last-child { margin-bottom: 0; }
+    .bp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+    .bp-name   { font-size: 12px; font-weight: 600; }
+    .bp-nums   { font-size: 11px; color: var(--muted); font-family: "SF Mono", monospace; }
+    .bp-track  { height: 6px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .bp-fill   { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
 
-    /* ── two-col layout ── */
-    .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-bottom: 12px; }
-
-    /* ── chart wrappers ── */
-    .chart-wrap-md { position: relative; height: 200px; }
-    .chart-wrap-lg { position: relative; height: 260px; }
-
-    /* ── legend ── */
-    .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
-    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
-    .legend-dot  { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-
-    /* ── provider grid ── */
+    /* provider grid */
     .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-
     .provider-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
     .badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
     .badge-aws       { background: rgba(232,148,10,0.15);  color: var(--aws); }
@@ -123,11 +92,11 @@
     .badge-openai    { background: rgba(16,163,127,0.15);  color: var(--openai); }
     .badge-anthropic { background: rgba(201,100,66,0.15);  color: var(--anthropic); }
 
-    .budget-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+    .budget-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
     .budget-row .spent { font-family: "SF Mono", monospace; font-weight: 600; }
     .budget-row .limit { color: var(--muted); }
-    .bar-track  { height: 4px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
-    .bar-fill   { height: 100%; border-radius: 3px; }
+    .bar-track { height: 4px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+    .bar-fill  { height: 100%; border-radius: 3px; }
     .bar-aws       { background: var(--aws); }
     .bar-gcp       { background: var(--gcp); }
     .bar-azure     { background: var(--azure); }
@@ -141,26 +110,13 @@
     .svc-amt       { font-size: 11px; font-family: "SF Mono", monospace; width: 54px; text-align: right; flex-shrink: 0; }
     .svc-empty     { font-size: 11px; color: var(--muted); font-style: italic; }
 
-    /* ── history tab ── */
-    .history-section { margin-bottom: 24px; }
-    .section-title {
-      font-size: 13px; font-weight: 600;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* history */
     .hist-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 16px; }
     .hist-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 6px 12px 6px 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
     .hist-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: "SF Mono", monospace; }
     .hist-table tr:last-child td { border-bottom: none; }
-    .hist-table .month-col { color: var(--muted); font-family: inherit; }
-    .hist-table .total-col { font-weight: 600; }
 
-    /* ── footer ── */
-    .footer { margin-top: 2rem; font-size: 11px; color: var(--muted); text-align: center; font-family: "SF Mono", monospace; }
-
-    /* ── states ── */
+    .footer  { margin-top: 2rem; font-size: 11px; color: var(--muted); text-align: center; font-family: "SF Mono", monospace; }
     .loading { display: flex; align-items: center; justify-content: center; height: 60vh; font-size: 14px; color: var(--muted); }
     .error   { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 1rem; font-size: 13px; color: #f87171; margin: 2rem 0; }
 
@@ -170,39 +126,145 @@
       .provider-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
-      .shell         { padding: 1rem; }
+      .shell { padding: 1rem; }
       .provider-grid { grid-template-columns: 1fr; }
       .summary-strip { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-<div id="app"><div class="loading">loading cost data...</div></div>
+<div id="app"><div class="loading">loading cost data…</div></div>
 
 <script>
-const fmt    = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-const fmtDec = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fmt    = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+const fmtDec = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
 const pct    = (v, t) => t > 0 ? Math.min(100, Math.round(v / t * 100)) : 0;
 const clamp  = (v, m) => m > 0 ? Math.min(100, Math.round(v / m * 100)) : 0;
-const trim   = s => s.replace(/^(Amazon|AWS|Google|Azure|Microsoft)\s+/i, '').replace(/\s*\(.*?\)/g,'').trim().slice(0, 26);
+const trim   = s => s.replace(/^(Amazon|AWS|Google|Azure|Microsoft)\s+/i,'').replace(/\s*\(.*?\)/g,'').trim().slice(0,26);
 
 const PROVIDERS = [
-  { key:'aws',       label:'AWS',       badge:'badge-aws',       bar:'bar-aws',       color:'#e8940a' },
-  { key:'gcp',       label:'GCP',       badge:'badge-gcp',       bar:'bar-gcp',       color:'#4a90d9' },
-  { key:'azure',     label:'Azure',     badge:'badge-azure',     bar:'bar-azure',     color:'#0078d4' },
-  { key:'openai',    label:'OpenAI',    badge:'badge-openai',    bar:'bar-openai',    color:'#10a37f' },
-  { key:'anthropic', label:'Anthropic', badge:'badge-anthropic', bar:'bar-anthropic', color:'#c96442' },
+  {key:'aws',       label:'AWS',       badge:'badge-aws',       bar:'bar-aws',       color:'#e8940a'},
+  {key:'gcp',       label:'GCP',       badge:'badge-gcp',       bar:'bar-gcp',       color:'#4a90d9'},
+  {key:'azure',     label:'Azure',     badge:'badge-azure',     bar:'bar-azure',     color:'#0078d4'},
+  {key:'openai',    label:'OpenAI',    badge:'badge-openai',    bar:'bar-openai',    color:'#10a37f'},
+  {key:'anthropic', label:'Anthropic', badge:'badge-anthropic', bar:'bar-anthropic', color:'#c96442'},
 ];
 
+// ── main chart state ──────────────────────────────────────────────────────────
+let mainChart = null;
+let logScale  = false;
+let activeView = 'trend'; // 'trend' | provider key
+
+function buildTrendDatasets(d, active) {
+  return active.map(p => ({
+    label:           p.label,
+    data:            (d[p.key].daily || []).map(x => x.amount),
+    borderColor:     p.color,
+    backgroundColor: p.color + '14',
+    borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35,
+  }));
+}
+
+function buildServiceDataset(d, p) {
+  const svcs = (d[p.key].services || []).filter(s => s.amount > 0);
+  return {
+    type: 'bar',
+    labels:  svcs.map(s => trim(s.name)),
+    data:    svcs.map(s => s.amount),
+    color:   p.color,
+    title:   `${p.label} — service breakdown (MTD)`,
+  };
+}
+
+function renderMainChart(d, active, view, useLog) {
+  const ctx = document.getElementById('mainChart');
+  if (!ctx) return;
+  if (mainChart) { mainChart.destroy(); mainChart = null; }
+
+  if (view === 'trend') {
+    const trendSrc = active.find(p => d[p.key]?.daily?.length > 0);
+    const labels   = trendSrc ? d[trendSrc.key].daily.map(x => x.date.slice(5)) : [];
+    mainChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels, datasets: buildTrendDatasets(d, active) },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: false},
+          tooltip: {mode:'index', intersect:false,
+            callbacks: {label: c => ` ${c.dataset.label}: $${c.parsed.y.toFixed(4)}`}},
+        },
+        scales: {
+          x: {grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280', font:{size:10}, maxTicksLimit:7}},
+          y: {
+            type: useLog ? 'logarithmic' : 'linear',
+            grid:{color:'rgba(255,255,255,0.04)'},
+            ticks:{color:'#6b7280', font:{size:10}, callback: v => '$' + (v >= 1 ? Math.round(v) : v.toFixed(3))},
+            beginAtZero: !useLog,
+            min: useLog ? 0.0001 : 0,
+          },
+        },
+      },
+    });
+  } else {
+    const p   = PROVIDERS.find(p => p.key === view);
+    const src = buildServiceDataset(d, p);
+    mainChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels:   src.labels,
+        datasets: [{
+          label:           p.label + ' services',
+          data:            src.data,
+          backgroundColor: p.color + 'cc',
+          borderColor:     p.color,
+          borderWidth: 1, borderRadius: 4,
+        }],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display:false},
+          tooltip: {callbacks: {label: c => ` $${c.parsed.x.toFixed(2)}`}},
+        },
+        scales: {
+          x: {
+            type: useLog ? 'logarithmic' : 'linear',
+            grid:{color:'rgba(255,255,255,0.04)'},
+            ticks:{color:'#6b7280', font:{size:10}, callback: v => '$' + (v >= 1 ? Math.round(v) : v.toFixed(3))},
+            beginAtZero: !useLog,
+            min: useLog ? 0.0001 : 0,
+          },
+          y: {grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280', font:{size:10}}},
+        },
+      },
+    });
+  }
+}
+
+function setView(d, active, view) {
+  activeView = view;
+  document.querySelectorAll('.ctoggle[data-view]').forEach(b =>
+    b.classList.toggle('active', b.dataset.view === view));
+  // show/hide log-scale button — only useful in trend view
+  const scaleBtn = document.querySelector('.scale-btn');
+  if (scaleBtn) scaleBtn.style.display = view === 'trend' ? '' : 'none';
+  renderMainChart(d, active, view, logScale);
+}
+
+function toggleLog(d, active) {
+  logScale = !logScale;
+  const btn = document.querySelector('.scale-btn');
+  if (btn) btn.textContent = logScale ? 'Linear scale' : 'Log scale';
+  renderMainChart(d, active, activeView, logScale);
+}
+
 function providerCard(d, p) {
-  const data   = d[p.key], budget = d.budget[p.key] || 0;
-  const svcs   = data.services || [], maxA = svcs[0]?.amount || 1;
+  const data = d[p.key], budget = d.budget[p.key] || 0, svcs = data.services || [], maxA = svcs[0]?.amount || 1;
   return `
   <div class="card">
-    <div class="provider-header">
-      <span class="badge ${p.badge}">${p.label}</span>
-      <span style="font-size:11px;color:var(--muted)">by service</span>
-    </div>
+    <div class="provider-header"><span class="badge ${p.badge}">${p.label}</span><span style="font-size:11px;color:var(--muted)">by service</span></div>
     <div class="budget-row">
       <span class="spent" style="color:${p.color}">${fmtDec(data.total)}</span>
       ${budget > 0 ? `<span class="limit">${fmt(budget)} budget</span>` : ''}
@@ -227,69 +289,68 @@ function switchTab(name) {
 async function render() {
   const app = document.getElementById('app');
   try {
-    const [dataRes] = await Promise.all([fetch('data.json?t=' + Date.now())]);
-    if (!dataRes.ok) throw new Error('data.json not found — run the GitHub Action first');
-    const d = await dataRes.json();
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json not found — run the GitHub Action first');
+    const d = await res.json();
 
     let historyMonths = [];
-    try {
-      const hr = await fetch('history.json?t=' + Date.now());
-      if (hr.ok) historyMonths = (await hr.json()).months || [];
-    } catch(_) {}
+    try { const hr = await fetch('history.json?t='+Date.now()); if (hr.ok) historyMonths = (await hr.json()).months||[]; } catch(_){}
 
     const active     = PROVIDERS.filter(p => d[p.key] != null);
-    const totalSpent = active.reduce((s, p) => s + (d[p.key]?.total || 0), 0);
+    const totalSpent = active.reduce((s,p) => s + (d[p.key]?.total||0), 0);
     const remaining  = Math.max(0, d.budget.total - totalSpent);
-    const legendHtml = active.map(p =>
-      `<span class="legend-item"><span class="legend-dot" style="background:${p.color}"></span>${p.label}</span>`
-    ).join('');
 
-    // Summary strip — total | each provider | remaining
+    // summary strip
     const summaryCards = [
-      `<div class="summary-card total">
-        <div class="s-label">Total MTD</div>
-        <div class="s-value">${fmt(totalSpent)}</div>
-        <div class="s-sub">of ${fmt(d.budget.total)} budget</div>
-      </div>`,
+      `<div class="sc total"><div class="sc-label">Total MTD</div><div class="sc-value">${fmt(totalSpent)}</div><div class="sc-sub">of ${fmt(d.budget.total)} budget</div></div>`,
       ...active.map(p => `
-      <div class="summary-card">
-        <div class="s-label">${p.label}</div>
-        <div class="s-value" style="color:${p.color};font-size:18px">${fmtDec(d[p.key].total)}</div>
-        <div class="s-sub">${d.budget[p.key] > 0 ? pct(d[p.key].total, d.budget[p.key]) + '% of budget' : '&nbsp;'}</div>
+      <div class="sc">
+        <div class="sc-label">${p.label}</div>
+        <div class="sc-value" style="color:${p.color};font-size:18px">${fmtDec(d[p.key].total)}</div>
+        <div class="sc-sub">${d.budget[p.key]>0 ? pct(d[p.key].total,d.budget[p.key])+'% of budget' : '&nbsp;'}</div>
       </div>`),
-      `<div class="summary-card">
-        <div class="s-label">Remaining</div>
-        <div class="s-value" style="color:${remaining / d.budget.total < 0.2 ? 'var(--warn)' : 'var(--success)'}">
-          ${fmt(remaining)}
-        </div>
-        <div class="s-sub">${pct(remaining, d.budget.total)}% left</div>
+      `<div class="sc"><div class="sc-label">Remaining</div>
+        <div class="sc-value" style="color:${remaining/d.budget.total<0.2?'var(--warn)':'var(--success)'}">${fmt(remaining)}</div>
+        <div class="sc-sub">${pct(remaining,d.budget.total)}% left</div>
       </div>`,
     ].join('');
 
-    // History table rows
+    // budget bars (replaces broken donut)
+    const budgetBars = active.filter(p => d.budget[p.key] > 0).map(p => {
+      const spent = d[p.key].total, budget = d.budget[p.key], over = spent > budget;
+      const w = Math.min(100, spent / budget * 100).toFixed(1);
+      return `
+      <div class="budget-provider-row">
+        <div class="bp-header">
+          <span class="bp-name" style="color:${p.color}">${p.label}</span>
+          <span class="bp-nums">${fmtDec(spent)} / ${fmt(budget)}${over?' ⚠':''}</span>
+        </div>
+        <div class="bp-track"><div class="bp-fill ${p.bar}" style="width:${w}%;background:${over?'var(--warn)':p.color}"></div></div>
+      </div>`;
+    }).join('');
+
+    // toggle buttons for chart views
+    const viewToggles = [
+      `<button class="ctoggle active" data-view="trend" onclick="setView(window.__d, window.__active, 'trend')">All providers</button>`,
+      ...active.map(p =>
+        `<button class="ctoggle" data-view="${p.key}" onclick="setView(window.__d, window.__active, '${p.key}')" style="border-color:${p.color}22">${p.label}</button>`),
+      `<button class="ctoggle scale-btn" onclick="toggleLog(window.__d, window.__active)">Log scale</button>`,
+    ].join('');
+
+    // history table
     const histTableRows = historyMonths.slice().reverse().map(m => {
-      const row = active.map(p => {
-        const v = m[p.key];
-        const val = typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0);
-        return `<td style="color:${p.color}">${val > 0 ? fmtDec(val) : '<span style="color:var(--muted)">—</span>'}</td>`;
+      const cells = active.map(p => {
+        const v = m[p.key]; const val = typeof v==='object'?(v?.total??0):(v??0);
+        return `<td style="color:${p.color}">${val>0?fmtDec(val):'<span style="color:var(--muted)">—</span>'}</td>`;
       }).join('');
-      const tot = active.reduce((s, p) => {
-        const v = m[p.key]; return s + (typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0));
-      }, 0);
-      return `<tr>
-        <td class="month-col">${m.month}</td>
-        ${row}
-        <td class="total-col">${fmtDec(tot)}</td>
-      </tr>`;
+      const tot = active.reduce((s,p)=>{const v=m[p.key];return s+(typeof v==='object'?(v?.total??0):(v??0));},0);
+      return `<tr><td style="color:var(--muted)">${m.month}</td>${cells}<td style="font-weight:600">${fmtDec(tot)}</td></tr>`;
     }).join('');
 
     app.innerHTML = `
     <div class="shell">
       <div class="header">
-        <div class="header-left">
-          <h1>ChipChop — cloud costs</h1>
-          <sub>${d.month}</sub>
-        </div>
+        <div><h1>ChipChop — cloud costs</h1><sub>${d.month}</sub></div>
         <div class="header-right">updated ${new Date(d.generated_at).toLocaleString()}</div>
       </div>
 
@@ -298,134 +359,95 @@ async function render() {
         <button class="tab" data-tab="history" onclick="switchTab('history')">History</button>
       </div>
 
-      <!-- OVERVIEW TAB -->
+      <!-- OVERVIEW -->
       <div class="tab-panel active" id="tab-overview">
         <div class="summary-strip">${summaryCards}</div>
 
         <div class="two-col">
+          <!-- main chart -->
           <div class="card">
-            <div class="card-title">Daily spend — last 14 days</div>
-            <div class="legend">${legendHtml}</div>
-            <div class="chart-wrap-md"><canvas id="trendChart"></canvas></div>
+            <div class="card-title">Daily spend · service breakdown</div>
+            <div class="chart-wrap-md"><canvas id="mainChart"></canvas></div>
+            <div class="chart-controls">${viewToggles}</div>
           </div>
+
+          <!-- budget card -->
           <div class="card">
             <div class="card-title">Budget usage</div>
-            <div class="chart-wrap-md"><canvas id="donutChart"></canvas></div>
+            ${budgetBars || `<p style="font-size:12px;color:var(--muted)">Set budgets via GitHub secrets to see usage.</p>`}
           </div>
         </div>
 
-        <div class="provider-grid">
-          ${active.map(p => providerCard(d, p)).join('')}
-        </div>
+        <div class="provider-grid">${active.map(p => providerCard(d,p)).join('')}</div>
       </div>
 
-      <!-- HISTORY TAB -->
+      <!-- HISTORY -->
       <div class="tab-panel" id="tab-history">
         ${historyMonths.length > 0 ? `
-        <div class="card history-section">
+        <div class="card">
           <div class="card-title">Monthly spend by provider</div>
-          <div class="legend">${legendHtml}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+            ${active.map(p=>`<span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><span style="width:8px;height:8px;border-radius:2px;background:${p.color};display:inline-block"></span>${p.label}</span>`).join('')}
+          </div>
           <div class="chart-wrap-lg"><canvas id="historyChart"></canvas></div>
-
           <table class="hist-table">
-            <thead>
-              <tr>
-                <th>Month</th>
-                ${active.map(p => `<th style="color:${p.color}">${p.label}</th>`).join('')}
-                <th>Total</th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th>Month</th>
+              ${active.map(p=>`<th style="color:${p.color}">${p.label}</th>`).join('')}
+              <th>Total</th>
+            </tr></thead>
             <tbody>${histTableRows}</tbody>
           </table>
         </div>` : `
         <div class="card" style="text-align:center;padding:3rem;color:var(--muted)">
-          History will appear here after the first full month completes.<br/>
-          <span style="font-size:11px;margin-top:8px;display:block">The backfill job will also attempt to populate past months on the next workflow run.</span>
+          History builds up over time. The next workflow run will attempt to backfill past months.
         </div>`}
       </div>
 
       <div class="footer">auto-refreshes every 6 hours via github actions</div>
     </div>`;
 
-    // ── trend chart ──────────────────────────────────────────────────────
-    const trendSrc = active.find(p => d[p.key]?.daily?.length > 0);
-    const trendLabels = trendSrc ? d[trendSrc.key].daily.map(x => x.date.slice(5)) : [];
-    new Chart(document.getElementById('trendChart'), {
-      type: 'line',
-      data: {
-        labels: trendLabels,
-        datasets: active.map(p => ({
-          label: p.label,
-          data: (d[p.key].daily || []).map(x => x.amount),
-          borderColor: p.color, backgroundColor: p.color + '14',
-          borderWidth: 2, pointRadius: 2, fill: true, tension: 0.35,
-        }))
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false },
-          tooltip: { mode: 'index', intersect: false,
-            callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}` } } },
-        scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, maxTicksLimit: 7 } },
-          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, callback: v => '$' + v }, beginAtZero: true }
-        }
-      }
-    });
+    // expose data to event handlers
+    window.__d = d;
+    window.__active = active;
 
-    // ── donut chart ──────────────────────────────────────────────────────
-    new Chart(document.getElementById('donutChart'), {
-      type: 'doughnut',
-      data: {
-        labels: [...active.map(p => p.label), 'Remaining'],
-        datasets: [{ data: [...active.map(p => d[p.key].total), remaining],
-          backgroundColor: [...active.map(p => p.color), 'rgba(255,255,255,0.06)'],
-          borderColor: '#0f1014', borderWidth: 3 }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ` ${ctx.label}: $${Number(ctx.parsed).toFixed(2)}` } } },
-        cutout: '74%'
-      }
-    });
+    // initial chart render
+    renderMainChart(d, active, 'trend', false);
 
-    // ── history chart (only rendered if tab is visited, lazy-init pattern) ──
-    window._historyData = { months: historyMonths, active };
+    // history chart (lazy — only when tab is opened)
+    window._historyData = {months: historyMonths, active};
     document.querySelector('[data-tab="history"]').addEventListener('click', () => {
       if (window._histChartDone || !document.getElementById('historyChart')) return;
       window._histChartDone = true;
-      const { months, active: act } = window._historyData;
+      const {months, active:act} = window._historyData;
       new Chart(document.getElementById('historyChart'), {
         type: 'bar',
         data: {
-          labels: months.map(m => m.month),
+          labels: months.map(m=>m.month),
           datasets: PROVIDERS.map(p => ({
             label: p.label,
-            data: months.map(m => { const v = m[p.key]; return typeof v === 'object' ? (v?.total ?? 0) : (v ?? 0); }),
-            backgroundColor: p.color + 'cc', borderColor: p.color, borderWidth: 1, borderRadius: 3,
-          }))
+            data:  months.map(m=>{const v=m[p.key];return typeof v==='object'?(v?.total??0):(v??0);}),
+            backgroundColor: p.color+'cc', borderColor: p.color, borderWidth:1, borderRadius:3,
+          })),
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false },
-            tooltip: { mode: 'index', intersect: false,
-              callbacks: { label: ctx => ` ${ctx.dataset.label}: $${Number(ctx.parsed.y).toFixed(2)}` } } },
-          scales: {
-            x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 } } },
-            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 }, callback: v => '$' + v }, beginAtZero: true }
-          }
-        }
+          responsive:true, maintainAspectRatio:false,
+          plugins:{legend:{display:false}, tooltip:{mode:'index',intersect:false,
+            callbacks:{label:c=>` ${c.dataset.label}: $${Number(c.parsed.y).toFixed(2)}`}}},
+          scales:{
+            x:{stacked:true, grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280',font:{size:10}}},
+            y:{stacked:true, grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280',font:{size:10},callback:v=>'$'+v}, beginAtZero:true},
+          },
+        },
       });
-    }, { once: true });
+    }, {once:true});
 
   } catch(err) {
-    app.innerHTML = `
-      <div class="shell">
-        <div class="header"><div class="header-left"><h1>ChipChop — cloud costs</h1></div></div>
-        <div class="error"><strong>Could not load data.json</strong><br/>${err.message}<br/><br/>
-        Run the GitHub Action manually from the Actions tab to generate it.</div>
-      </div>`;
+    app.innerHTML = `<div class="shell">
+      <div class="header"><div><h1>ChipChop — cloud costs</h1></div></div>
+      <div class="error"><strong>Could not load data.json</strong><br/>${err.message}<br/><br/>
+      Run the GitHub Action manually from the Actions tab to generate it.</div>
+    </div>`;
   }
 }
 render();
