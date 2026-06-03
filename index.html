@@ -338,14 +338,22 @@ async function render() {
     ].join('');
 
     // history table
-    const histTableRows = historyMonths.slice().reverse().map(m => {
+    // build rows in chronological order so cumulative total adds up correctly
+    let cumulative = 0;
+    const histTableRows = historyMonths.map(m => {
       const cells = active.map(p => {
         const v = m[p.key]; const val = typeof v==='object'?(v?.total??0):(v??0);
         return `<td style="color:${p.color}">${val>0?fmtDec(val):'<span style="color:var(--muted)">—</span>'}</td>`;
       }).join('');
       const tot = active.reduce((s,p)=>{const v=m[p.key];return s+(typeof v==='object'?(v?.total??0):(v??0));},0);
-      return `<tr><td style="color:var(--muted)">${m.month}</td>${cells}<td style="font-weight:600">${fmtDec(tot)}</td></tr>`;
-    }).join('');
+      cumulative += tot;
+      return `<tr>
+        <td style="color:var(--muted)">${m.month}</td>
+        ${cells}
+        <td style="font-weight:600">${fmtDec(tot)}</td>
+        <td style="color:var(--success);font-weight:600">${fmtDec(cumulative)}</td>
+      </tr>`;
+    }).reverse().join('');
 
     app.innerHTML = `
     <div class="shell">
@@ -428,7 +436,8 @@ async function render() {
             <thead><tr>
               <th>Month</th>
               ${active.map(p=>`<th style="color:${p.color}">${p.label}</th>`).join('')}
-              <th>Total</th>
+              <th>Monthly</th>
+              <th style="color:var(--success)">Cumulative</th>
             </tr></thead>
             <tbody>${histTableRows}</tbody>
           </table>
