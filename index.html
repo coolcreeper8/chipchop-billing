@@ -383,13 +383,34 @@ async function render() {
         ${(() => {
           const allSvcs = [];
           active.forEach(p => (d[p.key].services||[]).forEach(s =>
-            allSvcs.push({label: trim(s.name) + ' · ' + p.label, color: p.color, amount: s.amount})));
+            allSvcs.push({name: s.name, provider: p.label, color: p.color, amount: s.amount})));
           allSvcs.sort((a,b) => b.amount - a.amount);
           if (!allSvcs.length) return '';
-          const h = Math.max(180, allSvcs.length * 30);
+          const total = allSvcs.reduce((s,x) => s + x.amount, 0);
+          const rows = allSvcs.map(s => `
+            <tr>
+              <td><span class="badge badge-${s.provider.toLowerCase()}" style="font-size:9px">${s.provider}</span></td>
+              <td style="color:var(--text)">${trim(s.name)}</td>
+              <td style="font-family:'SF Mono',monospace;color:${s.color};text-align:right">${fmtDec(s.amount)}</td>
+            </tr>`).join('');
           return `<div class="card" style="margin-top:12px">
-            <div class="card-title">All services — combined MTD (${allSvcs.length} total)</div>
-            <div style="position:relative;height:${h}px"><canvas id="allSvcsChart"></canvas></div>
+            <div class="card-title">All services — combined MTD</div>
+            <table style="width:100%;border-collapse:collapse;font-size:12px">
+              <thead>
+                <tr>
+                  <th style="text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:0 0 8px;font-weight:500;width:80px">Provider</th>
+                  <th style="text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:0 0 8px;font-weight:500">Service</th>
+                  <th style="text-align:right;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:0 0 8px;font-weight:500">MTD Cost</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+              <tfoot>
+                <tr style="border-top:1px solid var(--border)">
+                  <td colspan="2" style="padding-top:10px;color:var(--muted);font-size:11px">Total</td>
+                  <td style="padding-top:10px;text-align:right;font-family:'SF Mono',monospace;font-weight:700">${fmtDec(total)}</td>
+                </tr>
+              </tfoot>
+            </table>
           </div>`;
         })()}
       </div>
@@ -427,37 +448,6 @@ async function render() {
     // initial chart render
     renderMainChart(d, active, 'trend', false);
 
-    // combined services chart
-    if (document.getElementById('allSvcsChart')) {
-      const allSvcs = [];
-      active.forEach(p => (d[p.key].services||[]).forEach(s =>
-        allSvcs.push({label: trim(s.name) + ' · ' + p.label, color: p.color, amount: s.amount})));
-      allSvcs.sort((a,b) => b.amount - a.amount);
-      new Chart(document.getElementById('allSvcsChart'), {
-        type: 'bar',
-        data: {
-          labels:   allSvcs.map(s => s.label),
-          datasets: [{
-            data:            allSvcs.map(s => s.amount),
-            backgroundColor: allSvcs.map(s => s.color + 'cc'),
-            borderColor:     allSvcs.map(s => s.color),
-            borderWidth: 1, borderRadius: 3,
-          }],
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true, maintainAspectRatio: false,
-          plugins: {
-            legend: {display: false},
-            tooltip: {callbacks: {label: c => ` $${c.parsed.x.toFixed(2)}`}},
-          },
-          scales: {
-            x: {grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280', font:{size:10}, callback: v => '$'+v}, beginAtZero:true},
-            y: {grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#6b7280', font:{size:10}}},
-          },
-        },
-      });
-    }
 
     // history chart (lazy — only when tab is opened)
     window._historyData = {months: historyMonths, active};
