@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:54:22.682584Z",
+  "generated_at": "2026-06-04T03:55:16.472590Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 47.94,
+    "total": 48.78,
     "services": [
       {
         "name": "AWS Business Support+",
@@ -18,22 +18,18 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 18.11
+        "amount": 18.81
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 0.8
+        "amount": 0.93
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.03
+        "amount": 0.04
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-22",
         "amount": 0.0
@@ -84,23 +80,23 @@
       },
       {
         "date": "2026-06-03",
-        "amount": 2.08
+        "amount": 2.92
+      },
+      {
+        "date": "2026-06-04",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 0.17,
+    "total": 0.18,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 0.17
+        "amount": 0.18
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-22",
         "amount": 0.0
@@ -151,7 +147,7 @@
       },
       {
         "date": "2026-06-03",
-        "amount": 0.0
+        "amount": 0.02
       }
     ]
   },
@@ -160,10 +156,6 @@
     "services": [],
     "daily": [
       {
-        "date": "2026-05-21",
-        "amount": 0.0
-      },
-      {
         "date": "2026-05-22",
         "amount": 0.0
       },
@@ -214,22 +206,22 @@
       {
         "date": "2026-06-03",
         "amount": 0.0
+      },
+      {
+        "date": "2026-06-04",
+        "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 0.89,
+    "total": 1.23,
     "services": [
       {
         "name": "unknown",
-        "amount": 0.89
+        "amount": 1.23
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-22",
         "amount": 0.0
@@ -280,6 +272,10 @@
       },
       {
         "date": "2026-06-03",
+        "amount": 0.33
+      },
+      {
+        "date": "2026-06-04",
         "amount": 0.0
       }
     ]
