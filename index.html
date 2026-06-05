@@ -261,7 +261,12 @@ function toggleLog(d, active) {
 }
 
 function providerCard(d, p) {
-  const data = d[p.key], budget = d.budget[p.key] || 0, svcs = data.services || [], maxA = svcs[0]?.amount || 1;
+  const data = d[p.key], budget = d.budget[p.key] || 0;
+  const svcs  = (data.services || []).filter(s => s.amount > 0);
+  const users = (data.users    || []).filter(u => u.amount > 0);
+  const maxA  = svcs[0]?.amount  || 1;
+  const maxU  = users[0]?.amount || 1;
+  const userLabel = p.key === 'anthropic' ? 'by workspace' : p.key === 'openai' ? 'by project' : null;
   return `
   <div class="card">
     <div class="provider-header"><span class="badge ${p.badge}">${p.label}</span><span style="font-size:11px;color:var(--muted)">by service</span></div>
@@ -278,6 +283,16 @@ function providerCard(d, p) {
           <span class="svc-amt">${fmtDec(s.amount)}</span>
         </div>`).join('')
       : '<p class="svc-empty">No breakdown yet</p>'}
+    ${userLabel && users.length ? `
+    <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px">${userLabel}</div>
+      ${users.map(u => `
+        <div class="svc-row">
+          <span class="svc-name">${trim(u.name)}</span>
+          <div class="svc-bar-track"><div class="svc-bar-fill ${p.bar}" style="width:${clamp(u.amount,maxU)}%"></div></div>
+          <span class="svc-amt">${fmtDec(u.amount)}</span>
+        </div>`).join('')}
+    </div>` : ''}
   </div>`;
 }
 

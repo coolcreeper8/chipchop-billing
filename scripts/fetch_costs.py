@@ -210,15 +210,18 @@ def fetch_anthropic():
         "x-api-key": ANTHROPIC_API_KEY,
         "anthropic-version": "2023-06-01",
     }
+    base_params = [
+        ("starting_at",  month_start.strftime("%Y-%m-%dT00:00:00Z")),
+        ("ending_at",    today.strftime("%Y-%m-%dT23:59:59Z")),
+        ("bucket_width", "1d"),
+        ("limit",        "31"),
+    ]
+
+    # Model-level costs
     resp = requests.get(
         "https://api.anthropic.com/v1/organizations/cost_report",
         headers=headers,
-        params=[
-            ("starting_at",  month_start.strftime("%Y-%m-%dT00:00:00Z")),
-            ("ending_at",    today.strftime("%Y-%m-%dT23:59:59Z")),
-            ("bucket_width", "1d"),
-            ("group_by[]",   "description"),
-        ],
+        params=base_params + [("group_by[]", "description")],
         timeout=30,
     )
     resp.raise_for_status()
@@ -227,7 +230,6 @@ def fetch_anthropic():
     for bucket in resp.json().get("data", []):
         day = (bucket.get("starting_at") or "")[:10]
         for result in bucket.get("results", []):
-            # amount is in cents as a decimal string
             cost_usd = float(result.get("amount", "0") or "0") / 100
             model = result.get("model") or result.get("description", "unknown")
             if cost_usd > 0:
@@ -238,7 +240,46 @@ def fetch_anthropic():
         key=lambda x: x["amount"], reverse=True,
     )[:8]
     daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
-    return {"total": round(sum(model_costs.values()), 2), "services": services, "daily": daily}
+
+    # Workspace (user/team) breakdown — resolve workspace IDs to names
+    workspace_names: dict[str, str] = {}
+    try:
+        ws_list = requests.get(
+            "https://api.anthropic.com/v1/organizations/workspaces",
+            headers=headers, timeout=15,
+        )
+        if ws_list.ok:
+            for ws in ws_list.json().get("data", []):
+                workspace_names[ws["id"]] = ws.get("name", ws["id"])
+    except Exception:
+        pass
+
+    ws_resp = requests.get(
+        "https://api.anthropic.com/v1/organizations/cost_report",
+        headers=headers,
+        params=base_params + [("group_by[]", "workspace_id")],
+        timeout=30,
+    )
+    ws_costs: dict[str, float] = {}
+    if ws_resp.ok:
+        for bucket in ws_resp.json().get("data", []):
+            for result in bucket.get("results", []):
+                cost_usd = float(result.get("amount", "0") or "0") / 100
+                ws_id   = result.get("workspace_id") or "default"
+                ws_name = workspace_names.get(ws_id, ws_id)
+                if cost_usd > 0:
+                    ws_costs[ws_name] = ws_costs.get(ws_name, 0.0) + cost_usd
+    users = sorted(
+        [{"name": k, "amount": round(v, 2)} for k, v in ws_costs.items() if v >= 0.01],
+        key=lambda x: x["amount"], reverse=True,
+    )[:8]
+
+    return {
+        "total": round(sum(model_costs.values()), 2),
+        "services": services,
+        "users": users,
+        "daily": daily,
+    }
 
 
 def fetch_openai():
@@ -255,6 +296,8 @@ def fetch_openai():
     headers = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
     start_ts = int(datetime(month_start.year, month_start.month, month_start.day, tzinfo=timezone.utc).timestamp())
     end_ts   = int(datetime(today.year, today.month, today.day, 23, 59, 59, tzinfo=timezone.utc).timestamp())
+
+    # Model-level costs
     resp = requests.get(
         "https://api.openai.com/v1/organization/costs",
         headers=headers,
@@ -277,7 +320,46 @@ def fetch_openai():
         key=lambda x: x["amount"], reverse=True,
     )[:8]
     daily = [{"date": d, "amount": round(daily_map.get(d, 0.0), 2)} for d in days]
-    return {"total": round(sum(model_costs.values()), 2), "services": services, "daily": daily}
+
+    # Project-level breakdown — resolve project IDs to names
+    project_names: dict[str, str] = {}
+    try:
+        proj_list = requests.get(
+            "https://api.openai.com/v1/organization/projects",
+            headers=headers, timeout=15,
+        )
+        if proj_list.ok:
+            for p in proj_list.json().get("data", []):
+                project_names[p["id"]] = p.get("name", p["id"])
+    except Exception:
+        pass
+
+    proj_resp = requests.get(
+        "https://api.openai.com/v1/organization/costs",
+        headers=headers,
+        params={"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d", "group_by[]": "project_id"},
+        timeout=30,
+    )
+    proj_costs: dict[str, float] = {}
+    if proj_resp.ok:
+        for bucket in proj_resp.json().get("data", []):
+            for result in bucket.get("results", []):
+                cost = float((result.get("amount") or {}).get("value", 0) or 0)
+                proj_id   = result.get("project_id") or "default"
+                proj_name = project_names.get(proj_id, proj_id)
+                if cost > 0:
+                    proj_costs[proj_name] = proj_costs.get(proj_name, 0.0) + cost
+    users = sorted(
+        [{"name": k, "amount": round(v, 2)} for k, v in proj_costs.items() if v >= 0.01],
+        key=lambda x: x["amount"], reverse=True,
+    )[:8]
+
+    return {
+        "total": round(sum(model_costs.values()), 2),
+        "services": services,
+        "users": users,
+        "daily": daily,
+    }
 
 
 def _azure_token():
@@ -457,65 +539,76 @@ def _aws_budget_history(kwargs):
 
 
 def backfill_history():
-    """Query past months for providers that support it and write to history.json."""
+    """Query past 12 months for all providers and keep history.json up to date."""
     try:
         with open(HISTORY_PATH) as f:
             history = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         history = {"months": []}
 
-    # Re-process any month that's missing OR where AWS is still zero (from old CE attempt)
-    has_real_aws = {
-        m["month"] for m in history.get("months", [])
-        if (m.get("aws") or {}).get("total", 0) > 0
-    }
-    to_fill = [(s, e, lbl) for s, e, lbl in past_months(6) if lbl not in has_real_aws]
+    months_list = history.get("months", [])
+
+    # A month needs filling if AWS is zero OR Anthropic is zero but we have the key
+    has_real_aws = {m["month"] for m in months_list if (m.get("aws") or {}).get("total", 0) > 0}
+    has_real_ant = {m["month"] for m in months_list if (m.get("anthropic") or {}).get("total", 0) > 0}
+
+    needs = set()
+    for _, _, lbl in past_months(12):
+        if lbl not in has_real_aws:
+            needs.add(lbl)
+        if ANTHROPIC_API_KEY and lbl not in has_real_ant:
+            needs.add(lbl)
+
+    to_fill = [(s, e, lbl) for s, e, lbl in past_months(12) if lbl in needs]
     if not to_fill:
         return
 
     print(f"  Backfilling {len(to_fill)} past months...", flush=True)
     kwargs = {"aws_access_key_id": AWS_ACCESS_KEY_ID, "aws_secret_access_key": AWS_SECRET_ACCESS_KEY}
-
-    # Fetch AWS budget performance history once for all months
     aws_history = _aws_budget_history(kwargs)
 
     for m_start, m_end, m_label in to_fill:
-        entry = {"month": m_label}
         print(f"    {m_label}...", flush=True)
 
-        # AWS — use budget performance history (real data, unlike CE which is broken)
-        aws_total = aws_history.get(m_label, 0.0)
-        entry["aws"] = {"total": aws_total, "services": []}
-        if aws_total > 0:
-            print(f"      AWS from budget history: ${aws_total}", flush=True)
+        # Load existing entry so we only overwrite what we're fixing
+        existing = next((m for m in months_list if m["month"] == m_label), {"month": m_label})
+        entry = dict(existing)
 
-        # GCP — BigQuery has full history
-        try:
-            creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
-            creds = service_account.Credentials.from_service_account_info(
-                creds_info, scopes=["https://www.googleapis.com/auth/cloud-platform"])
-            client = bigquery.Client(project=GCP_BILLING_PROJECT, credentials=creds)
-            table = f"`{GCP_BILLING_PROJECT}.{GCP_BQ_DATASET}.{GCP_BQ_TABLE}`"
-            total_row = list(client.query(f"""
-                SELECT ROUND(SUM(cost),2) AS total FROM {table}
-                WHERE DATE(usage_start_time) >= '{m_start}' AND DATE(usage_start_time) < '{m_end}'
-            """).result())
-            gcp_total = float(total_row[0].total or 0) if total_row else 0.0
-            svc_rows = list(client.query(f"""
-                SELECT service.description AS svc, ROUND(SUM(cost),2) AS amt FROM {table}
-                WHERE DATE(usage_start_time) >= '{m_start}' AND DATE(usage_start_time) < '{m_end}'
-                  AND cost > 0
-                GROUP BY svc ORDER BY amt DESC LIMIT 8
-            """).result())
-            entry["gcp"] = {
-                "total": gcp_total,
-                "services": [{"name": r.svc, "amount": float(r.amt)} for r in svc_rows if float(r.amt) >= 0.01],
-            }
-        except Exception as e:
-            print(f"      GCP: {e}", flush=True)
+        # AWS
+        if m_label not in has_real_aws:
+            aws_total = aws_history.get(m_label, 0.0)
+            entry["aws"] = {"total": aws_total, "services": []}
+            if aws_total > 0:
+                print(f"      AWS: ${aws_total}", flush=True)
+
+        # GCP
+        if m_label not in has_real_aws:  # re-fetch GCP alongside AWS for completeness
+            try:
+                creds_info = json.loads(GCP_SERVICE_ACCOUNT_JSON)
+                creds = service_account.Credentials.from_service_account_info(
+                    creds_info, scopes=["https://www.googleapis.com/auth/cloud-platform"])
+                client = bigquery.Client(project=GCP_BILLING_PROJECT, credentials=creds)
+                table = f"`{GCP_BILLING_PROJECT}.{GCP_BQ_DATASET}.{GCP_BQ_TABLE}`"
+                total_row = list(client.query(f"""
+                    SELECT ROUND(SUM(cost),2) AS total FROM {table}
+                    WHERE DATE(usage_start_time) >= '{m_start}' AND DATE(usage_start_time) < '{m_end}'
+                """).result())
+                gcp_total = float(total_row[0].total or 0) if total_row else 0.0
+                svc_rows = list(client.query(f"""
+                    SELECT service.description AS svc, ROUND(SUM(cost),2) AS amt FROM {table}
+                    WHERE DATE(usage_start_time) >= '{m_start}' AND DATE(usage_start_time) < '{m_end}'
+                      AND cost > 0
+                    GROUP BY svc ORDER BY amt DESC LIMIT 8
+                """).result())
+                entry["gcp"] = {
+                    "total": gcp_total,
+                    "services": [{"name": r.svc, "amount": float(r.amt)} for r in svc_rows if float(r.amt) >= 0.01],
+                }
+            except Exception as e:
+                print(f"      GCP: {e}", flush=True)
 
         # OpenAI
-        if OPENAI_API_KEY:
+        if OPENAI_API_KEY and m_label not in has_real_aws:
             try:
                 from datetime import timezone
                 ts0 = int(datetime.strptime(m_start, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
@@ -527,44 +620,69 @@ def backfill_history():
                     timeout=15,
                 )
                 r.raise_for_status()
-                oai_total = sum(
-                    float((res.get("amount") or {}).get("value", 0) or 0)
-                    for b in r.json().get("data", []) for res in b.get("results", [])
-                )
-                entry["openai"] = {"total": round(oai_total, 4), "services": []}
+                oai_costs: dict[str, float] = {}
+                for b in r.json().get("data", []):
+                    for res in b.get("results", []):
+                        cost = float((res.get("amount") or {}).get("value", 0) or 0)
+                        model = res.get("line_item") or res.get("model_id") or "unknown"
+                        if cost > 0:
+                            oai_costs[model] = oai_costs.get(model, 0.0) + cost
+                entry["openai"] = {
+                    "total": round(sum(oai_costs.values()), 4),
+                    "services": sorted(
+                        [{"name": k, "amount": round(v, 4)} for k, v in oai_costs.items() if v >= 0.0001],
+                        key=lambda x: x["amount"], reverse=True
+                    )[:8],
+                }
             except Exception as e:
                 print(f"      OpenAI: {e}", flush=True)
 
-        # Anthropic
-        if ANTHROPIC_API_KEY:
+        # Anthropic — always re-fetch if we have the key and month was missing
+        if ANTHROPIC_API_KEY and m_label not in has_real_ant:
             try:
                 m_last = (date.fromisoformat(m_end) - timedelta(days=1)).isoformat()
                 r = requests.get(
                     "https://api.anthropic.com/v1/organizations/cost_report",
                     headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01"},
-                    params={"starting_at": m_start + "T00:00:00Z", "ending_at": m_last + "T23:59:59Z", "bucket_width": "1d"},
-                    timeout=15,
+                    params=[
+                        ("starting_at",  m_start + "T00:00:00Z"),
+                        ("ending_at",    m_last  + "T23:59:59Z"),
+                        ("bucket_width", "1d"),
+                        ("group_by[]",   "description"),
+                        ("limit",        "31"),
+                    ],
+                    timeout=30,
                 )
                 r.raise_for_status()
-                anth_total = sum(
-                    float(res.get("cost", "0") or "0") / 100
-                    for b in r.json().get("data", []) for res in b.get("results", [])
-                )
-                entry["anthropic"] = {"total": round(anth_total, 4), "services": []}
+                ant_costs: dict[str, float] = {}
+                for b in r.json().get("data", []):
+                    for res in b.get("results", []):
+                        # amount is in cents
+                        cost_usd = float(res.get("amount", "0") or "0") / 100
+                        model = res.get("model") or res.get("description", "unknown")
+                        if cost_usd > 0:
+                            ant_costs[model] = ant_costs.get(model, 0.0) + cost_usd
+                ant_total = round(sum(ant_costs.values()), 2)
+                entry["anthropic"] = {
+                    "total": ant_total,
+                    "services": sorted(
+                        [{"name": k, "amount": round(v, 2)} for k, v in ant_costs.items() if v >= 0.01],
+                        key=lambda x: x["amount"], reverse=True
+                    )[:8],
+                }
+                print(f"      Anthropic: ${ant_total}", flush=True)
             except Exception as e:
                 print(f"      Anthropic: {e}", flush=True)
 
-        # Overwrite existing entry or append new one
-        replaced = False
-        for i, m in enumerate(history["months"]):
+        # Merge entry back into months list
+        for i, m in enumerate(months_list):
             if m["month"] == m_label:
-                history["months"][i] = entry
-                replaced = True
+                months_list[i] = entry
                 break
-        if not replaced:
-            history["months"].append(entry)
+        else:
+            months_list.append(entry)
 
-    history["months"].sort(key=lambda x: x["month"])
+    months_list.sort(key=lambda x: x["month"])
     with open(HISTORY_PATH, "w") as f:
         json.dump(history, f, indent=2)
     print(f"  Backfill wrote {HISTORY_PATH}", flush=True)
