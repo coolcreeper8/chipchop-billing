@@ -548,15 +548,17 @@ def backfill_history():
 
     months_list = history.get("months", [])
 
-    # A month needs filling if AWS is zero OR Anthropic is zero but we have the key
     has_real_aws = {m["month"] for m in months_list if (m.get("aws") or {}).get("total", 0) > 0}
     has_real_ant = {m["month"] for m in months_list if (m.get("anthropic") or {}).get("total", 0) > 0}
+    has_real_oai = {m["month"] for m in months_list if (m.get("openai") or {}).get("total", 0) > 0}
 
     needs = set()
     for _, _, lbl in past_months(12):
         if lbl not in has_real_aws:
             needs.add(lbl)
         if ANTHROPIC_API_KEY and lbl not in has_real_ant:
+            needs.add(lbl)
+        if OPENAI_API_KEY and lbl not in has_real_oai:
             needs.add(lbl)
 
     to_fill = [(s, e, lbl) for s, e, lbl in past_months(12) if lbl in needs]
@@ -608,7 +610,7 @@ def backfill_history():
                 print(f"      GCP: {e}", flush=True)
 
         # OpenAI
-        if OPENAI_API_KEY and m_label not in has_real_aws:
+        if OPENAI_API_KEY and m_label not in has_real_oai:
             try:
                 from datetime import timezone
                 ts0 = int(datetime.strptime(m_start, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
