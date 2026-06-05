@@ -222,9 +222,15 @@ def fetch_anthropic():
         timeout=30,
     )
     resp.raise_for_status()
+    raw = resp.json()
+    print(f"  Anthropic raw keys: {list(raw.keys())}", flush=True)
+    buckets = raw.get("data", [])
+    print(f"  Anthropic buckets: {len(buckets)}", flush=True)
+    if buckets:
+        print(f"  Anthropic first bucket: {buckets[0]}", flush=True)
     model_costs: dict[str, float] = {}
     daily_map:   dict[str, float] = {}
-    for bucket in resp.json().get("data", []):
+    for bucket in buckets:
         day = (bucket.get("start_time") or "")[:10]
         for result in bucket.get("results", []):
             # cost is in cents as a decimal string
