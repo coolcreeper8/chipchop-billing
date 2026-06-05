@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T03:39:28.150891Z",
+  "generated_at": "2026-06-05T09:47:30.892441Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 53.52,
+    "total": 54.11,
     "services": [
       {
         "name": "AWS Business Support+",
