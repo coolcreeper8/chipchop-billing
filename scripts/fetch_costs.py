@@ -210,33 +210,38 @@ def fetch_anthropic():
         "x-api-key": ANTHROPIC_API_KEY,
         "anthropic-version": "2023-06-01",
     }
+    # Try last 30 days ungrouped first to confirm data exists, then group by description
+    thirty_ago = (today - timedelta(days=30)).strftime("%Y-%m-%dT00:00:00Z")
     resp = requests.get(
         "https://api.anthropic.com/v1/organizations/cost_report",
         headers=headers,
-        params={
-            "starting_at":  month_start.strftime("%Y-%m-%dT00:00:00Z"),
-            "ending_at":    today.strftime("%Y-%m-%dT23:59:59Z"),
-            "bucket_width": "1d",
-            "group_by[]":   "description",
-        },
+        params=[
+            ("starting_at",  thirty_ago),
+            ("ending_at",    today.strftime("%Y-%m-%dT23:59:59Z")),
+            ("bucket_width", "1d"),
+            ("group_by[]",   "description"),
+        ],
         timeout=30,
     )
     resp.raise_for_status()
     raw = resp.json()
-    print(f"  Anthropic raw keys: {list(raw.keys())}", flush=True)
     buckets = raw.get("data", [])
-    print(f"  Anthropic buckets: {len(buckets)}", flush=True)
-    if buckets:
-        print(f"  Anthropic first bucket: {buckets[0]}", flush=True)
+    # Debug: print first bucket with data
+    for b in buckets:
+        if b.get("results"):
+            print(f"  Anthropic sample bucket: {b}", flush=True)
+            break
+    else:
+        print(f"  Anthropic: all {len(buckets)} buckets have empty results", flush=True)
     model_costs: dict[str, float] = {}
     daily_map:   dict[str, float] = {}
     for bucket in buckets:
-        day = (bucket.get("start_time") or "")[:10]
+        day = (bucket.get("starting_at") or bucket.get("start_time") or "")[:10]
         for result in bucket.get("results", []):
             # cost is in cents as a decimal string
             cost_usd = float(result.get("cost", "0") or "0") / 100
             model = result.get("model") or result.get("description", "unknown")
-            if cost_usd > 0:
+            if cost_usd > 0 and day >= month_start.isoformat():
                 model_costs[model] = model_costs.get(model, 0.0) + cost_usd
                 daily_map[day]     = daily_map.get(day, 0.0) + cost_usd
     services = sorted(
