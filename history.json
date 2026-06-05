@@ -1,6 +1,120 @@
 {
   "months": [
     {
+      "month": "2025-06",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2025-07",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2025-08",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2025-09",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2025-10",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
+      "month": "2025-11",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "anthropic": {
+        "total": 0,
+        "services": []
+      }
+    },
+    {
       "month": "2025-12",
       "aws": {
         "total": 0.0,
@@ -96,8 +210,17 @@
         "services": []
       },
       "anthropic": {
-        "total": 0,
-        "services": []
+        "total": 35.29,
+        "services": [
+          {
+            "name": "claude-sonnet-4-6",
+            "amount": 33.44
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "amount": 1.85
+          }
+        ]
       }
     },
     {
@@ -120,8 +243,29 @@
         "services": []
       },
       "anthropic": {
-        "total": 0.0,
-        "services": []
+        "total": 160.7,
+        "services": [
+          {
+            "name": "claude-sonnet-4-6",
+            "amount": 140.63
+          },
+          {
+            "name": "claude-opus-4-8",
+            "amount": 15.22
+          },
+          {
+            "name": "claude-opus-4-7",
+            "amount": 2.38
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "amount": 2.03
+          },
+          {
+            "name": "claude-opus-4-5-20251101",
+            "amount": 0.44
+          }
+        ]
       }
     },
     {

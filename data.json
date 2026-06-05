@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T03:11:24.493803Z",
+  "generated_at": "2026-06-05T03:21:39.296513Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -179,6 +179,16 @@
         "amount": 0.02
       }
     ],
+    "users": [
+      {
+        "name": "Claude Code",
+        "amount": 30.26
+      },
+      {
+        "name": "default",
+        "amount": 10.91
+      }
+    ],
     "daily": [
       {
         "date": "2026-05-23",
@@ -243,6 +253,12 @@
     "services": [
       {
         "name": "unknown",
+        "amount": 2.64
+      }
+    ],
+    "users": [
+      {
+        "name": "Default project",
         "amount": 2.64
       }
     ],
