@@ -56,7 +56,12 @@ def past_months(n=6):
     today = date.today()
     months = []
     for i in range(1, n + 1):
-        first = (today.replace(day=1) - timedelta(days=i * 28)).replace(day=1)
+        month = today.month - i
+        year  = today.year
+        while month <= 0:
+            month += 12
+            year  -= 1
+        first = date(year, month, 1)
         last  = date(first.year + 1, 1, 1) if first.month == 12 else date(first.year, first.month + 1, 1)
         months.append((first.isoformat(), last.isoformat(), first.strftime("%Y-%m")))
     return list(reversed(months))
