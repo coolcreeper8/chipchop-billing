@@ -182,8 +182,13 @@
         "services": []
       },
       "openai": {
-        "total": 0,
-        "services": []
+        "total": 2.97,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 2.97
+          }
+        ]
       },
       "anthropic": {
         "total": 0,
@@ -206,8 +211,13 @@
         ]
       },
       "openai": {
-        "total": 0.301,
-        "services": []
+        "total": 97.39,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 97.39
+          }
+        ]
       },
       "anthropic": {
         "total": 35.29,
@@ -239,8 +249,13 @@
         ]
       },
       "openai": {
-        "total": 0.0369,
-        "services": []
+        "total": 6.46,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 6.46
+          }
+        ]
       },
       "anthropic": {
         "total": 160.7,
