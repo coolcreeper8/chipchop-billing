@@ -282,6 +282,27 @@ def fetch_anthropic():
     }
 
 
+def _openai_all_buckets(headers: dict, params: dict) -> list:
+    """Fetch all pages from the OpenAI organization costs endpoint."""
+    buckets = []
+    p = dict(params, limit=100)
+    while True:
+        r = requests.get(
+            "https://api.openai.com/v1/organization/costs",
+            headers=headers, params=p, timeout=30,
+        )
+        r.raise_for_status()
+        body = r.json()
+        buckets.extend(body.get("data", []))
+        if not body.get("has_more"):
+            break
+        next_page = body.get("next_page")
+        if not next_page:
+            break
+        p = dict(p, page=next_page)
+    return buckets
+
+
 def fetch_openai():
     """Fetch OpenAI API spending via OpenAI Organization Costs API.
     Requires an Admin API key — NOT a regular inference API key.
@@ -297,17 +318,10 @@ def fetch_openai():
     start_ts = int(datetime(month_start.year, month_start.month, month_start.day, tzinfo=timezone.utc).timestamp())
     end_ts   = int(datetime(today.year, today.month, today.day, 23, 59, 59, tzinfo=timezone.utc).timestamp())
 
-    # Model-level costs
-    resp = requests.get(
-        "https://api.openai.com/v1/organization/costs",
-        headers=headers,
-        params={"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d"},
-        timeout=30,
-    )
-    resp.raise_for_status()
+    # Model-level costs — paginated
     model_costs: dict[str, float] = {}
     daily_map:   dict[str, float] = {}
-    for bucket in resp.json().get("data", []):
+    for bucket in _openai_all_buckets(headers, {"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d"}):
         day = date.fromtimestamp(bucket.get("start_time", 0)).isoformat()
         for result in bucket.get("results", []):
             cost = float((result.get("amount") or {}).get("value", 0) or 0)
@@ -334,21 +348,14 @@ def fetch_openai():
     except Exception:
         pass
 
-    proj_resp = requests.get(
-        "https://api.openai.com/v1/organization/costs",
-        headers=headers,
-        params={"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d", "group_by[]": "project_id"},
-        timeout=30,
-    )
     proj_costs: dict[str, float] = {}
-    if proj_resp.ok:
-        for bucket in proj_resp.json().get("data", []):
-            for result in bucket.get("results", []):
-                cost = float((result.get("amount") or {}).get("value", 0) or 0)
-                proj_id   = result.get("project_id") or "default"
-                proj_name = project_names.get(proj_id, proj_id)
-                if cost > 0:
-                    proj_costs[proj_name] = proj_costs.get(proj_name, 0.0) + cost
+    for bucket in _openai_all_buckets(headers, {"start_time": start_ts, "end_time": end_ts, "bucket_width": "1d", "group_by[]": "project_id"}):
+        for result in bucket.get("results", []):
+            cost = float((result.get("amount") or {}).get("value", 0) or 0)
+            proj_id   = result.get("project_id") or "default"
+            proj_name = project_names.get(proj_id, proj_id)
+            if cost > 0:
+                proj_costs[proj_name] = proj_costs.get(proj_name, 0.0) + cost
     users = sorted(
         [{"name": k, "amount": round(v, 2)} for k, v in proj_costs.items() if v >= 0.01],
         key=lambda x: x["amount"], reverse=True,
@@ -550,7 +557,8 @@ def backfill_history():
 
     has_real_aws = {m["month"] for m in months_list if (m.get("aws") or {}).get("total", 0) > 0}
     has_real_ant = {m["month"] for m in months_list if (m.get("anthropic") or {}).get("total", 0) > 0}
-    has_real_oai = {m["month"] for m in months_list if (m.get("openai") or {}).get("total", 0) > 0}
+    # Only trust OpenAI history if total > $1; values near $0 were likely from the 7-bucket pagination bug
+    has_real_oai = {m["month"] for m in months_list if (m.get("openai") or {}).get("total", 0) > 1.0}
 
     needs = set()
     for _, _, lbl in past_months(12):
@@ -609,33 +617,29 @@ def backfill_history():
             except Exception as e:
                 print(f"      GCP: {e}", flush=True)
 
-        # OpenAI
+        # OpenAI — paginated
         if OPENAI_API_KEY and m_label not in has_real_oai:
             try:
                 from datetime import timezone
+                oai_hdrs = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
                 ts0 = int(datetime.strptime(m_start, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
                 ts1 = int(datetime.strptime(m_end,   "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
-                r = requests.get(
-                    "https://api.openai.com/v1/organization/costs",
-                    headers={"Authorization": f"Bearer {OPENAI_API_KEY}"},
-                    params={"start_time": ts0, "end_time": ts1, "bucket_width": "1d"},
-                    timeout=15,
-                )
-                r.raise_for_status()
                 oai_costs: dict[str, float] = {}
-                for b in r.json().get("data", []):
+                for b in _openai_all_buckets(oai_hdrs, {"start_time": ts0, "end_time": ts1, "bucket_width": "1d"}):
                     for res in b.get("results", []):
                         cost = float((res.get("amount") or {}).get("value", 0) or 0)
                         model = res.get("line_item") or res.get("model_id") or "unknown"
                         if cost > 0:
                             oai_costs[model] = oai_costs.get(model, 0.0) + cost
+                oai_total = round(sum(oai_costs.values()), 2)
                 entry["openai"] = {
-                    "total": round(sum(oai_costs.values()), 4),
+                    "total": oai_total,
                     "services": sorted(
-                        [{"name": k, "amount": round(v, 4)} for k, v in oai_costs.items() if v >= 0.0001],
+                        [{"name": k, "amount": round(v, 2)} for k, v in oai_costs.items() if v >= 0.01],
                         key=lambda x: x["amount"], reverse=True
                     )[:8],
                 }
+                print(f"      OpenAI: ${oai_total}", flush=True)
             except Exception as e:
                 print(f"      OpenAI: {e}", flush=True)
 
