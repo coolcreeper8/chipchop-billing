@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T03:04:35.723520Z",
+  "generated_at": "2026-06-05T03:11:24.493803Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -152,8 +152,33 @@
     ]
   },
   "anthropic": {
-    "total": 0,
-    "services": [],
+    "total": 41.18,
+    "services": [
+      {
+        "name": "claude-opus-4-8",
+        "amount": 19.18
+      },
+      {
+        "name": "claude-sonnet-4-6",
+        "amount": 13.93
+      },
+      {
+        "name": "claude-opus-4-7",
+        "amount": 5.63
+      },
+      {
+        "name": "claude-sonnet-4-5-20250929",
+        "amount": 1.81
+      },
+      {
+        "name": "claude-haiku-4-5-20251001",
+        "amount": 0.62
+      },
+      {
+        "name": "Web Search Usage",
+        "amount": 0.02
+      }
+    ],
     "daily": [
       {
         "date": "2026-05-23",
@@ -197,15 +222,15 @@
       },
       {
         "date": "2026-06-02",
-        "amount": 0.0
+        "amount": 0.72
       },
       {
         "date": "2026-06-03",
-        "amount": 0.0
+        "amount": 21.1
       },
       {
         "date": "2026-06-04",
-        "amount": 0.0
+        "amount": 19.35
       },
       {
         "date": "2026-06-05",
