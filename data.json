@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T19:21:45.273621Z",
+  "generated_at": "2026-06-07T03:50:22.320426Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 57.75,
+    "total": 58.41,
     "services": [
       {
         "name": "AWS Business Support+",
@@ -18,11 +18,11 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 26.89
+        "amount": 27.43
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 1.79
+        "amount": 1.89
       },
       {
         "name": "AWS Secrets Manager",
@@ -30,10 +30,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-24",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-25",
         "amount": 0.0
@@ -84,7 +80,11 @@
       },
       {
         "date": "2026-06-06",
-        "amount": 0.16
+        "amount": 0.81
+      },
+      {
+        "date": "2026-06-07",
+        "amount": 0.0
       }
     ]
   },
@@ -97,10 +97,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-24",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-25",
         "amount": 0.0
@@ -156,7 +152,7 @@
     ]
   },
   "anthropic": {
-    "total": 50.05,
+    "total": 53.33,
     "services": [
       {
         "name": "claude-opus-4-8",
@@ -167,12 +163,12 @@
         "amount": 14.13
       },
       {
-        "name": "claude-opus-4-7",
-        "amount": 5.63
+        "name": "claude-sonnet-4-5-20250929",
+        "amount": 8.71
       },
       {
-        "name": "claude-sonnet-4-5-20250929",
-        "amount": 5.42
+        "name": "claude-opus-4-7",
+        "amount": 5.63
       },
       {
         "name": "claude-haiku-4-5-20251001",
@@ -190,14 +186,10 @@
       },
       {
         "name": "default",
-        "amount": 19.78
+        "amount": 23.07
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-24",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-25",
         "amount": 0.0
@@ -248,29 +240,29 @@
       },
       {
         "date": "2026-06-06",
+        "amount": 3.28
+      },
+      {
+        "date": "2026-06-07",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 2.64,
+    "total": 2.88,
     "services": [
       {
         "name": "unknown",
-        "amount": 2.64
+        "amount": 2.88
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 2.64
+        "amount": 2.88
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-24",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-25",
         "amount": 0.0
@@ -321,6 +313,10 @@
       },
       {
         "date": "2026-06-06",
+        "amount": 0.23
+      },
+      {
+        "date": "2026-06-07",
         "amount": 0.0
       }
     ]
