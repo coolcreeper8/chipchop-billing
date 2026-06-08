@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T19:21:22.067424Z",
+  "generated_at": "2026-06-08T03:55:54.216978Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,30 +10,26 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 60.01,
+    "total": 60.94,
     "services": [
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 29.57
+      },
       {
         "name": "AWS Business Support+",
         "amount": 29.0
       },
       {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 28.8
-      },
-      {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 2.12
+        "amount": 2.27
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.08
+        "amount": 0.09
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-25",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-26",
         "amount": 0.0
@@ -80,11 +76,15 @@
       },
       {
         "date": "2026-06-06",
-        "amount": 2.36
+        "amount": 2.44
       },
       {
         "date": "2026-06-07",
-        "amount": 0.05
+        "amount": 0.9
+      },
+      {
+        "date": "2026-06-08",
+        "amount": 0.0
       }
     ]
   },
@@ -97,10 +97,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-25",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-26",
         "amount": 0.0
@@ -195,10 +191,6 @@
     ],
     "daily": [
       {
-        "date": "2026-05-25",
-        "amount": 0.0
-      },
-      {
         "date": "2026-05-26",
         "amount": 0.0
       },
@@ -249,6 +241,10 @@
       {
         "date": "2026-06-07",
         "amount": 0.0
+      },
+      {
+        "date": "2026-06-08",
+        "amount": 0.0
       }
     ]
   },
@@ -267,10 +263,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-25",
-        "amount": 0.0
-      },
       {
         "date": "2026-05-26",
         "amount": 0.0
@@ -321,6 +313,10 @@
       },
       {
         "date": "2026-06-07",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-08",
         "amount": 0.0
       }
     ]
