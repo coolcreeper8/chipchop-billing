@@ -385,6 +385,8 @@ def _azure_token():
         },
         timeout=30,
     )
+    if not resp.ok:
+        print(f"  Azure token error body: {resp.text}", flush=True)
     resp.raise_for_status()
     return resp.json()["access_token"]
 
