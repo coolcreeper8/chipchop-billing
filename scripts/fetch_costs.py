@@ -393,16 +393,22 @@ def _azure_token():
 
 def fetch_azure():
     """Fetch Azure spending via Cost Management Query API."""
-    if not all([AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_SUBSCRIPTION_ID]):
+    missing = [k for k, v in [
+        ("AZURE_TENANT_ID", AZURE_TENANT_ID), ("AZURE_CLIENT_ID", AZURE_CLIENT_ID),
+        ("AZURE_CLIENT_SECRET", AZURE_CLIENT_SECRET), ("AZURE_SUBSCRIPTION_ID", AZURE_SUBSCRIPTION_ID),
+    ] if not v]
+    if missing:
+        print(f"  Azure: skipping — missing secrets: {missing}", flush=True)
         return None
     today = date.today()
     month_start = today.replace(day=1).isoformat()
     days = prev_14_days()
     token = _azure_token()
+    print(f"  Azure: token OK", flush=True)
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     url = (
         f"https://management.azure.com/subscriptions/{AZURE_SUBSCRIPTION_ID}"
-        f"/providers/Microsoft.CostManagement/query?api-version=2023-11-01"
+        f"/providers/Microsoft.CostManagement/query?api-version=2023-03-01"
     )
     # Monthly by service
     resp = requests.post(url, headers=headers, timeout=30, json={
@@ -415,6 +421,8 @@ def fetch_azure():
             "grouping": [{"type": "Dimension", "name": "ServiceName"}],
         },
     })
+    if not resp.ok:
+        print(f"  Azure CM query error {resp.status_code}: {resp.text[:500]}", flush=True)
     resp.raise_for_status()
     props = resp.json()["properties"]
     cols = [c["name"] for c in props["columns"]]
@@ -436,6 +444,8 @@ def fetch_azure():
             "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},
         },
     })
+    if not daily_resp.ok:
+        print(f"  Azure daily query error {daily_resp.status_code}: {daily_resp.text[:500]}", flush=True)
     daily_resp.raise_for_status()
     dprops = daily_resp.json()["properties"]
     dcols = [c["name"] for c in dprops["columns"]]
