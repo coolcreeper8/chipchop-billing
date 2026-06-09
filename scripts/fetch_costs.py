@@ -427,15 +427,17 @@ def fetch_azure():
         print(f"  Azure CM query error {resp.status_code}: {resp.text[:500]}", flush=True)
     resp.raise_for_status()
     props = resp.json()["properties"]
-    cols = [c["name"] for c in props["columns"]]
-    cost_idx, svc_idx = cols.index("Cost"), cols.index("ServiceName")
+    cols  = [c["name"] for c in props["columns"]]
+    rows  = props.get("rows", [])
     services, total = [], 0.0
-    for row in props["rows"]:
-        cost = float(row[cost_idx])
-        if cost >= 0.01:
-            services.append({"name": row[svc_idx], "amount": round(cost, 2)})
-            total += cost
-    services.sort(key=lambda x: x["amount"], reverse=True)
+    if rows and "Cost" in cols and "ServiceName" in cols:
+        cost_idx, svc_idx = cols.index("Cost"), cols.index("ServiceName")
+        for row in rows:
+            cost = float(row[cost_idx])
+            if cost >= 0.01:
+                services.append({"name": row[svc_idx], "amount": round(cost, 2)})
+                total += cost
+        services.sort(key=lambda x: x["amount"], reverse=True)
     # Resource-group breakdown
     rg_resp = requests.post(url, headers=headers, timeout=30, json={
         "type": "ActualCost",
@@ -751,14 +753,16 @@ def backfill_history():
                 az_resp.raise_for_status()
                 az_props = az_resp.json()["properties"]
                 az_cols  = [c["name"] for c in az_props["columns"]]
-                ci, si   = az_cols.index("Cost"), az_cols.index("ServiceName")
+                az_rows  = az_props.get("rows", [])
                 az_svcs, az_total = [], 0.0
-                for row in az_props["rows"]:
-                    cost = float(row[ci])
-                    if cost >= 0.01:
-                        az_svcs.append({"name": row[si], "amount": round(cost, 2)})
-                        az_total += cost
-                az_svcs.sort(key=lambda x: x["amount"], reverse=True)
+                if az_rows and "Cost" in az_cols and "ServiceName" in az_cols:
+                    ci, si = az_cols.index("Cost"), az_cols.index("ServiceName")
+                    for row in az_rows:
+                        cost = float(row[ci])
+                        if cost >= 0.01:
+                            az_svcs.append({"name": row[si], "amount": round(cost, 2)})
+                            az_total += cost
+                    az_svcs.sort(key=lambda x: x["amount"], reverse=True)
                 entry["azure"] = {"total": round(az_total, 2), "services": az_svcs[:8]}
                 print(f"      Azure: ${round(az_total, 2)}", flush=True)
             except Exception as e:
