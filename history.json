@@ -97,6 +97,10 @@
       "anthropic": {
         "total": 0,
         "services": []
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     },
     {
@@ -255,6 +259,10 @@
             "amount": 1.85
           }
         ]
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     },
     {
@@ -305,6 +313,10 @@
             "amount": 0.44
           }
         ]
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     },
     {
