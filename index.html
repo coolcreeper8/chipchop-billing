@@ -266,7 +266,7 @@ function providerCard(d, p) {
   const users = (data.users    || []).filter(u => u.amount > 0);
   const maxA  = svcs[0]?.amount  || 1;
   const maxU  = users[0]?.amount || 1;
-  const userLabel = p.key === 'anthropic' ? 'by workspace' : p.key === 'openai' ? 'by project' : null;
+  const userLabel = p.key === 'anthropic' ? 'by workspace' : p.key === 'openai' ? 'by project' : p.key === 'azure' ? 'by resource group' : null;
   return `
   <div class="card">
     <div class="provider-header"><span class="badge ${p.badge}">${p.label}</span><span style="font-size:11px;color:var(--muted)">by service</span></div>

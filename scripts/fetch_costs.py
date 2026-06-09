@@ -434,6 +434,32 @@ def fetch_azure():
             services.append({"name": row[svc_idx], "amount": round(cost, 2)})
             total += cost
     services.sort(key=lambda x: x["amount"], reverse=True)
+    # Resource-group breakdown
+    rg_resp = requests.post(url, headers=headers, timeout=30, json={
+        "type": "ActualCost",
+        "timeframe": "Custom",
+        "timePeriod": {"from": month_start + "T00:00:00Z", "to": today.isoformat() + "T23:59:59Z"},
+        "dataset": {
+            "granularity": "None",
+            "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},
+            "grouping": [{"type": "Dimension", "name": "ResourceGroup"}],
+        },
+    })
+    users = []
+    if rg_resp.ok:
+        rg_props = rg_resp.json()["properties"]
+        rg_cols = [c["name"] for c in rg_props["columns"]]
+        rg_cost_idx, rg_name_idx = rg_cols.index("Cost"), rg_cols.index("ResourceGroup")
+        rg_costs = {}
+        for row in rg_props["rows"]:
+            cost = float(row[rg_cost_idx])
+            name = row[rg_name_idx] or "unassigned"
+            if cost >= 0.01:
+                rg_costs[name] = rg_costs.get(name, 0.0) + cost
+        users = sorted(
+            [{"name": k, "amount": round(v, 2)} for k, v in rg_costs.items()],
+            key=lambda x: x["amount"], reverse=True,
+        )[:8]
     # Daily trend
     daily_resp = requests.post(url, headers=headers, timeout=30, json={
         "type": "ActualCost",
@@ -456,7 +482,7 @@ def fetch_azure():
         d = f"{raw[:4]}-{raw[4:6]}-{raw[6:]}"
         daily_map[d] = round(float(row[dcost_idx]), 2)
     daily = [{"date": d, "amount": daily_map.get(d, 0.0)} for d in days]
-    return {"total": round(total, 2), "services": services[:8], "daily": daily}
+    return {"total": round(total, 2), "services": services[:8], "users": users, "daily": daily}
 
 
 def fetch_gcp():
@@ -576,6 +602,7 @@ def backfill_history():
     has_real_ant = {m["month"] for m in months_list if (m.get("anthropic") or {}).get("total", 0) > 0}
     # Only trust OpenAI history if total > $1; values near $0 were likely from the 7-bucket pagination bug
     has_real_oai = {m["month"] for m in months_list if (m.get("openai") or {}).get("total", 0) > 1.0}
+    has_real_az  = {m["month"] for m in months_list if (m.get("azure") or {}).get("total", 0) > 0}
 
     needs = set()
     for _, _, lbl in past_months(12):
@@ -584,6 +611,8 @@ def backfill_history():
         if ANTHROPIC_API_KEY and lbl not in has_real_ant:
             needs.add(lbl)
         if OPENAI_API_KEY and lbl not in has_real_oai:
+            needs.add(lbl)
+        if AZURE_TENANT_ID and lbl not in has_real_az:
             needs.add(lbl)
 
     to_fill = [(s, e, lbl) for s, e, lbl in past_months(12) if lbl in needs]
@@ -696,6 +725,41 @@ def backfill_history():
                 print(f"      Anthropic: ${ant_total}", flush=True)
             except Exception as e:
                 print(f"      Anthropic: {e}", flush=True)
+
+        # Azure — query Cost Management for each past month
+        if AZURE_TENANT_ID and m_label not in has_real_az:
+            try:
+                az_token = _azure_token()
+                az_hdrs = {"Authorization": f"Bearer {az_token}", "Content-Type": "application/json"}
+                az_url = (
+                    f"https://management.azure.com/subscriptions/{AZURE_SUBSCRIPTION_ID}"
+                    f"/providers/Microsoft.CostManagement/query?api-version=2023-03-01"
+                )
+                az_resp = requests.post(az_url, headers=az_hdrs, timeout=30, json={
+                    "type": "ActualCost",
+                    "timeframe": "Custom",
+                    "timePeriod": {"from": m_start + "T00:00:00Z", "to": (date.fromisoformat(m_end) - timedelta(days=1)).isoformat() + "T23:59:59Z"},
+                    "dataset": {
+                        "granularity": "None",
+                        "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},
+                        "grouping": [{"type": "Dimension", "name": "ServiceName"}],
+                    },
+                })
+                az_resp.raise_for_status()
+                az_props = az_resp.json()["properties"]
+                az_cols  = [c["name"] for c in az_props["columns"]]
+                ci, si   = az_cols.index("Cost"), az_cols.index("ServiceName")
+                az_svcs, az_total = [], 0.0
+                for row in az_props["rows"]:
+                    cost = float(row[ci])
+                    if cost >= 0.01:
+                        az_svcs.append({"name": row[si], "amount": round(cost, 2)})
+                        az_total += cost
+                az_svcs.sort(key=lambda x: x["amount"], reverse=True)
+                entry["azure"] = {"total": round(az_total, 2), "services": az_svcs[:8]}
+                print(f"      Azure: ${round(az_total, 2)}", flush=True)
+            except Exception as e:
+                print(f"      Azure: {e}", flush=True)
 
         # Merge entry back into months list
         for i, m in enumerate(months_list):
