@@ -21,10 +21,12 @@ GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]
 
 ANTHROPIC_API_KEY        = os.environ.get("ANTHROPIC_API_KEY", "")
 OPENAI_API_KEY           = os.environ.get("OPENAI_API_KEY", "")
-AZURE_TENANT_ID          = os.environ.get("AZURE_TENANT_ID", "").strip()
-AZURE_CLIENT_ID          = os.environ.get("AZURE_CLIENT_ID", "").strip()
+import re as _re
+def _clean_guid(v): return _re.sub(r'[^0-9a-fA-F\-]', '', v.strip())
+AZURE_TENANT_ID          = _clean_guid(os.environ.get("AZURE_TENANT_ID", ""))
+AZURE_CLIENT_ID          = _clean_guid(os.environ.get("AZURE_CLIENT_ID", ""))
 AZURE_CLIENT_SECRET      = os.environ.get("AZURE_CLIENT_SECRET", "").strip()
-AZURE_SUBSCRIPTION_ID    = os.environ.get("AZURE_SUBSCRIPTION_ID", "").strip()
+AZURE_SUBSCRIPTION_ID    = _clean_guid(os.environ.get("AZURE_SUBSCRIPTION_ID", ""))
 
 def _budget(key, default):
     return float(os.environ.get(key) or default)
@@ -625,6 +627,7 @@ def backfill_history():
 
     for m_start, m_end, m_label in to_fill:
         print(f"    {m_label}...", flush=True)
+        import time; time.sleep(2)  # avoid rate-limiting across providers
 
         # Load existing entry so we only overwrite what we're fixing
         existing = next((m for m in months_list if m["month"] == m_label), {"month": m_label})
