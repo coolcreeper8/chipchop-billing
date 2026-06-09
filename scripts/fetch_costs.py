@@ -804,7 +804,7 @@ def main():
 
     if AZURE_TENANT_ID:
         print("fetching Azure costs...", flush=True)
-        print(f"  tenant={AZURE_TENANT_ID[:8]}... client={AZURE_CLIENT_ID[:8]}... sub={AZURE_SUBSCRIPTION_ID[:8]}...", flush=True)
+        print(f"  tenant={AZURE_TENANT_ID[:8]}...(len={len(AZURE_TENANT_ID)}) client={AZURE_CLIENT_ID[:8]}...(len={len(AZURE_CLIENT_ID)}) sub={AZURE_SUBSCRIPTION_ID[:8]}...{AZURE_SUBSCRIPTION_ID[-4:]}(len={len(AZURE_SUBSCRIPTION_ID)})", flush=True)
         try:
             azure = fetch_azure()
             if azure is None:
