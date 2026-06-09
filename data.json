@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-09T03:25:00.429260Z",
+  "generated_at": "2026-06-09T06:00:20.786726Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
     "gcp": 2000.0,
     "anthropic": 1000.0,
     "openai": 1000.0,
-    "azure": 0.0,
+    "azure": 1000.0,
     "total": 7000.0
   },
   "aws": {
