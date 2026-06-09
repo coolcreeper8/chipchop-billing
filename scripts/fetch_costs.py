@@ -728,11 +728,17 @@ def main():
 
     if AZURE_TENANT_ID:
         print("fetching Azure costs...", flush=True)
+        print(f"  tenant={AZURE_TENANT_ID[:8]}... client={AZURE_CLIENT_ID[:8]}... sub={AZURE_SUBSCRIPTION_ID[:8]}...", flush=True)
         try:
             azure = fetch_azure()
-            print(f"  Azure total: ${azure['total']}", flush=True)
+            if azure is None:
+                print("  Azure: skipped — one or more secrets missing/empty", flush=True)
+            else:
+                print(f"  Azure total: ${azure['total']}", flush=True)
         except Exception as e:
+            import traceback
             print(f"  Azure fetch failed: {e}", flush=True)
+            traceback.print_exc()
 
     active_budgets = (
         AWS_MONTHLY_BUDGET + GCP_MONTHLY_BUDGET
