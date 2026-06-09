@@ -21,10 +21,10 @@ GCP_BQ_TABLE             = os.environ["GCP_BQ_TABLE"]
 
 ANTHROPIC_API_KEY        = os.environ.get("ANTHROPIC_API_KEY", "")
 OPENAI_API_KEY           = os.environ.get("OPENAI_API_KEY", "")
-AZURE_TENANT_ID          = os.environ.get("AZURE_TENANT_ID", "")
-AZURE_CLIENT_ID          = os.environ.get("AZURE_CLIENT_ID", "")
-AZURE_CLIENT_SECRET      = os.environ.get("AZURE_CLIENT_SECRET", "")
-AZURE_SUBSCRIPTION_ID    = os.environ.get("AZURE_SUBSCRIPTION_ID", "")
+AZURE_TENANT_ID          = os.environ.get("AZURE_TENANT_ID", "").strip()
+AZURE_CLIENT_ID          = os.environ.get("AZURE_CLIENT_ID", "").strip()
+AZURE_CLIENT_SECRET      = os.environ.get("AZURE_CLIENT_SECRET", "").strip()
+AZURE_SUBSCRIPTION_ID    = os.environ.get("AZURE_SUBSCRIPTION_ID", "").strip()
 
 def _budget(key, default):
     return float(os.environ.get(key) or default)
