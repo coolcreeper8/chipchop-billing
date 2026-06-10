@@ -326,7 +326,7 @@
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 33.84
+            "amount": 34.41
           },
           {
             "name": "AWS Business Support+",
@@ -334,7 +334,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.02
+            "amount": 3.14
           },
           {
             "name": "AWS Secrets Manager",
