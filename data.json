@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T03:53:55.583608Z",
+  "generated_at": "2026-06-11T10:22:12.705284Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 68.21,
+    "total": 69.0,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 35.7
+        "amount": 36.39
       },
       {
         "name": "AWS Business Support+",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 3.38
+        "amount": 3.47
       },
       {
         "name": "AWS Secrets Manager",
@@ -80,7 +80,7 @@
       },
       {
         "date": "2026-06-10",
-        "amount": 0.85
+        "amount": 1.65
       },
       {
         "date": "2026-06-11",
@@ -89,11 +89,11 @@
     ]
   },
   "gcp": {
-    "total": 0.46,
+    "total": 0.51,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 0.46
+        "amount": 0.51
       }
     ],
     "daily": [
@@ -147,7 +147,7 @@
       },
       {
         "date": "2026-06-10",
-        "amount": 0.13
+        "amount": 0.18
       }
     ]
   },

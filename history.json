@@ -322,11 +322,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 68.21,
+        "total": 69.0,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 35.7
+            "amount": 36.39
           },
           {
             "name": "AWS Business Support+",
@@ -334,7 +334,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.38
+            "amount": 3.47
           },
           {
             "name": "AWS Secrets Manager",
@@ -343,11 +343,11 @@
         ]
       },
       "gcp": {
-        "total": 0.46,
+        "total": 0.51,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 0.46
+            "amount": 0.51
           }
         ]
       },
