@@ -322,11 +322,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 69.86,
+        "total": 71.28,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 38.3
+            "amount": 38.92
           },
           {
             "name": "AWS Business Support+",
@@ -334,7 +334,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.81
+            "amount": 3.92
           },
           {
             "name": "AWS Secrets Manager",
