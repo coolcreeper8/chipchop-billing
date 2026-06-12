@@ -322,11 +322,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 69.0,
+        "total": 69.86,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 37.14
+            "amount": 38.3
           },
           {
             "name": "AWS Business Support+",
@@ -334,33 +334,33 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.57
+            "amount": 3.81
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.14
+            "amount": 0.15
           }
         ]
       },
       "gcp": {
-        "total": 0.51,
+        "total": 0.59,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 0.51
+            "amount": 0.59
           }
         ]
       },
       "anthropic": {
-        "total": 220.23,
+        "total": 227.01,
         "services": [
           {
             "name": "claude-opus-4-8",
-            "amount": 101.27
+            "amount": 106.82
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 49.23
+            "amount": 50.47
           },
           {
             "name": "claude-fable-5",
@@ -389,11 +389,11 @@
         ]
       },
       "openai": {
-        "total": 4.69,
+        "total": 7.94,
         "services": [
           {
             "name": "unknown",
-            "amount": 4.69
+            "amount": 7.94
           }
         ]
       },
