@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T14:00:45.626945Z",
+  "generated_at": "2026-06-14T19:25:25.554897Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -7,7 +7,7 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
     "total": 77.01,
@@ -333,5 +333,77 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.12,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 0.12
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 0.12
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-06-01",
+        "amount": 0.12
+      },
+      {
+        "date": "2026-06-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-05",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-06",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-07",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-08",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-09",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-10",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-11",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-13",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-14",
+        "amount": 0.0
+      }
+    ]
+  }
 }
