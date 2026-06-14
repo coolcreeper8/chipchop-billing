@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T19:24:30.940214Z",
+  "generated_at": "2026-06-14T03:58:51.876669Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 74.44,
+    "total": 75.58,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 40.99
+        "amount": 41.97
       },
       {
         "name": "AWS Business Support+",
@@ -22,18 +22,14 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 4.28
+        "amount": 4.43
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.16
+        "amount": 0.17
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-31",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-01",
         "amount": 40.97
@@ -80,11 +76,15 @@
       },
       {
         "date": "2026-06-12",
-        "amount": 2.16
+        "amount": 2.44
       },
       {
         "date": "2026-06-13",
-        "amount": 0.05
+        "amount": 0.9
+      },
+      {
+        "date": "2026-06-14",
+        "amount": 0.0
       }
     ]
   },
@@ -97,10 +97,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-31",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-01",
         "amount": 0.0
@@ -156,11 +152,11 @@
     ]
   },
   "anthropic": {
-    "total": 306.1,
+    "total": 414.9,
     "services": [
       {
         "name": "claude-opus-4-8",
-        "amount": 182.45
+        "amount": 264.48
       },
       {
         "name": "claude-sonnet-4-6",
@@ -176,36 +172,32 @@
       },
       {
         "name": "claude-sonnet-4-5-20250929",
-        "amount": 12.3
+        "amount": 25.84
       },
       {
         "name": "claude-haiku-4-5-20251001",
-        "amount": 5.75
+        "amount": 18.29
       },
       {
         "name": "claude-sonnet-4-20250514",
-        "amount": 0.18
+        "amount": 0.84
       },
       {
         "name": "Web Search Usage",
-        "amount": 0.03
+        "amount": 0.07
       }
     ],
     "users": [
       {
         "name": "Claude Code",
-        "amount": 171.2
+        "amount": 246.24
       },
       {
         "name": "default",
-        "amount": 134.9
+        "amount": 168.67
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-31",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-01",
         "amount": 0.0
@@ -256,29 +248,29 @@
       },
       {
         "date": "2026-06-13",
+        "amount": 108.81
+      },
+      {
+        "date": "2026-06-14",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 8.42,
+    "total": 9.36,
     "services": [
       {
         "name": "unknown",
-        "amount": 8.42
+        "amount": 9.36
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 8.42
+        "amount": 9.36
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-31",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-01",
         "amount": 0.87
@@ -329,6 +321,10 @@
       },
       {
         "date": "2026-06-13",
+        "amount": 0.94
+      },
+      {
+        "date": "2026-06-14",
         "amount": 0.0
       }
     ]
@@ -348,10 +344,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-05-31",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-01",
         "amount": 0.12
@@ -402,6 +394,10 @@
       },
       {
         "date": "2026-06-13",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-14",
         "amount": 0.0
       }
     ]
