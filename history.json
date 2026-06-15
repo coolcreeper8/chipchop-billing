@@ -330,11 +330,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 77.01,
+        "total": 77.94,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 43.18
+            "amount": 43.96
           },
           {
             "name": "AWS Business Support+",
@@ -342,7 +342,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 4.64
+            "amount": 4.79
           },
           {
             "name": "AWS Secrets Manager",
@@ -360,11 +360,15 @@
         ]
       },
       "anthropic": {
-        "total": 414.9,
+        "total": 443.93,
         "services": [
           {
             "name": "claude-opus-4-8",
             "amount": 264.48
+          },
+          {
+            "name": "claude-sonnet-4-5-20250929",
+            "amount": 51.33
           },
           {
             "name": "claude-sonnet-4-6",
@@ -379,12 +383,8 @@
             "amount": 26.65
           },
           {
-            "name": "claude-sonnet-4-5-20250929",
-            "amount": 25.84
-          },
-          {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 18.29
+            "amount": 21.83
           },
           {
             "name": "claude-sonnet-4-20250514",
@@ -397,20 +397,11 @@
         ]
       },
       "openai": {
-        "total": 9.36,
+        "total": 9.38,
         "services": [
           {
             "name": "unknown",
-            "amount": 9.36
-          }
-        ]
-      },
-      "azure": {
-        "total": 0.12,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 0.12
+            "amount": 9.38
           }
         ]
       }
