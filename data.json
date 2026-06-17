@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T20:49:43.067287Z",
+  "generated_at": "2026-06-17T04:02:07.612034Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -7,7 +7,7 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 8000.0
+    "total": 7000.0
   },
   "aws": {
     "total": 81.81,
@@ -30,10 +30,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-03",
-        "amount": 4.93
-      },
       {
         "date": "2026-06-04",
         "amount": 4.36
@@ -85,22 +81,22 @@
       {
         "date": "2026-06-16",
         "amount": 0.05
+      },
+      {
+        "date": "2026-06-17",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 1.31,
+    "total": 1.38,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 1.31
+        "amount": 1.38
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-03",
-        "amount": 0.02
-      },
       {
         "date": "2026-06-04",
         "amount": 0.0
@@ -151,12 +147,12 @@
       },
       {
         "date": "2026-06-16",
-        "amount": 0.03
+        "amount": 0.1
       }
     ]
   },
   "anthropic": {
-    "total": 510.85,
+    "total": 529.92,
     "services": [
       {
         "name": "claude-opus-4-8",
@@ -164,11 +160,11 @@
       },
       {
         "name": "claude-sonnet-4-5-20250929",
-        "amount": 112.38
+        "amount": 116.61
       },
       {
         "name": "claude-sonnet-4-6",
-        "amount": 52.71
+        "amount": 67.55
       },
       {
         "name": "claude-fable-5",
@@ -194,7 +190,7 @@
     "users": [
       {
         "name": "default",
-        "amount": 256.93
+        "amount": 276.0
       },
       {
         "name": "Claude Code",
@@ -202,10 +198,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-03",
-        "amount": 21.1
-      },
       {
         "date": "2026-06-04",
         "amount": 19.35
@@ -256,29 +248,33 @@
       },
       {
         "date": "2026-06-16",
+        "amount": 19.08
+      },
+      {
+        "date": "2026-06-17",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 10.86,
+    "total": 11.8,
     "services": [
       {
         "name": "unknown",
-        "amount": 10.86
+        "amount": 11.8
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 10.86
+        "amount": 11.65
+      },
+      {
+        "name": "chipchop",
+        "amount": 0.14
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-03",
-        "amount": 0.33
-      },
       {
         "date": "2026-06-04",
         "amount": 1.42
@@ -329,81 +325,13 @@
       },
       {
         "date": "2026-06-16",
+        "amount": 0.93
+      },
+      {
+        "date": "2026-06-17",
         "amount": 0.0
       }
     ]
   },
-  "azure": {
-    "total": 0.12,
-    "services": [
-      {
-        "name": "Foundry Models",
-        "amount": 0.12
-      }
-    ],
-    "users": [
-      {
-        "name": "rg-chipchopgpt",
-        "amount": 0.12
-      }
-    ],
-    "daily": [
-      {
-        "date": "2026-06-03",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-04",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-05",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-06",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-07",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-08",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-09",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-10",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-11",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-12",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-13",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-14",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-15",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-06-16",
-        "amount": 0.0
-      }
-    ]
-  }
+  "azure": null
 }
