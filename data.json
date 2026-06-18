@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T20:11:32.560302Z",
+  "generated_at": "2026-06-18T03:53:15.741822Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 84.87,
+    "total": 85.78,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 49.91
+        "amount": 50.69
       },
       {
         "name": "AWS Business Support+",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 5.72
+        "amount": 5.85
       },
       {
         "name": "AWS Secrets Manager",
@@ -34,10 +34,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-04",
-        "amount": 4.36
-      },
       {
         "date": "2026-06-05",
         "amount": 2.44
@@ -84,27 +80,27 @@
       },
       {
         "date": "2026-06-16",
-        "amount": 2.82
+        "amount": 2.97
       },
       {
         "date": "2026-06-17",
-        "amount": 0.05
+        "amount": 0.81
+      },
+      {
+        "date": "2026-06-18",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 1.41,
+    "total": 1.44,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 1.41
+        "amount": 1.44
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-04",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-05",
         "amount": 0.04
@@ -155,24 +151,24 @@
       },
       {
         "date": "2026-06-17",
-        "amount": 0.0
+        "amount": 0.02
       }
     ]
   },
   "anthropic": {
-    "total": 529.92,
+    "total": 593.85,
     "services": [
       {
         "name": "claude-opus-4-8",
-        "amount": 265.24
-      },
-      {
-        "name": "claude-sonnet-4-5-20250929",
-        "amount": 116.61
+        "amount": 269.81
       },
       {
         "name": "claude-sonnet-4-6",
-        "amount": 67.55
+        "amount": 121.73
+      },
+      {
+        "name": "claude-sonnet-4-5-20250929",
+        "amount": 121.26
       },
       {
         "name": "claude-fable-5",
@@ -180,11 +176,11 @@
       },
       {
         "name": "claude-opus-4-7",
-        "amount": 26.65
+        "amount": 27.02
       },
       {
         "name": "claude-haiku-4-5-20251001",
-        "amount": 24.51
+        "amount": 24.67
       },
       {
         "name": "claude-sonnet-4-20250514",
@@ -198,18 +194,14 @@
     "users": [
       {
         "name": "default",
-        "amount": 276.0
+        "amount": 321.31
       },
       {
         "name": "Claude Code",
-        "amount": 253.92
+        "amount": 272.54
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-04",
-        "amount": 19.35
-      },
       {
         "date": "2026-06-05",
         "amount": 8.87
@@ -260,22 +252,26 @@
       },
       {
         "date": "2026-06-17",
+        "amount": 63.93
+      },
+      {
+        "date": "2026-06-18",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 11.8,
+    "total": 17.77,
     "services": [
       {
         "name": "unknown",
-        "amount": 11.8
+        "amount": 17.77
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 11.65
+        "amount": 17.63
       },
       {
         "name": "chipchop",
@@ -283,10 +279,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-04",
-        "amount": 1.42
-      },
       {
         "date": "2026-06-05",
         "amount": 0.0
@@ -337,6 +329,10 @@
       },
       {
         "date": "2026-06-17",
+        "amount": 5.97
+      },
+      {
+        "date": "2026-06-18",
         "amount": 0.0
       }
     ]
@@ -356,10 +352,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-04",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-05",
         "amount": 0.0
@@ -410,6 +402,10 @@
       },
       {
         "date": "2026-06-17",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-18",
         "amount": 0.0
       }
     ]
