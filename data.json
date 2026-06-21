@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T19:25:15.273341Z",
+  "generated_at": "2026-06-21T04:07:16.877649Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -34,10 +34,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-07",
-        "amount": 2.44
-      },
       {
         "date": "2026-06-08",
         "amount": 2.44
@@ -89,6 +85,10 @@
       {
         "date": "2026-06-20",
         "amount": 0.11
+      },
+      {
+        "date": "2026-06-21",
+        "amount": 0.0
       }
     ]
   },
@@ -101,10 +101,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-07",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-08",
         "amount": 0.0
@@ -160,7 +156,7 @@
     ]
   },
   "anthropic": {
-    "total": 723.64,
+    "total": 735.32,
     "services": [
       {
         "name": "claude-opus-4-8",
@@ -168,7 +164,7 @@
       },
       {
         "name": "claude-sonnet-4-6",
-        "amount": 169.68
+        "amount": 180.97
       },
       {
         "name": "claude-sonnet-4-5-20250929",
@@ -184,7 +180,7 @@
       },
       {
         "name": "claude-haiku-4-5-20251001",
-        "amount": 25.12
+        "amount": 25.5
       },
       {
         "name": "claude-sonnet-4-20250514",
@@ -198,18 +194,14 @@
     "users": [
       {
         "name": "default",
-        "amount": 393.36
+        "amount": 395.91
       },
       {
         "name": "Claude Code",
-        "amount": 330.28
+        "amount": 339.41
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-07",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-08",
         "amount": 67.33
@@ -260,22 +252,26 @@
       },
       {
         "date": "2026-06-20",
+        "amount": 11.67
+      },
+      {
+        "date": "2026-06-21",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 25.79,
+    "total": 27.39,
     "services": [
       {
         "name": "unknown",
-        "amount": 25.79
+        "amount": 27.39
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 25.65
+        "amount": 27.24
       },
       {
         "name": "chipchop",
@@ -283,10 +279,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-07",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-08",
         "amount": 1.07
@@ -337,6 +329,10 @@
       },
       {
         "date": "2026-06-20",
+        "amount": 1.6
+      },
+      {
+        "date": "2026-06-21",
         "amount": 0.0
       }
     ]
@@ -356,10 +352,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-07",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-08",
         "amount": 0.0
@@ -410,6 +402,10 @@
       },
       {
         "date": "2026-06-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-21",
         "amount": 0.0
       }
     ]

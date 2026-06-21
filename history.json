@@ -368,7 +368,7 @@
         ]
       },
       "anthropic": {
-        "total": 723.64,
+        "total": 735.32,
         "services": [
           {
             "name": "claude-opus-4-8",
@@ -376,7 +376,7 @@
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 169.68
+            "amount": 180.97
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -392,7 +392,7 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 25.12
+            "amount": 25.5
           },
           {
             "name": "claude-sonnet-4-20250514",
@@ -405,11 +405,11 @@
         ]
       },
       "openai": {
-        "total": 25.79,
+        "total": 27.39,
         "services": [
           {
             "name": "unknown",
-            "amount": 25.79
+            "amount": 27.39
           }
         ]
       },
