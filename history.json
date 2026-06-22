@@ -368,19 +368,19 @@
         ]
       },
       "anthropic": {
-        "total": 735.32,
+        "total": 822.11,
         "services": [
           {
             "name": "claude-opus-4-8",
-            "amount": 331.01
+            "amount": 337.51
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 180.97
+            "amount": 236.68
           },
           {
             "name": "claude-sonnet-4-5-20250929",
-            "amount": 141.45
+            "amount": 162.43
           },
           {
             "name": "claude-fable-5",
@@ -392,33 +392,24 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 25.5
+            "amount": 25.59
+          },
+          {
+            "name": "claude-opus-4-6",
+            "amount": 3.52
           },
           {
             "name": "claude-sonnet-4-20250514",
             "amount": 1.02
-          },
-          {
-            "name": "Web Search Usage",
-            "amount": 0.08
           }
         ]
       },
       "openai": {
-        "total": 27.39,
+        "total": 28.92,
         "services": [
           {
             "name": "unknown",
-            "amount": 27.39
-          }
-        ]
-      },
-      "azure": {
-        "total": 0.12,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 0.12
+            "amount": 28.92
           }
         ]
       }
