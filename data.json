@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T03:30:57.704813Z",
+  "generated_at": "2026-06-24T09:27:28.013158Z",
   "month": "2026-06",
   "budget": {
     "aws": 3000.0,
@@ -7,14 +7,14 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 8000.0
+    "total": 7000.0
   },
   "aws": {
-    "total": 91.53,
+    "total": 91.84,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 61.99
+        "amount": 62.19
       },
       {
         "name": "AWS Business Support+",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 8.04
+        "amount": 8.15
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -34,7 +34,7 @@
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.3
+        "amount": 0.31
       },
       {
         "name": "Claude Haiku 4.5 (Amazon Bedrock Edition)",
@@ -96,7 +96,7 @@
       },
       {
         "date": "2026-06-23",
-        "amount": 5.39
+        "amount": 5.7
       },
       {
         "date": "2026-06-24",
@@ -105,11 +105,11 @@
     ]
   },
   "gcp": {
-    "total": 1.88,
+    "total": 1.89,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 1.88
+        "amount": 1.89
       }
     ],
     "daily": [
@@ -272,83 +272,7 @@
       }
     ]
   },
-  "openai": {
-    "total": 33.02,
-    "services": [
-      {
-        "name": "unknown",
-        "amount": 33.02
-      }
-    ],
-    "users": [
-      {
-        "name": "Default project",
-        "amount": 32.87
-      },
-      {
-        "name": "chipchop",
-        "amount": 0.14
-      }
-    ],
-    "daily": [
-      {
-        "date": "2026-06-11",
-        "amount": 3.25
-      },
-      {
-        "date": "2026-06-12",
-        "amount": 0.49
-      },
-      {
-        "date": "2026-06-13",
-        "amount": 0.94
-      },
-      {
-        "date": "2026-06-14",
-        "amount": 0.02
-      },
-      {
-        "date": "2026-06-15",
-        "amount": 1.48
-      },
-      {
-        "date": "2026-06-16",
-        "amount": 0.93
-      },
-      {
-        "date": "2026-06-17",
-        "amount": 5.97
-      },
-      {
-        "date": "2026-06-18",
-        "amount": 4.71
-      },
-      {
-        "date": "2026-06-19",
-        "amount": 3.31
-      },
-      {
-        "date": "2026-06-20",
-        "amount": 1.6
-      },
-      {
-        "date": "2026-06-21",
-        "amount": 1.53
-      },
-      {
-        "date": "2026-06-22",
-        "amount": 2.83
-      },
-      {
-        "date": "2026-06-23",
-        "amount": 1.27
-      },
-      {
-        "date": "2026-06-24",
-        "amount": 0.0
-      }
-    ]
-  },
+  "openai": null,
   "azure": {
     "total": 0.12,
     "services": [
