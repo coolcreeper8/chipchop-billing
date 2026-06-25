@@ -334,11 +334,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 92.39,
+        "total": 92.82,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 62.63
+            "amount": 62.89
           },
           {
             "name": "AWS Business Support+",
@@ -346,7 +346,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 8.25
+            "amount": 8.42
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -358,7 +358,7 @@
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.31
+            "amount": 0.32
           },
           {
             "name": "Claude Haiku 4.5 (Amazon Bedrock Edition)",
@@ -371,32 +371,32 @@
         ]
       },
       "gcp": {
-        "total": 1.89,
+        "total": 1.94,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 1.89
+            "amount": 1.94
           }
         ]
       },
       "anthropic": {
-        "total": 871.79,
+        "total": 878.64,
         "services": [
           {
             "name": "claude-opus-4-8",
-            "amount": 348.16
+            "amount": 350.41
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 245.73
+            "amount": 245.9
           },
           {
             "name": "claude-sonnet-4-5-20250929",
-            "amount": 185.83
+            "amount": 189.2
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 32.16
+            "amount": 33.23
           },
           {
             "name": "claude-fable-5",
@@ -417,11 +417,11 @@
         ]
       },
       "openai": {
-        "total": 33.02,
+        "total": 35.15,
         "services": [
           {
             "name": "unknown",
-            "amount": 33.02
+            "amount": 35.15
           }
         ]
       },
