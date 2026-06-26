@@ -334,11 +334,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 93.39,
+        "total": 94.08,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 63.25
+            "amount": 63.78
           },
           {
             "name": "AWS Business Support+",
@@ -346,7 +346,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 8.61
+            "amount": 8.76
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -358,7 +358,7 @@
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.32
+            "amount": 0.33
           },
           {
             "name": "Claude Haiku 4.5 (Amazon Bedrock Edition)",
@@ -366,7 +366,7 @@
           },
           {
             "name": "Amazon Simple Storage Service",
-            "amount": 0.01
+            "amount": 0.02
           }
         ]
       },
@@ -380,15 +380,15 @@
         ]
       },
       "anthropic": {
-        "total": 878.64,
+        "total": 886.91,
         "services": [
           {
             "name": "claude-opus-4-8",
-            "amount": 350.41
+            "amount": 351.73
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 245.9
+            "amount": 248.44
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -396,7 +396,7 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 33.23
+            "amount": 37.64
           },
           {
             "name": "claude-fable-5",
@@ -417,20 +417,11 @@
         ]
       },
       "openai": {
-        "total": 35.15,
+        "total": 47.07,
         "services": [
           {
             "name": "unknown",
-            "amount": 35.15
-          }
-        ]
-      },
-      "azure": {
-        "total": 0.12,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 0.12
+            "amount": 47.07
           }
         ]
       }
