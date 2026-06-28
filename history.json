@@ -334,11 +334,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 97.27,
+        "total": 97.66,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 65.32
+            "amount": 65.55
           },
           {
             "name": "AWS Business Support+",
@@ -346,7 +346,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 9.33
+            "amount": 9.48
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -380,7 +380,7 @@
         ]
       },
       "anthropic": {
-        "total": 922.7,
+        "total": 938.92,
         "services": [
           {
             "name": "claude-opus-4-8",
@@ -388,7 +388,7 @@
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 268.27
+            "amount": 281.4
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -396,7 +396,7 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 52.31
+            "amount": 55.39
           },
           {
             "name": "claude-fable-5",
@@ -417,11 +417,11 @@
         ]
       },
       "openai": {
-        "total": 48.2,
+        "total": 48.23,
         "services": [
           {
             "name": "unknown",
-            "amount": 48.2
+            "amount": 48.23
           }
         ]
       },
