@@ -334,11 +334,11 @@
     {
       "month": "2026-06",
       "aws": {
-        "total": 100.54,
+        "total": 101.1,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 67.58
+            "amount": 68.01
           },
           {
             "name": "AWS Business Support+",
@@ -346,7 +346,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 10.29
+            "amount": 10.41
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -422,6 +422,15 @@
           {
             "name": "unknown",
             "amount": 52.34
+          }
+        ]
+      },
+      "azure": {
+        "total": 0.12,
+        "services": [
+          {
+            "name": "Foundry Models",
+            "amount": 0.12
           }
         ]
       }
