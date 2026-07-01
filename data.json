@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T09:42:56.786484Z",
+  "generated_at": "2026-07-01T14:32:45.222892Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -7,11 +7,24 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 5000.0
+    "total": 6000.0
   },
   "aws": {
     "total": 101.44,
-    "services": [],
+    "services": [
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 0.11
+      },
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 0.06
+      },
+      {
+        "name": "AWS Cost Explorer",
+        "amount": 0.02
+      }
+    ],
     "daily": [
       {
         "date": "2026-06-18",
@@ -67,13 +80,18 @@
       },
       {
         "date": "2026-07-01",
-        "amount": 0.0
+        "amount": 0.19
       }
     ]
   },
   "gcp": {
-    "total": 0.0,
-    "services": [],
+    "total": 0.1,
+    "services": [
+      {
+        "name": "Vertex AI",
+        "amount": 0.1
+      }
+    ],
     "daily": [
       {
         "date": "2026-06-18",
@@ -129,11 +147,73 @@
       },
       {
         "date": "2026-07-01",
-        "amount": 0.0
+        "amount": 0.1
       }
     ]
   },
   "anthropic": null,
   "openai": null,
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-06-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-01",
+        "amount": 0.0
+      }
+    ]
+  }
 }
