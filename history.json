@@ -438,7 +438,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 101.44,
+        "total": 0.19,
         "services": [
           {
             "name": "Amazon Virtual Private Cloud",
@@ -455,11 +455,11 @@
         ]
       },
       "gcp": {
-        "total": 0.1,
+        "total": 0.15,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 0.1
+            "amount": 0.15
           }
         ]
       },

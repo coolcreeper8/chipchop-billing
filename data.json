@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T14:32:45.222892Z",
+  "generated_at": "2026-07-01T19:53:05.014123Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 6000.0
   },
   "aws": {
-    "total": 101.44,
+    "total": 0.19,
     "services": [
       {
         "name": "Amazon Virtual Private Cloud",
@@ -85,11 +85,11 @@
     ]
   },
   "gcp": {
-    "total": 0.1,
+    "total": 0.15,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 0.1
+        "amount": 0.15
       }
     ],
     "daily": [
@@ -147,7 +147,7 @@
       },
       {
         "date": "2026-07-01",
-        "amount": 0.1
+        "amount": 0.15
       }
     ]
   },
