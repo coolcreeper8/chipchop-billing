@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T19:53:05.014123Z",
+  "generated_at": "2026-07-02T03:29:23.947258Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -7,7 +7,7 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 6000.0
+    "total": 8000.0
   },
   "aws": {
     "total": 0.19,
@@ -26,10 +26,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-18",
-        "amount": 0.0
-      },
       {
         "date": "2026-06-19",
         "amount": 0.0
@@ -81,6 +77,10 @@
       {
         "date": "2026-07-01",
         "amount": 0.19
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 0.0
       }
     ]
   },
@@ -93,10 +93,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-06-18",
-        "amount": 0.21
-      },
       {
         "date": "2026-06-19",
         "amount": 0.01
@@ -151,17 +147,37 @@
       }
     ]
   },
-  "anthropic": null,
-  "openai": null,
-  "azure": {
-    "total": 0.0,
-    "services": [],
-    "users": [],
-    "daily": [
+  "anthropic": {
+    "total": 13.21,
+    "services": [
       {
-        "date": "2026-06-18",
-        "amount": 0.0
+        "name": "claude-opus-4-8",
+        "amount": 5.86
       },
+      {
+        "name": "claude-haiku-4-5-20251001",
+        "amount": 3.34
+      },
+      {
+        "name": "claude-sonnet-5",
+        "amount": 2.39
+      },
+      {
+        "name": "claude-sonnet-4-6",
+        "amount": 1.62
+      }
+    ],
+    "users": [
+      {
+        "name": "default",
+        "amount": 6.94
+      },
+      {
+        "name": "Claude Code",
+        "amount": 6.27
+      }
+    ],
+    "daily": [
       {
         "date": "2026-06-19",
         "amount": 0.0
@@ -212,6 +228,146 @@
       },
       {
         "date": "2026-07-01",
+        "amount": 13.21
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 0.0
+      }
+    ]
+  },
+  "openai": {
+    "total": 2.94,
+    "services": [
+      {
+        "name": "unknown",
+        "amount": 2.94
+      }
+    ],
+    "users": [
+      {
+        "name": "Default project",
+        "amount": 2.94
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-06-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-01",
+        "amount": 2.94
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 0.0
+      }
+    ]
+  },
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-06-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-06-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-02",
         "amount": 0.0
       }
     ]

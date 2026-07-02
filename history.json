@@ -463,6 +463,36 @@
           }
         ]
       },
+      "anthropic": {
+        "total": 13.21,
+        "services": [
+          {
+            "name": "claude-opus-4-8",
+            "amount": 5.86
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "amount": 3.34
+          },
+          {
+            "name": "claude-sonnet-5",
+            "amount": 2.39
+          },
+          {
+            "name": "claude-sonnet-4-6",
+            "amount": 1.62
+          }
+        ]
+      },
+      "openai": {
+        "total": 2.94,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 2.94
+          }
+        ]
+      },
       "azure": {
         "total": 0.0,
         "services": []
