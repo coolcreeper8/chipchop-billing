@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T08:54:15.234605Z",
+  "generated_at": "2026-07-02T13:57:55.248594Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -13,16 +13,20 @@
     "total": 0.19,
     "services": [
       {
-        "name": "Amazon Virtual Private Cloud",
-        "amount": 0.11
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 0.56
       },
       {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 0.06
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 0.39
       },
       {
         "name": "AWS Cost Explorer",
-        "amount": 0.02
+        "amount": 0.04
+      },
+      {
+        "name": "AWS Secrets Manager",
+        "amount": 0.01
       }
     ],
     "daily": [
@@ -76,11 +80,11 @@
       },
       {
         "date": "2026-07-01",
-        "amount": 0.19
+        "amount": 0.98
       },
       {
         "date": "2026-07-02",
-        "amount": 0.0
+        "amount": 0.03
       }
     ]
   },
