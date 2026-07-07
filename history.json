@@ -438,19 +438,19 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 6.52,
+        "total": 7.96,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 4.18
+            "amount": 4.4
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 1.89
+            "amount": 2.01
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-            "amount": 0.32
+            "amount": 1.41
           },
           {
             "name": "AWS Secrets Manager",
@@ -467,45 +467,49 @@
         ]
       },
       "gcp": {
-        "total": 0.15,
+        "total": 1.6,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 0.15
+            "amount": 1.6
           }
         ]
       },
       "anthropic": {
-        "total": 72.3,
+        "total": 251.98,
         "services": [
+          {
+            "name": "claude-opus-4-8",
+            "amount": 173.63
+          },
+          {
+            "name": "claude-sonnet-5",
+            "amount": 26.38
+          },
           {
             "name": "claude-sonnet-4-5-20250929",
             "amount": 22.39
           },
           {
-            "name": "claude-sonnet-5",
-            "amount": 18.25
+            "name": "claude-sonnet-4-6",
+            "amount": 17.28
           },
           {
             "name": "claude-haiku-4-5-20251001",
             "amount": 11.88
           },
           {
-            "name": "claude-sonnet-4-6",
-            "amount": 11.08
-          },
-          {
-            "name": "claude-opus-4-8",
-            "amount": 8.71
+            "name": "claude-opus-4-6",
+            "amount": 0.43
           }
         ]
       },
       "openai": {
-        "total": 12.68,
+        "total": 33.82,
         "services": [
           {
             "name": "unknown",
-            "amount": 12.68
+            "amount": 33.82
           }
         ]
       },
