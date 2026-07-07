@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T02:58:40.721368Z",
+  "generated_at": "2026-07-07T09:38:55.189108Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,15 +10,15 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 7.96,
+    "total": 8.42,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 4.4
+        "amount": 4.76
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 2.01
+        "amount": 2.1
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -26,7 +26,7 @@
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.07
+        "amount": 0.08
       },
       {
         "name": "AWS Cost Explorer",
@@ -84,11 +84,11 @@
       },
       {
         "date": "2026-07-05",
-        "amount": 1.05
+        "amount": 1.25
       },
       {
         "date": "2026-07-06",
-        "amount": 1.56
+        "amount": 1.82
       },
       {
         "date": "2026-07-07",
@@ -97,11 +97,11 @@
     ]
   },
   "gcp": {
-    "total": 1.6,
+    "total": 3.22,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 1.6
+        "amount": 3.22
       }
     ],
     "daily": [
@@ -139,7 +139,11 @@
       },
       {
         "date": "2026-07-06",
-        "amount": 1.44
+        "amount": 1.62
+      },
+      {
+        "date": "2026-07-07",
+        "amount": 1.45
       }
     ]
   },
@@ -241,21 +245,21 @@
     ]
   },
   "openai": {
-    "total": 33.82,
+    "total": 34.77,
     "services": [
       {
         "name": "unknown",
-        "amount": 33.82
+        "amount": 34.77
       }
     ],
     "users": [
       {
         "name": "chipchop",
-        "amount": 17.42
+        "amount": 17.73
       },
       {
         "name": "Default project",
-        "amount": 16.4
+        "amount": 17.04
       }
     ],
     "daily": [
@@ -309,7 +313,7 @@
       },
       {
         "date": "2026-07-06",
-        "amount": 21.13
+        "amount": 22.09
       },
       {
         "date": "2026-07-07",
