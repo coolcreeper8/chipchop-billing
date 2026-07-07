@@ -442,11 +442,11 @@
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 4.76
+            "amount": 5.24
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 2.1
+            "amount": 2.25
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -512,10 +512,6 @@
             "amount": 34.77
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
