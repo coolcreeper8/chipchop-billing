@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T09:37:08.534302Z",
+  "generated_at": "2026-07-09T14:56:31.568203Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 10.61,
+    "total": 11.09,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
