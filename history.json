@@ -467,11 +467,11 @@
         ]
       },
       "gcp": {
-        "total": 3.36,
+        "total": 3.38,
         "services": [
           {
             "name": "Vertex AI",
-            "amount": 3.36
+            "amount": 3.38
           }
         ]
       },
