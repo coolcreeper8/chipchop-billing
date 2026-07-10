@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T14:23:41.752394Z",
+  "generated_at": "2026-07-10T19:25:41.407412Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 15.03,
+    "total": 15.62,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 7.4
+        "amount": 7.85
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 3.2
+        "amount": 3.33
       },
       {
         "name": "AWS Secrets Manager",
@@ -88,11 +88,11 @@
       },
       {
         "date": "2026-07-09",
-        "amount": 3.6
+        "amount": 4.07
       },
       {
         "date": "2026-07-10",
-        "amount": 0.0
+        "amount": 0.12
       }
     ]
   },
