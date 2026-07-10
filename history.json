@@ -438,19 +438,19 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 12.2,
+        "total": 12.52,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 6.97
+            "amount": 7.18
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 2.96
+            "amount": 3.06
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-            "amount": 1.41
+            "amount": 2.09
           },
           {
             "name": "AWS Secrets Manager",
@@ -476,11 +476,11 @@
         ]
       },
       "anthropic": {
-        "total": 662.57,
+        "total": 943.46,
         "services": [
           {
             "name": "claude-opus-4-8",
-            "amount": 502.41
+            "amount": 782.41
           },
           {
             "name": "claude-sonnet-5",
@@ -488,7 +488,7 @@
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 28.9
+            "amount": 29.79
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -505,11 +505,11 @@
         ]
       },
       "openai": {
-        "total": 52.7,
+        "total": 55.55,
         "services": [
           {
             "name": "unknown",
-            "amount": 52.7
+            "amount": 55.55
           }
         ]
       },
