@@ -438,7 +438,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 18.87,
+        "total": 20.49,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
