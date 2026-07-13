@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T02:40:44.504749Z",
+  "generated_at": "2026-07-13T09:24:19.902476Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -7,14 +7,14 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 21.71,
+    "total": 22.47,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 9.5
+        "amount": 10.01
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -22,11 +22,11 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 4.02
+        "amount": 4.26
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.14
+        "amount": 0.15
       },
       {
         "name": "Amazon Simple Storage Service",
@@ -84,11 +84,11 @@
       },
       {
         "date": "2026-07-11",
-        "amount": 2.35
+        "amount": 2.41
       },
       {
         "date": "2026-07-12",
-        "amount": 0.06
+        "amount": 0.76
       },
       {
         "date": "2026-07-13",
@@ -97,11 +97,11 @@
     ]
   },
   "gcp": {
-    "total": 5.88,
+    "total": 5.97,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 5.88
+        "amount": 5.97
       }
     ],
     "daily": [
@@ -139,6 +139,10 @@
       },
       {
         "date": "2026-07-12",
+        "amount": 0.09
+      },
+      {
+        "date": "2026-07-13",
         "amount": 0.0
       }
     ]
@@ -240,7 +244,83 @@
       }
     ]
   },
-  "openai": null,
+  "openai": {
+    "total": 71.93,
+    "services": [
+      {
+        "name": "unknown",
+        "amount": 71.93
+      }
+    ],
+    "users": [
+      {
+        "name": "Default project",
+        "amount": 48.27
+      },
+      {
+        "name": "chipchop",
+        "amount": 23.66
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-06-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-01",
+        "amount": 2.94
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 9.06
+      },
+      {
+        "date": "2026-07-03",
+        "amount": 0.22
+      },
+      {
+        "date": "2026-07-04",
+        "amount": 0.43
+      },
+      {
+        "date": "2026-07-05",
+        "amount": 0.03
+      },
+      {
+        "date": "2026-07-06",
+        "amount": 22.09
+      },
+      {
+        "date": "2026-07-07",
+        "amount": 8.96
+      },
+      {
+        "date": "2026-07-08",
+        "amount": 8.97
+      },
+      {
+        "date": "2026-07-09",
+        "amount": 2.84
+      },
+      {
+        "date": "2026-07-10",
+        "amount": 11.22
+      },
+      {
+        "date": "2026-07-11",
+        "amount": 1.56
+      },
+      {
+        "date": "2026-07-12",
+        "amount": 3.61
+      },
+      {
+        "date": "2026-07-13",
+        "amount": 0.0
+      }
+    ]
+  },
   "azure": {
     "total": 0.0,
     "services": [],
