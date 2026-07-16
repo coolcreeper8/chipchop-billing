@@ -438,7 +438,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 34.86,
+        "total": 35.25,
         "services": [
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -446,23 +446,27 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 12.14
+            "amount": 12.39
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 5.09
+            "amount": 5.22
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
             "amount": 2.39
           },
           {
+            "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
+            "amount": 0.76
+          },
+          {
             "name": "AWS Secrets Manager",
-            "amount": 0.18
+            "amount": 0.19
           },
           {
             "name": "Amazon Simple Storage Service",
-            "amount": 0.04
+            "amount": 0.05
           },
           {
             "name": "AWS Cost Explorer",
@@ -509,11 +513,11 @@
         ]
       },
       "openai": {
-        "total": 80.06,
+        "total": 90.55,
         "services": [
           {
             "name": "unknown",
-            "amount": 80.06
+            "amount": 90.55
           }
         ]
       },
