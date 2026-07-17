@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:08:03.523470Z",
+  "generated_at": "2026-07-17T13:25:09.125021Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,15 +10,15 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 45.8,
+    "total": 48.37,
     "services": [
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 14.4
+      },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
         "amount": 14.2
-      },
-      {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 13.74
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -26,23 +26,23 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 5.83
+        "amount": 6.02
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
         "amount": 4.16
       },
       {
+        "name": "Amazon Bedrock",
+        "amount": 1.02
+      },
+      {
         "name": "AWS Secrets Manager",
-        "amount": 0.22
+        "amount": 0.23
       },
       {
         "name": "Amazon Simple Storage Service",
         "amount": 0.05
-      },
-      {
-        "name": "AWS Cost Explorer",
-        "amount": 0.04
       }
     ],
     "daily": [
@@ -96,20 +96,20 @@
       },
       {
         "date": "2026-07-16",
-        "amount": 4.63
+        "amount": 5.76
       },
       {
         "date": "2026-07-17",
-        "amount": 0.0
+        "amount": 0.7
       }
     ]
   },
   "gcp": {
-    "total": 7.28,
+    "total": 7.29,
     "services": [
       {
         "name": "Vertex AI",
-        "amount": 7.28
+        "amount": 7.29
       }
     ],
     "daily": [
@@ -155,6 +155,10 @@
       },
       {
         "date": "2026-07-16",
+        "amount": 0.01
+      },
+      {
+        "date": "2026-07-17",
         "amount": 0.0
       }
     ]
