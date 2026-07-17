@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T02:32:17.463831Z",
+  "generated_at": "2026-07-17T08:08:03.523470Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 43.54,
+    "total": 45.8,
     "services": [
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -18,23 +18,23 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 13.42
+        "amount": 13.74
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 5.72
+        "amount": 7.5
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 5.67
+        "amount": 5.83
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 2.37
+        "amount": 4.16
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.21
+        "amount": 0.22
       },
       {
         "name": "Amazon Simple Storage Service",
@@ -96,7 +96,7 @@
       },
       {
         "date": "2026-07-16",
-        "amount": 0.58
+        "amount": 4.63
       },
       {
         "date": "2026-07-17",
@@ -334,17 +334,17 @@
     ]
   },
   "azure": {
-    "total": 12.32,
+    "total": 18.79,
     "services": [
       {
         "name": "Foundry Models",
-        "amount": 12.32
+        "amount": 18.79
       }
     ],
     "users": [
       {
         "name": "rg-chipchopgpt",
-        "amount": 12.32
+        "amount": 18.79
       }
     ],
     "daily": [
@@ -398,7 +398,7 @@
       },
       {
         "date": "2026-07-16",
-        "amount": 1.57
+        "amount": 8.04
       },
       {
         "date": "2026-07-17",
