@@ -484,7 +484,7 @@
         ]
       },
       "anthropic": {
-        "total": 1046.7,
+        "total": 1046.72,
         "services": [
           {
             "name": "claude-opus-4-8",
@@ -496,7 +496,7 @@
           },
           {
             "name": "claude-sonnet-4-6",
-            "amount": 50.58
+            "amount": 50.6
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -513,20 +513,20 @@
         ]
       },
       "openai": {
-        "total": 99.78,
+        "total": 106.41,
         "services": [
           {
             "name": "unknown",
-            "amount": 99.78
+            "amount": 106.41
           }
         ]
       },
       "azure": {
-        "total": 18.79,
+        "total": 24.27,
         "services": [
           {
             "name": "Foundry Models",
-            "amount": 18.79
+            "amount": 24.27
           }
         ]
       }
