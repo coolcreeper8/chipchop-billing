@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T02:23:11.850075Z",
+  "generated_at": "2026-07-18T07:47:32.903984Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -22,7 +22,7 @@
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 7.5
+        "amount": 8.23
       },
       {
         "name": "Amazon Virtual Private Cloud",
@@ -92,7 +92,7 @@
       },
       {
         "date": "2026-07-16",
-        "amount": 5.76
+        "amount": 6.5
       },
       {
         "date": "2026-07-17",
