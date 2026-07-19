@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T13:15:11.002636Z",
+  "generated_at": "2026-07-19T19:03:52.252743Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 92.41,
+    "total": 94.14,
     "services": [
       {
         "name": "Amazon Bedrock",

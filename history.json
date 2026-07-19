@@ -438,7 +438,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 92.41,
+        "total": 94.14,
         "services": [
           {
             "name": "Amazon Bedrock",
