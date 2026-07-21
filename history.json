@@ -195,8 +195,13 @@
         "services": []
       },
       "openai": {
-        "total": 0,
-        "services": []
+        "total": 1.02,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 1.02
+          }
+        ]
       },
       "anthropic": {
         "total": 0,
@@ -522,11 +527,11 @@
         ]
       },
       "azure": {
-        "total": 62.59,
+        "total": 87.18,
         "services": [
           {
             "name": "Foundry Models",
-            "amount": 62.59
+            "amount": 87.18
           }
         ]
       }
