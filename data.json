@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T13:49:58.770762Z",
+  "generated_at": "2026-07-22T19:16:16.649802Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,23 +10,23 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 138.32,
+    "total": 141.88,
     "services": [
       {
         "name": "Amazon Bedrock",
-        "amount": 33.93
+        "amount": 34.24
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 31.94
+        "amount": 32.47
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 23.86
+        "amount": 26.82
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 19.57
+        "amount": 24.41
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -34,11 +34,11 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 8.85
+        "amount": 9.11
       },
       {
         "name": "AWS Secrets Manager",
-        "amount": 0.35
+        "amount": 0.36
       },
       {
         "name": "Amazon Bedrock AgentCore",
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-07-21",
-        "amount": 12.0
+        "amount": 18.14
       },
       {
         "date": "2026-07-22",
-        "amount": 0.0
+        "amount": 2.78
       }
     ]
   },
