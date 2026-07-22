@@ -527,11 +527,11 @@
         ]
       },
       "azure": {
-        "total": 140.76,
+        "total": 170.14,
         "services": [
           {
             "name": "Foundry Models",
-            "amount": 140.76
+            "amount": 170.14
           }
         ]
       }
