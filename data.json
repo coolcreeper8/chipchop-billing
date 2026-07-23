@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T08:28:01.946611Z",
+  "generated_at": "2026-07-23T13:54:37.391914Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -14,11 +14,11 @@
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 36.45
+        "amount": 37.22
       },
       {
         "name": "Amazon Bedrock",
-        "amount": 34.85
+        "amount": 35.17
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -34,7 +34,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 9.67
+        "amount": 9.82
       },
       {
         "name": "Amazon Route 53",
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-07-22",
-        "amount": 14.13
+        "amount": 14.8
       },
       {
         "date": "2026-07-23",
-        "amount": 0.0
+        "amount": 0.59
       }
     ]
   },
@@ -163,6 +163,10 @@
       },
       {
         "date": "2026-07-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-23",
         "amount": 0.0
       }
     ]
@@ -342,17 +346,17 @@
     ]
   },
   "azure": {
-    "total": 174.26,
+    "total": 198.92,
     "services": [
       {
         "name": "Foundry Models",
-        "amount": 174.26
+        "amount": 198.92
       }
     ],
     "users": [
       {
         "name": "rg-chipchopgpt",
-        "amount": 174.26
+        "amount": 198.92
       }
     ],
     "daily": [
@@ -410,7 +414,7 @@
       },
       {
         "date": "2026-07-23",
-        "amount": 4.12
+        "amount": 28.78
       }
     ]
   }

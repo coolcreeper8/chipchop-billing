@@ -447,11 +447,11 @@
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 36.45
+            "amount": 37.22
           },
           {
             "name": "Amazon Bedrock",
-            "amount": 34.85
+            "amount": 35.17
           },
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -467,7 +467,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 9.67
+            "amount": 9.82
           },
           {
             "name": "Amazon Route 53",
@@ -527,11 +527,11 @@
         ]
       },
       "azure": {
-        "total": 174.26,
+        "total": 198.92,
         "services": [
           {
             "name": "Foundry Models",
-            "amount": 174.26
+            "amount": 198.92
           }
         ]
       }
