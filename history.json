@@ -443,7 +443,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 153.23,
+        "total": 154.49,
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
@@ -527,11 +527,11 @@
         ]
       },
       "azure": {
-        "total": 198.92,
+        "total": 225.32,
         "services": [
           {
             "name": "Foundry Models",
-            "amount": 198.92
+            "amount": 225.32
           }
         ]
       }
