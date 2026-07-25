@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-25T13:22:44.653264Z",
+  "generated_at": "2026-07-25T19:05:35.706779Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,15 +10,15 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 227.27,
+    "total": 228.23,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 84.98
+        "amount": 97.89
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 40.79
+        "amount": 41.6
       },
       {
         "name": "Amazon Bedrock",
@@ -34,7 +34,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 10.88
+        "amount": 11.02
       },
       {
         "name": "Amazon Route 53",
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-07-24",
-        "amount": 13.39
+        "amount": 26.96
       },
       {
         "date": "2026-07-25",
-        "amount": 0.0
+        "amount": 0.3
       }
     ]
   },
