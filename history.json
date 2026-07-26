@@ -451,7 +451,7 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 42.33
+            "amount": 42.84
           },
           {
             "name": "Amazon Bedrock",
@@ -467,7 +467,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 11.27
+            "amount": 11.44
           },
           {
             "name": "Amazon Route 53",

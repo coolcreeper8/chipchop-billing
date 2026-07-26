@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T02:39:52.203381Z",
+  "generated_at": "2026-07-26T08:25:27.608307Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -18,7 +18,7 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 42.33
+        "amount": 42.84
       },
       {
         "name": "Amazon Bedrock",
@@ -34,7 +34,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 11.27
+        "amount": 11.44
       },
       {
         "name": "Amazon Route 53",
@@ -96,7 +96,7 @@
       },
       {
         "date": "2026-07-25",
-        "amount": 16.36
+        "amount": 17.06
       },
       {
         "date": "2026-07-26",
