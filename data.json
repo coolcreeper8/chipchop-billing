@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T13:18:48.549041Z",
+  "generated_at": "2026-07-26T19:08:06.286065Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 244.99,
+    "total": 245.97,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -346,17 +346,17 @@
     ]
   },
   "azure": {
-    "total": 284.69,
+    "total": 299.23,
     "services": [
       {
         "name": "Foundry Models",
-        "amount": 284.69
+        "amount": 299.23
       }
     ],
     "users": [
       {
         "name": "rg-chipchopgpt",
-        "amount": 284.69
+        "amount": 299.23
       }
     ],
     "daily": [
@@ -414,7 +414,7 @@
       },
       {
         "date": "2026-07-26",
-        "amount": 0.0
+        "amount": 14.54
       }
     ]
   }
