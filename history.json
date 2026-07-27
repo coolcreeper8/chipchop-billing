@@ -443,7 +443,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 245.97,
+        "total": 246.91,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -451,7 +451,7 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 43.65
+            "amount": 44.34
           },
           {
             "name": "Amazon Bedrock",
@@ -467,7 +467,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 11.59
+            "amount": 11.82
           },
           {
             "name": "Amazon Route 53",
@@ -475,7 +475,7 @@
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.46
+            "amount": 0.47
           }
         ]
       },
@@ -518,11 +518,11 @@
         ]
       },
       "openai": {
-        "total": 640.83,
+        "total": 673.25,
         "services": [
           {
             "name": "unknown",
-            "amount": 640.83
+            "amount": 673.25
           }
         ]
       },
