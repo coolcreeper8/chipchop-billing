@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T14:03:31.738657Z",
+  "generated_at": "2026-07-28T19:21:22.934990Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -7,10 +7,10 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 305.56,
+    "total": 306.69,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -18,7 +18,7 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 47.34
+        "amount": 48.09
       },
       {
         "name": "Amazon Bedrock",
@@ -34,7 +34,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 12.9
+        "amount": 13.25
       },
       {
         "name": "AWS Secrets Manager",
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-07-27",
-        "amount": 56.92
+        "amount": 57.5
       },
       {
         "date": "2026-07-28",
-        "amount": 0.0
+        "amount": 0.55
       }
     ]
   },
@@ -345,5 +345,77 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 319.65,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 319.65
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 319.65
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-07-15",
+        "amount": 1.84
+      },
+      {
+        "date": "2026-07-16",
+        "amount": 8.04
+      },
+      {
+        "date": "2026-07-17",
+        "amount": 5.49
+      },
+      {
+        "date": "2026-07-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-19",
+        "amount": 2.95
+      },
+      {
+        "date": "2026-07-20",
+        "amount": 25.98
+      },
+      {
+        "date": "2026-07-21",
+        "amount": 87.38
+      },
+      {
+        "date": "2026-07-22",
+        "amount": 29.55
+      },
+      {
+        "date": "2026-07-23",
+        "amount": 55.18
+      },
+      {
+        "date": "2026-07-24",
+        "amount": 59.37
+      },
+      {
+        "date": "2026-07-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "amount": 14.54
+      },
+      {
+        "date": "2026-07-27",
+        "amount": 20.42
+      },
+      {
+        "date": "2026-07-28",
+        "amount": 0.0
+      }
+    ]
+  }
 }
