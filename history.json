@@ -443,7 +443,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 304.4,
+        "total": 305.56,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -523,15 +523,6 @@
           {
             "name": "unknown",
             "amount": 781.17
-          }
-        ]
-      },
-      "azure": {
-        "total": 319.65,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 319.65
           }
         ]
       }
