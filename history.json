@@ -443,7 +443,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 307.98,
+        "total": 328.84,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -451,7 +451,7 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 48.99
+            "amount": 50.47
           },
           {
             "name": "Amazon Bedrock",
@@ -467,11 +467,11 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 13.62
+            "amount": 14.13
           },
           {
             "name": "AWS Secrets Manager",
-            "amount": 0.52
+            "amount": 0.53
           },
           {
             "name": "Amazon Route 53",
