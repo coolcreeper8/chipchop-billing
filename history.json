@@ -443,7 +443,7 @@
     {
       "month": "2026-07",
       "aws": {
-        "total": 338.0,
+        "total": 340.55,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
