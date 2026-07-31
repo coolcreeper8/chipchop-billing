@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T08:47:50.972081Z",
+  "generated_at": "2026-07-31T14:02:51.305139Z",
   "month": "2026-07",
   "budget": {
     "aws": 3000.0,
@@ -350,17 +350,17 @@
     ]
   },
   "azure": {
-    "total": 321.11,
+    "total": 325.37,
     "services": [
       {
         "name": "Foundry Models",
-        "amount": 321.11
+        "amount": 325.37
       }
     ],
     "users": [
       {
         "name": "rg-chipchopgpt",
-        "amount": 321.11
+        "amount": 325.37
       }
     ],
     "daily": [
@@ -418,7 +418,7 @@
       },
       {
         "date": "2026-07-31",
-        "amount": 0.0
+        "amount": 4.27
       }
     ]
   }
