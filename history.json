@@ -548,6 +548,15 @@
       },
       "gcp": {
         "total": 0.0,
+        "services": [
+          {
+            "name": "Cloud DNS",
+            "amount": 0.0
+          }
+        ]
+      },
+      "azure": {
+        "total": 0.0,
         "services": []
       }
     }
