@@ -539,6 +539,21 @@
           }
         ]
       }
+    },
+    {
+      "month": "2026-08",
+      "aws": {
+        "total": 0.0,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
+      }
     }
   ]
 }

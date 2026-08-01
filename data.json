@@ -1,126 +1,80 @@
 {
-  "generated_at": "2026-07-31T19:23:05.193690Z",
-  "month": "2026-07",
+  "generated_at": "2026-08-01T02:40:17.681905Z",
+  "month": "2026-08",
   "budget": {
     "aws": 3000.0,
     "gcp": 2000.0,
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 8000.0
+    "total": 6000.0
   },
   "aws": {
-    "total": 351.28,
-    "services": [
-      {
-        "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 191.75
-      },
-      {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 60.49
-      },
-      {
-        "name": "Amazon Bedrock",
-        "amount": 35.24
-      },
-      {
-        "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 33.3
-      },
-      {
-        "name": "Amazon Virtual Private Cloud",
-        "amount": 17.91
-      },
-      {
-        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-        "amount": 14.21
-      },
-      {
-        "name": "Amazon Relational Database Service",
-        "amount": 0.74
-      },
-      {
-        "name": "Elastic Load Balancing",
-        "amount": 0.72
-      }
-    ],
+    "total": 0.0,
+    "services": [],
     "daily": [
       {
-        "date": "2026-07-18",
-        "amount": 38.0
-      },
-      {
         "date": "2026-07-19",
-        "amount": 4.07
+        "amount": 0.0
       },
       {
         "date": "2026-07-20",
-        "amount": 23.83
+        "amount": 0.0
       },
       {
         "date": "2026-07-21",
-        "amount": 18.14
+        "amount": 0.0
       },
       {
         "date": "2026-07-22",
-        "amount": 14.83
+        "amount": 0.0
       },
       {
         "date": "2026-07-23",
-        "amount": 47.04
+        "amount": 0.0
       },
       {
         "date": "2026-07-24",
-        "amount": 26.96
+        "amount": 0.0
       },
       {
         "date": "2026-07-25",
-        "amount": 17.87
+        "amount": 0.0
       },
       {
         "date": "2026-07-26",
-        "amount": 2.83
+        "amount": 0.0
       },
       {
         "date": "2026-07-27",
-        "amount": 57.5
+        "amount": 0.0
       },
       {
         "date": "2026-07-28",
-        "amount": 23.92
+        "amount": 0.0
       },
       {
         "date": "2026-07-29",
-        "amount": 9.57
+        "amount": 0.0
       },
       {
         "date": "2026-07-30",
-        "amount": 13.44
+        "amount": 0.0
       },
       {
         "date": "2026-07-31",
-        "amount": 4.36
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 7.29,
-    "services": [
-      {
-        "name": "Vertex AI",
-        "amount": 7.29
-      },
-      {
-        "name": "Cloud DNS",
-        "amount": 0.0
-      }
-    ],
+    "total": 0.0,
+    "services": [],
     "daily": [
-      {
-        "date": "2026-07-18",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-19",
         "amount": 0.0
@@ -175,199 +129,13 @@
       }
     ]
   },
-  "anthropic": {
-    "total": 1115.0,
-    "services": [
-      {
-        "name": "claude-opus-4-8",
-        "amount": 784.15
-      },
-      {
-        "name": "claude-sonnet-5",
-        "amount": 174.85
-      },
-      {
-        "name": "claude-sonnet-4-6",
-        "amount": 115.95
-      },
-      {
-        "name": "claude-sonnet-4-5-20250929",
-        "amount": 22.5
-      },
-      {
-        "name": "claude-haiku-4-5-20251001",
-        "amount": 17.13
-      },
-      {
-        "name": "claude-opus-4-6",
-        "amount": 0.43
-      }
-    ],
-    "users": [
-      {
-        "name": "default",
-        "amount": 1021.4
-      },
-      {
-        "name": "Claude Code",
-        "amount": 93.6
-      }
-    ],
-    "daily": [
-      {
-        "date": "2026-07-18",
-        "amount": 0.04
-      },
-      {
-        "date": "2026-07-19",
-        "amount": 0.03
-      },
-      {
-        "date": "2026-07-20",
-        "amount": 0.1
-      },
-      {
-        "date": "2026-07-21",
-        "amount": 0.1
-      },
-      {
-        "date": "2026-07-22",
-        "amount": 0.01
-      },
-      {
-        "date": "2026-07-23",
-        "amount": 0.11
-      },
-      {
-        "date": "2026-07-24",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-07-25",
-        "amount": 0.01
-      },
-      {
-        "date": "2026-07-26",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-07-27",
-        "amount": 1.29
-      },
-      {
-        "date": "2026-07-28",
-        "amount": 33.29
-      },
-      {
-        "date": "2026-07-29",
-        "amount": 5.63
-      },
-      {
-        "date": "2026-07-30",
-        "amount": 27.68
-      },
-      {
-        "date": "2026-07-31",
-        "amount": 0.0
-      }
-    ]
-  },
-  "openai": {
-    "total": 994.18,
-    "services": [
-      {
-        "name": "unknown",
-        "amount": 994.18
-      }
-    ],
-    "users": [
-      {
-        "name": "Default project",
-        "amount": 968.6
-      },
-      {
-        "name": "chipchop",
-        "amount": 25.58
-      }
-    ],
-    "daily": [
-      {
-        "date": "2026-07-18",
-        "amount": 8.66
-      },
-      {
-        "date": "2026-07-19",
-        "amount": 0.91
-      },
-      {
-        "date": "2026-07-20",
-        "amount": 4.09
-      },
-      {
-        "date": "2026-07-21",
-        "amount": 6.31
-      },
-      {
-        "date": "2026-07-22",
-        "amount": 97.14
-      },
-      {
-        "date": "2026-07-23",
-        "amount": 219.93
-      },
-      {
-        "date": "2026-07-24",
-        "amount": 133.14
-      },
-      {
-        "date": "2026-07-25",
-        "amount": 64.24
-      },
-      {
-        "date": "2026-07-26",
-        "amount": 32.42
-      },
-      {
-        "date": "2026-07-27",
-        "amount": 107.92
-      },
-      {
-        "date": "2026-07-28",
-        "amount": 133.75
-      },
-      {
-        "date": "2026-07-29",
-        "amount": 48.5
-      },
-      {
-        "date": "2026-07-30",
-        "amount": 30.75
-      },
-      {
-        "date": "2026-07-31",
-        "amount": 0.0
-      }
-    ]
-  },
+  "anthropic": null,
+  "openai": null,
   "azure": {
-    "total": 325.37,
-    "services": [
-      {
-        "name": "Foundry Models",
-        "amount": 325.37
-      }
-    ],
-    "users": [
-      {
-        "name": "rg-chipchopgpt",
-        "amount": 325.37
-      }
-    ],
+    "total": 0.0,
+    "services": [],
+    "users": [],
     "daily": [
-      {
-        "date": "2026-07-18",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-19",
         "amount": 2.95
@@ -419,6 +187,10 @@
       {
         "date": "2026-07-31",
         "amount": 4.27
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 0.0
       }
     ]
   }
