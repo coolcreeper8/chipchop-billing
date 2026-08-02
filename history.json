@@ -543,8 +543,41 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 0.0,
-        "services": []
+        "total": 9.36,
+        "services": [
+          {
+            "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
+            "amount": 4.87
+          },
+          {
+            "name": "Amazon Elastic Compute Cloud",
+            "amount": 1.75
+          },
+          {
+            "name": "Amazon Route 53",
+            "amount": 1.0
+          },
+          {
+            "name": "Amazon Virtual Private Cloud",
+            "amount": 0.81
+          },
+          {
+            "name": "Amazon Relational Database Service",
+            "amount": 0.28
+          },
+          {
+            "name": "Elastic Load Balancing",
+            "amount": 0.27
+          },
+          {
+            "name": "AWS WAF",
+            "amount": 0.15
+          },
+          {
+            "name": "AWS Key Management Service",
+            "amount": 0.08
+          }
+        ]
       },
       "gcp": {
         "total": 0.0,
@@ -552,6 +585,24 @@
           {
             "name": "Cloud DNS",
             "amount": 0.0
+          }
+        ]
+      },
+      "anthropic": {
+        "total": 14.57,
+        "services": [
+          {
+            "name": "claude-sonnet-4-6",
+            "amount": 14.57
+          }
+        ]
+      },
+      "openai": {
+        "total": 0.28,
+        "services": [
+          {
+            "name": "unknown",
+            "amount": 0.28
           }
         ]
       },

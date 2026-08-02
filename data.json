@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T19:05:49.939405Z",
+  "generated_at": "2026-08-02T02:38:56.901232Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -7,16 +7,45 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 6000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 0.0,
-    "services": [],
-    "daily": [
+    "total": 9.36,
+    "services": [
       {
-        "date": "2026-07-19",
-        "amount": 0.0
+        "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
+        "amount": 4.87
       },
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 1.75
+      },
+      {
+        "name": "Amazon Route 53",
+        "amount": 1.0
+      },
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 0.81
+      },
+      {
+        "name": "Amazon Relational Database Service",
+        "amount": 0.28
+      },
+      {
+        "name": "Elastic Load Balancing",
+        "amount": 0.27
+      },
+      {
+        "name": "AWS WAF",
+        "amount": 0.15
+      },
+      {
+        "name": "AWS Key Management Service",
+        "amount": 0.08
+      }
+    ],
+    "daily": [
       {
         "date": "2026-07-20",
         "amount": 0.0
@@ -67,6 +96,10 @@
       },
       {
         "date": "2026-08-01",
+        "amount": 9.36
+      },
+      {
+        "date": "2026-08-02",
         "amount": 0.0
       }
     ]
@@ -80,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-19",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-20",
         "amount": 0.0
@@ -138,17 +167,157 @@
       }
     ]
   },
-  "anthropic": null,
-  "openai": null,
+  "anthropic": {
+    "total": 14.57,
+    "services": [
+      {
+        "name": "claude-sonnet-4-6",
+        "amount": 14.57
+      }
+    ],
+    "users": [
+      {
+        "name": "default",
+        "amount": 14.57
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-07-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 14.57
+      },
+      {
+        "date": "2026-08-02",
+        "amount": 0.0
+      }
+    ]
+  },
+  "openai": {
+    "total": 0.28,
+    "services": [
+      {
+        "name": "unknown",
+        "amount": 0.28
+      }
+    ],
+    "users": [
+      {
+        "name": "Default project",
+        "amount": 0.28
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-07-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 0.28
+      },
+      {
+        "date": "2026-08-02",
+        "amount": 0.0
+      }
+    ]
+  },
   "azure": {
     "total": 0.0,
     "services": [],
     "users": [],
     "daily": [
-      {
-        "date": "2026-07-19",
-        "amount": 2.95
-      },
       {
         "date": "2026-07-20",
         "amount": 25.98
@@ -199,6 +368,10 @@
       },
       {
         "date": "2026-08-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-02",
         "amount": 0.0
       }
     ]
