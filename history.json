@@ -551,40 +551,40 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 1.75
+            "amount": 4.16
+          },
+          {
+            "name": "Amazon Virtual Private Cloud",
+            "amount": 1.72
           },
           {
             "name": "Amazon Route 53",
             "amount": 1.0
           },
           {
-            "name": "Amazon Virtual Private Cloud",
-            "amount": 0.81
-          },
-          {
             "name": "Amazon Relational Database Service",
-            "amount": 0.28
+            "amount": 0.59
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 0.27
+            "amount": 0.56
+          },
+          {
+            "name": "Amazon ElastiCache",
+            "amount": 0.4
           },
           {
             "name": "AWS WAF",
-            "amount": 0.15
-          },
-          {
-            "name": "AWS Key Management Service",
-            "amount": 0.08
+            "amount": 0.3
           }
         ]
       },
       "gcp": {
-        "total": 0.0,
+        "total": 0.01,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.0
+            "amount": 0.01
           }
         ]
       },
@@ -607,8 +607,13 @@
         ]
       },
       "azure": {
-        "total": 0.0,
-        "services": []
+        "total": 37.7,
+        "services": [
+          {
+            "name": "Foundry Models",
+            "amount": 37.7
+          }
+        ]
       }
     }
   ]

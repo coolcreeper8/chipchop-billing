@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T02:38:56.901232Z",
+  "generated_at": "2026-08-02T08:22:15.288272Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -18,31 +18,31 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 1.75
+        "amount": 4.16
+      },
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 1.72
       },
       {
         "name": "Amazon Route 53",
         "amount": 1.0
       },
       {
-        "name": "Amazon Virtual Private Cloud",
-        "amount": 0.81
-      },
-      {
         "name": "Amazon Relational Database Service",
-        "amount": 0.28
+        "amount": 0.59
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 0.27
+        "amount": 0.56
+      },
+      {
+        "name": "Amazon ElastiCache",
+        "amount": 0.4
       },
       {
         "name": "AWS WAF",
-        "amount": 0.15
-      },
-      {
-        "name": "AWS Key Management Service",
-        "amount": 0.08
+        "amount": 0.3
       }
     ],
     "daily": [
@@ -96,20 +96,20 @@
       },
       {
         "date": "2026-08-01",
-        "amount": 9.36
+        "amount": 13.84
       },
       {
         "date": "2026-08-02",
-        "amount": 0.0
+        "amount": 0.16
       }
     ]
   },
   "gcp": {
-    "total": 0.0,
+    "total": 0.01,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.0
+        "amount": 0.01
       }
     ],
     "daily": [
@@ -163,7 +163,7 @@
       },
       {
         "date": "2026-08-01",
-        "amount": 0.0
+        "amount": 0.01
       }
     ]
   },
@@ -314,9 +314,19 @@
     ]
   },
   "azure": {
-    "total": 0.0,
-    "services": [],
-    "users": [],
+    "total": 37.7,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 37.7
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 37.7
+      }
+    ],
     "daily": [
       {
         "date": "2026-07-20",
@@ -368,11 +378,11 @@
       },
       {
         "date": "2026-08-01",
-        "amount": 0.0
+        "amount": 31.34
       },
       {
         "date": "2026-08-02",
-        "amount": 0.0
+        "amount": 6.36
       }
     ]
   }
