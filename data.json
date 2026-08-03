@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T14:35:22.787401Z",
+  "generated_at": "2026-08-03T19:27:57.698499Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -7,10 +7,10 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 22.42,
+    "total": 27.66,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
@@ -329,5 +329,77 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 41.98,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 41.98
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 41.98
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-07-21",
+        "amount": 87.38
+      },
+      {
+        "date": "2026-07-22",
+        "amount": 29.55
+      },
+      {
+        "date": "2026-07-23",
+        "amount": 55.18
+      },
+      {
+        "date": "2026-07-24",
+        "amount": 59.37
+      },
+      {
+        "date": "2026-07-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "amount": 14.54
+      },
+      {
+        "date": "2026-07-27",
+        "amount": 20.42
+      },
+      {
+        "date": "2026-07-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-30",
+        "amount": 1.46
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 4.27
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 31.34
+      },
+      {
+        "date": "2026-08-02",
+        "amount": 10.63
+      },
+      {
+        "date": "2026-08-03",
+        "amount": 0.0
+      }
+    ]
+  }
 }
