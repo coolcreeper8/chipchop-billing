@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T19:27:57.698499Z",
+  "generated_at": "2026-08-04T02:24:44.565211Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 27.66,
+    "total": 30.11,
     "services": [
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 9.77
+        "amount": 10.64
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 3.82
+        "amount": 4.31
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -30,26 +30,22 @@
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 1.28
+        "amount": 1.47
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 1.24
+        "amount": 1.4
+      },
+      {
+        "name": "Amazon Elastic Container Service",
+        "amount": 1.02
       },
       {
         "name": "Amazon Route 53",
         "amount": 1.0
-      },
-      {
-        "name": "Amazon ElastiCache",
-        "amount": 0.88
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-22",
         "amount": 0.0
@@ -100,7 +96,11 @@
       },
       {
         "date": "2026-08-03",
-        "amount": 4.52
+        "amount": 6.98
+      },
+      {
+        "date": "2026-08-04",
+        "amount": 0.0
       }
     ]
   },
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-22",
         "amount": 0.0
@@ -172,25 +168,25 @@
     ]
   },
   "anthropic": {
-    "total": 18.37,
+    "total": 62.64,
     "services": [
       {
-        "name": "claude-sonnet-4-6",
-        "amount": 16.26
+        "name": "claude-opus-5",
+        "amount": 30.52
       },
       {
-        "name": "claude-opus-5",
-        "amount": 1.99
+        "name": "claude-sonnet-4-6",
+        "amount": 23.73
       },
       {
         "name": "claude-sonnet-5",
-        "amount": 0.12
+        "amount": 8.39
       }
     ],
     "users": [
       {
         "name": "default",
-        "amount": 16.78
+        "amount": 61.05
       },
       {
         "name": "Claude Code",
@@ -198,10 +194,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-22",
         "amount": 0.0
@@ -252,29 +244,33 @@
       },
       {
         "date": "2026-08-03",
+        "amount": 44.27
+      },
+      {
+        "date": "2026-08-04",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 5.71,
+    "total": 11.15,
     "services": [
       {
         "name": "unknown",
-        "amount": 5.71
+        "amount": 11.15
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 5.71
+        "amount": 10.71
+      },
+      {
+        "name": "chipchop",
+        "amount": 0.44
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-21",
-        "amount": 0.0
-      },
       {
         "date": "2026-07-22",
         "amount": 0.0
@@ -325,6 +321,10 @@
       },
       {
         "date": "2026-08-03",
+        "amount": 5.44
+      },
+      {
+        "date": "2026-08-04",
         "amount": 0.0
       }
     ]
@@ -344,10 +344,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-07-21",
-        "amount": 87.38
-      },
       {
         "date": "2026-07-22",
         "amount": 29.55
@@ -398,6 +394,10 @@
       },
       {
         "date": "2026-08-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-04",
         "amount": 0.0
       }
     ]
