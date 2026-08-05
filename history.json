@@ -547,7 +547,7 @@
         "services": [
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 14.02
+            "amount": 15.33
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -555,7 +555,7 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 5.92
+            "amount": 6.62
           },
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -563,28 +563,28 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 2.19
+            "amount": 2.71
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 2.0
+            "amount": 2.23
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 1.91
+            "amount": 2.14
           },
           {
             "name": "Amazon ElastiCache",
-            "amount": 1.36
+            "amount": 1.52
           }
         ]
       },
       "gcp": {
-        "total": 0.02,
+        "total": 0.03,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.02
+            "amount": 0.03
           }
         ]
       },
@@ -619,15 +619,6 @@
           {
             "name": "unknown",
             "amount": 40.42
-          }
-        ]
-      },
-      "azure": {
-        "total": 41.98,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 41.98
           }
         ]
       }
