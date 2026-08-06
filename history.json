@@ -543,19 +543,19 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 63.87,
+        "total": 68.53,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-            "amount": 17.06
+            "amount": 17.4
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 16.1
+            "amount": 16.51
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 6.97
+            "amount": 7.53
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -563,19 +563,19 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 3.38
+            "amount": 4.91
+          },
+          {
+            "name": "AmazonCloudWatch",
+            "amount": 2.77
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 2.35
+            "amount": 2.56
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 2.25
-          },
-          {
-            "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-            "amount": 2.02
+            "amount": 2.45
           }
         ]
       },
@@ -589,11 +589,11 @@
         ]
       },
       "anthropic": {
-        "total": 171.94,
+        "total": 197.21,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 115.98
+            "amount": 136.16
           },
           {
             "name": "claude-opus-5",
@@ -608,26 +608,21 @@
             "amount": 6.21
           },
           {
+            "name": "claude-sonnet-4-5-20250929",
+            "amount": 5.1
+          },
+          {
             "name": "claude-haiku-4-5-20251001",
             "amount": 0.7
           }
         ]
       },
       "openai": {
-        "total": 40.42,
+        "total": 53.4,
         "services": [
           {
             "name": "unknown",
-            "amount": 40.42
-          }
-        ]
-      },
-      "azure": {
-        "total": 41.98,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 41.98
+            "amount": 53.4
           }
         ]
       }
