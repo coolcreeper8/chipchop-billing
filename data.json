@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T12:59:23.232614Z",
+  "generated_at": "2026-08-07T18:54:16.711098Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -7,10 +7,10 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 145.1,
+    "total": 158.17,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -18,15 +18,15 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 18.42
+        "amount": 18.97
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 10.57
+        "amount": 11.67
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 9.83
+        "amount": 10.16
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -34,15 +34,15 @@
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 4.0
+        "amount": 4.8
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 3.4
+        "amount": 3.51
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 3.24
+        "amount": 3.35
       }
     ],
     "daily": [
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-08-06",
-        "amount": 69.6
+        "amount": 70.28
       },
       {
         "date": "2026-08-07",
-        "amount": 2.03
+        "amount": 4.57
       }
     ]
   },
@@ -164,6 +164,10 @@
       {
         "date": "2026-08-06",
         "amount": 0.01
+      },
+      {
+        "date": "2026-08-07",
+        "amount": 0.0
       }
     ]
   },
@@ -341,5 +345,77 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 58.04,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 58.04
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 58.04
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-07-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "amount": 14.54
+      },
+      {
+        "date": "2026-07-27",
+        "amount": 20.42
+      },
+      {
+        "date": "2026-07-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-07-30",
+        "amount": 1.46
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 4.27
+      },
+      {
+        "date": "2026-08-01",
+        "amount": 31.34
+      },
+      {
+        "date": "2026-08-02",
+        "amount": 10.63
+      },
+      {
+        "date": "2026-08-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-05",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-06",
+        "amount": 1.69
+      },
+      {
+        "date": "2026-08-07",
+        "amount": 14.37
+      }
+    ]
+  }
 }
