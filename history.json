@@ -543,39 +543,39 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 158.17,
+        "total": 167.4,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-            "amount": 79.67
+            "amount": 89.49
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 18.97
+            "amount": 19.38
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 11.67
+            "amount": 12.78
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 10.16
+            "amount": 10.74
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-            "amount": 6.63
+            "amount": 6.64
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 4.8
+            "amount": 5.66
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 3.51
+            "amount": 3.73
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 3.35
+            "amount": 3.56
           }
         ]
       },
@@ -589,11 +589,11 @@
         ]
       },
       "anthropic": {
-        "total": 259.17,
+        "total": 292.76,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 195.27
+            "amount": 228.04
           },
           {
             "name": "claude-opus-5",
@@ -609,20 +609,20 @@
           },
           {
             "name": "claude-sonnet-4-5-20250929",
-            "amount": 5.66
+            "amount": 6.17
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 2.99
+            "amount": 3.29
           }
         ]
       },
       "openai": {
-        "total": 117.56,
+        "total": 238.07,
         "services": [
           {
             "name": "unknown",
-            "amount": 117.56
+            "amount": 238.07
           }
         ]
       },
