@@ -625,6 +625,15 @@
             "amount": 289.18
           }
         ]
+      },
+      "azure": {
+        "total": 59.87,
+        "services": [
+          {
+            "name": "Foundry Models",
+            "amount": 59.87
+          }
+        ]
       }
     }
   ]
