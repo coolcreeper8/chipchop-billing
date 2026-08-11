@@ -580,11 +580,11 @@
         ]
       },
       "gcp": {
-        "total": 0.06,
+        "total": 0.07,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.06
+            "amount": 0.07
           }
         ]
       },
@@ -618,11 +618,20 @@
         ]
       },
       "openai": {
-        "total": 305.0,
+        "total": 305.05,
         "services": [
           {
             "name": "unknown",
-            "amount": 305.0
+            "amount": 305.05
+          }
+        ]
+      },
+      "azure": {
+        "total": 59.87,
+        "services": [
+          {
+            "name": "Foundry Models",
+            "amount": 59.87
           }
         ]
       }
