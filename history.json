@@ -543,27 +543,27 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 253.91,
+        "total": 256.9,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
             "amount": 155.87
           },
           {
-            "name": "Amazon Elastic Compute Cloud",
-            "amount": 23.25
+            "name": "Amazon Elastic Container Service",
+            "amount": 24.22
           },
           {
-            "name": "Amazon Elastic Container Service",
-            "amount": 23.0
+            "name": "Amazon Elastic Compute Cloud",
+            "amount": 23.61
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 14.88
+            "amount": 15.4
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 7.26
+            "amount": 7.46
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,11 +571,11 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 5.26
+            "amount": 5.43
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 5.0
+            "amount": 5.18
           }
         ]
       },
@@ -589,40 +589,40 @@
         ]
       },
       "anthropic": {
-        "total": 292.76,
+        "total": 363.03,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 228.04
+            "amount": 284.64
           },
           {
             "name": "claude-opus-5",
-            "amount": 38.88
+            "amount": 48.28
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 10.17
+            "amount": 10.63
+          },
+          {
+            "name": "claude-sonnet-4-5-20250929",
+            "amount": 9.76
           },
           {
             "name": "claude-opus-4-8",
             "amount": 6.21
           },
           {
-            "name": "claude-sonnet-4-5-20250929",
-            "amount": 6.17
-          },
-          {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 3.29
+            "amount": 3.52
           }
         ]
       },
       "openai": {
-        "total": 289.18,
+        "total": 305.0,
         "services": [
           {
             "name": "unknown",
-            "amount": 289.18
+            "amount": 305.0
           }
         ]
       }
