@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T07:22:08.750569Z",
+  "generated_at": "2026-08-12T13:05:13.944377Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 272.26,
+    "total": 275.35,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -18,19 +18,19 @@
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 29.49
+        "amount": 30.65
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 25.11
+        "amount": 25.43
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 17.12
+        "amount": 17.57
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 8.27
+        "amount": 8.53
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -38,11 +38,11 @@
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 6.06
+        "amount": 6.24
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 5.76
+        "amount": 5.92
       }
     ],
     "daily": [
@@ -96,7 +96,7 @@
       },
       {
         "date": "2026-08-11",
-        "amount": 10.28
+        "amount": 13.37
       },
       {
         "date": "2026-08-12",
@@ -269,17 +269,17 @@
     ]
   },
   "openai": {
-    "total": 326.59,
+    "total": 326.53,
     "services": [
       {
         "name": "unknown",
-        "amount": 326.59
+        "amount": 326.53
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 325.8
+        "amount": 325.73
       },
       {
         "name": "chipchop",
@@ -309,7 +309,7 @@
       },
       {
         "date": "2026-08-04",
-        "amount": 29.33
+        "amount": 29.27
       },
       {
         "date": "2026-08-05",
