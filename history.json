@@ -543,27 +543,27 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 264.8,
+        "total": 272.26,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-            "amount": 155.87
+            "amount": 159.46
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 27.96
+            "amount": 29.49
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 24.66
+            "amount": 25.11
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 16.44
+            "amount": 17.12
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 8.0
+            "amount": 8.27
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,11 +571,11 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 5.84
+            "amount": 6.06
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 5.54
+            "amount": 5.76
           }
         ]
       },
@@ -589,19 +589,19 @@
         ]
       },
       "anthropic": {
-        "total": 363.03,
+        "total": 474.97,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 284.64
+            "amount": 344.46
           },
           {
             "name": "claude-opus-5",
-            "amount": 48.28
+            "amount": 94.45
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 10.63
+            "amount": 14.79
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -613,16 +613,16 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 3.52
+            "amount": 5.3
           }
         ]
       },
       "openai": {
-        "total": 305.05,
+        "total": 326.57,
         "services": [
           {
             "name": "unknown",
-            "amount": 305.05
+            "amount": 326.57
           }
         ]
       }
