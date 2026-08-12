@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T01:49:06.591668Z",
+  "generated_at": "2026-08-12T07:22:08.750569Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -164,6 +164,10 @@
       {
         "date": "2026-08-11",
         "amount": 0.01
+      },
+      {
+        "date": "2026-08-12",
+        "amount": 0.0
       }
     ]
   },
@@ -265,17 +269,17 @@
     ]
   },
   "openai": {
-    "total": 326.57,
+    "total": 326.59,
     "services": [
       {
         "name": "unknown",
-        "amount": 326.57
+        "amount": 326.59
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 325.78
+        "amount": 325.8
       },
       {
         "name": "chipchop",
@@ -309,7 +313,7 @@
       },
       {
         "date": "2026-08-05",
-        "amount": 12.98
+        "amount": 13.0
       },
       {
         "date": "2026-08-06",

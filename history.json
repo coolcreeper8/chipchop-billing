@@ -618,11 +618,11 @@
         ]
       },
       "openai": {
-        "total": 326.57,
+        "total": 326.59,
         "services": [
           {
             "name": "unknown",
-            "amount": 326.57
+            "amount": 326.59
           }
         ]
       }
