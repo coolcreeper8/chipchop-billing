@@ -580,58 +580,49 @@
         ]
       },
       "gcp": {
-        "total": 0.07,
+        "total": 0.08,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.07
+            "amount": 0.08
           }
         ]
       },
       "anthropic": {
-        "total": 474.97,
+        "total": 823.03,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 344.46
+            "amount": 628.81
           },
           {
             "name": "claude-opus-5",
-            "amount": 94.45
+            "amount": 113.61
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 14.79
+            "amount": 57.69
           },
           {
             "name": "claude-sonnet-4-5-20250929",
-            "amount": 9.76
+            "amount": 10.29
+          },
+          {
+            "name": "claude-haiku-4-5-20251001",
+            "amount": 6.43
           },
           {
             "name": "claude-opus-4-8",
             "amount": 6.21
-          },
-          {
-            "name": "claude-haiku-4-5-20251001",
-            "amount": 5.3
           }
         ]
       },
       "openai": {
-        "total": 326.56,
+        "total": 410.79,
         "services": [
           {
             "name": "unknown",
-            "amount": 326.56
-          }
-        ]
-      },
-      "azure": {
-        "total": 59.87,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 59.87
+            "amount": 410.79
           }
         ]
       }
