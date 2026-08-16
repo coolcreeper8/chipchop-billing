@@ -543,7 +543,7 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 330.58,
+        "total": 335.97,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -551,19 +551,19 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 49.07
+            "amount": 50.6
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 32.67
+            "amount": 34.35
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 23.19
+            "amount": 24.07
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 11.71
+            "amount": 12.0
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,20 +571,20 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 8.04
+            "amount": 8.28
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 7.65
+            "amount": 7.88
           }
         ]
       },
       "gcp": {
-        "total": 0.1,
+        "total": 0.11,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.09
+            "amount": 0.1
           },
           {
             "name": "Vertex AI",
@@ -593,7 +593,7 @@
         ]
       },
       "anthropic": {
-        "total": 1011.1,
+        "total": 1019.1,
         "services": [
           {
             "name": "claude-sonnet-4-6",
@@ -601,11 +601,11 @@
           },
           {
             "name": "claude-opus-5",
-            "amount": 121.8
+            "amount": 121.85
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 61.2
+            "amount": 69.14
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -626,11 +626,11 @@
         ]
       },
       "openai": {
-        "total": 801.47,
+        "total": 838.6,
         "services": [
           {
             "name": "unknown",
-            "amount": 801.47
+            "amount": 838.6
           }
         ]
       }
