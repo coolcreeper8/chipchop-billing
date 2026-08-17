@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T12:39:55.439112Z",
+  "generated_at": "2026-08-17T18:36:58.858945Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -7,7 +7,7 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
     "total": 356.06,
@@ -105,11 +105,11 @@
     ]
   },
   "gcp": {
-    "total": 0.11,
+    "total": 0.12,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.1
+        "amount": 0.11
       },
       {
         "name": "Vertex AI",
@@ -357,5 +357,77 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 70.96,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 70.96
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 70.96
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-08-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-05",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-06",
+        "amount": 1.69
+      },
+      {
+        "date": "2026-08-07",
+        "amount": 14.37
+      },
+      {
+        "date": "2026-08-08",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-09",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-10",
+        "amount": 1.83
+      },
+      {
+        "date": "2026-08-11",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-13",
+        "amount": 2.04
+      },
+      {
+        "date": "2026-08-14",
+        "amount": 9.05
+      },
+      {
+        "date": "2026-08-15",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-16",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-17",
+        "amount": 0.0
+      }
+    ]
+  }
 }
