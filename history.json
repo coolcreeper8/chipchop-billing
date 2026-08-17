@@ -543,7 +543,7 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 344.33,
+        "total": 349.47,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -551,19 +551,19 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 53.04
+            "amount": 54.57
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 36.82
+            "amount": 38.17
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 25.43
+            "amount": 26.28
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 12.46
+            "amount": 12.75
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,11 +571,11 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 8.66
+            "amount": 8.9
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 8.24
+            "amount": 8.46
           }
         ]
       },
@@ -593,11 +593,11 @@
         ]
       },
       "anthropic": {
-        "total": 1019.1,
+        "total": 1071.1,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 800.93
+            "amount": 801.24
           },
           {
             "name": "claude-opus-5",
@@ -605,7 +605,7 @@
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 69.14
+            "amount": 119.15
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -613,24 +613,28 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 9.08
+            "amount": 9.24
           },
           {
             "name": "claude-opus-4-8",
             "amount": 6.21
           },
           {
+            "name": "claude-opus-4-6",
+            "amount": 1.5
+          },
+          {
             "name": "Web Search Usage",
-            "amount": 0.02
+            "amount": 0.05
           }
         ]
       },
       "openai": {
-        "total": 838.6,
+        "total": 840.1,
         "services": [
           {
             "name": "unknown",
-            "amount": 838.6
+            "amount": 840.1
           }
         ]
       },
