@@ -551,19 +551,19 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 59.4
+            "amount": 61.63
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 41.47
+            "amount": 42.67
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 28.15
+            "amount": 28.88
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 13.46
+            "amount": 13.81
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,11 +571,11 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 9.42
+            "amount": 9.63
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 8.96
+            "amount": 9.16
           }
         ]
       },
