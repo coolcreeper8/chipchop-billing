@@ -543,7 +543,7 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 356.06,
+        "total": 362.49,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -551,19 +551,19 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 56.86
+            "amount": 59.4
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 39.79
+            "amount": 41.47
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 27.3
+            "amount": 28.15
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 13.13
+            "amount": 13.46
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -571,11 +571,11 @@
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 9.18
+            "amount": 9.42
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 8.73
+            "amount": 8.96
           }
         ]
       },
@@ -593,19 +593,19 @@
         ]
       },
       "anthropic": {
-        "total": 1071.1,
+        "total": 1087.76,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 801.24
+            "amount": 801.48
+          },
+          {
+            "name": "claude-sonnet-5",
+            "amount": 135.16
           },
           {
             "name": "claude-opus-5",
             "amount": 121.85
-          },
-          {
-            "name": "claude-sonnet-5",
-            "amount": 119.15
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -613,7 +613,7 @@
           },
           {
             "name": "claude-haiku-4-5-20251001",
-            "amount": 9.24
+            "amount": 9.55
           },
           {
             "name": "claude-opus-4-8",
@@ -625,25 +625,16 @@
           },
           {
             "name": "Web Search Usage",
-            "amount": 0.05
+            "amount": 0.15
           }
         ]
       },
       "openai": {
-        "total": 840.1,
+        "total": 846.57,
         "services": [
           {
             "name": "unknown",
-            "amount": 840.1
-          }
-        ]
-      },
-      "azure": {
-        "total": 70.96,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 70.96
+            "amount": 846.57
           }
         ]
       }
