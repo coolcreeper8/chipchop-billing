@@ -580,11 +580,11 @@
         ]
       },
       "gcp": {
-        "total": 0.12,
+        "total": 0.13,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.11
+            "amount": 0.12
           },
           {
             "name": "Vertex AI",
