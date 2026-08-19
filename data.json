@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T18:35:48.168112Z",
+  "generated_at": "2026-08-19T01:08:58.712987Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 371.91,
+    "total": 375.93,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -18,19 +18,19 @@
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 62.9
+        "amount": 64.14
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 43.95
+        "amount": 45.02
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 29.48
+        "amount": 30.19
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 13.9
+        "amount": 14.03
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -38,18 +38,14 @@
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 9.8
+        "amount": 9.99
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 9.32
+        "amount": 9.5
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-05",
-        "amount": 11.41
-      },
       {
         "date": "2026-08-06",
         "amount": 70.28
@@ -96,11 +92,15 @@
       },
       {
         "date": "2026-08-17",
-        "amount": 14.94
+        "amount": 14.97
       },
       {
         "date": "2026-08-18",
-        "amount": 2.7
+        "amount": 6.69
+      },
+      {
+        "date": "2026-08-19",
+        "amount": 0.0
       }
     ]
   },
@@ -117,10 +117,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-05",
-        "amount": 0.01
-      },
       {
         "date": "2026-08-06",
         "amount": 0.01
@@ -176,15 +172,15 @@
     ]
   },
   "anthropic": {
-    "total": 1087.76,
+    "total": 1118.71,
     "services": [
       {
         "name": "claude-sonnet-4-6",
-        "amount": 801.48
+        "amount": 801.63
       },
       {
         "name": "claude-sonnet-5",
-        "amount": 135.16
+        "amount": 165.82
       },
       {
         "name": "claude-opus-5",
@@ -196,7 +192,7 @@
       },
       {
         "name": "claude-haiku-4-5-20251001",
-        "amount": 9.55
+        "amount": 9.68
       },
       {
         "name": "claude-opus-4-8",
@@ -208,24 +204,20 @@
       },
       {
         "name": "Web Search Usage",
-        "amount": 0.15
+        "amount": 0.16
       }
     ],
     "users": [
       {
         "name": "default",
-        "amount": 868.44
+        "amount": 868.6
       },
       {
         "name": "Claude Code",
-        "amount": 219.31
+        "amount": 250.11
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-05",
-        "amount": 25.27
-      },
       {
         "date": "2026-08-06",
         "amount": 61.97
@@ -276,22 +268,26 @@
       },
       {
         "date": "2026-08-18",
+        "amount": 30.96
+      },
+      {
+        "date": "2026-08-19",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 846.57,
+    "total": 864.86,
     "services": [
       {
         "name": "unknown",
-        "amount": 846.57
+        "amount": 864.86
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 845.78
+        "amount": 864.07
       },
       {
         "name": "chipchop",
@@ -299,10 +295,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-05",
-        "amount": 12.98
-      },
       {
         "date": "2026-08-06",
         "amount": 64.17
@@ -353,6 +345,10 @@
       },
       {
         "date": "2026-08-18",
+        "amount": 18.29
+      },
+      {
+        "date": "2026-08-19",
         "amount": 0.0
       }
     ]
@@ -372,10 +368,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-05",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-06",
         "amount": 1.69
@@ -426,6 +418,10 @@
       },
       {
         "date": "2026-08-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-19",
         "amount": 0.0
       }
     ]
