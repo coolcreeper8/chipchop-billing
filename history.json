@@ -580,11 +580,11 @@
         ]
       },
       "gcp": {
-        "total": 0.16,
+        "total": 0.17,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.15
+            "amount": 0.16
           },
           {
             "name": "Vertex AI",
@@ -635,15 +635,6 @@
           {
             "name": "unknown",
             "amount": 901.14
-          }
-        ]
-      },
-      "azure": {
-        "total": 73.67,
-        "services": [
-          {
-            "name": "Foundry Models",
-            "amount": 73.67
           }
         ]
       }
