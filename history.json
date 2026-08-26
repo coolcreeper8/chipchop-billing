@@ -551,15 +551,15 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 88.27
+            "amount": 90.1
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 68.07
+            "amount": 70.07
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 43.62
+            "amount": 44.64
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -567,15 +567,15 @@
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 19.09
+            "amount": 19.44
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 13.75
+            "amount": 14.03
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 13.06
+            "amount": 13.33
           }
         ]
       },
@@ -630,11 +630,11 @@
         ]
       },
       "openai": {
-        "total": 901.14,
+        "total": 907.11,
         "services": [
           {
             "name": "unknown",
-            "amount": 901.14
+            "amount": 907.11
           }
         ]
       }
