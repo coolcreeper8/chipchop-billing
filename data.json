@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T21:47:57.317282Z",
+  "generated_at": "2026-08-28T09:39:32.485438Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -7,26 +7,26 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 584.7,
+    "total": 646.73,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 170.08
-      },
-      {
-        "name": "Amazon Elastic Container Service",
-        "amount": 95.59
-      },
-      {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 75.4
+        "amount": 177.21
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 61.13
+        "amount": 106.54
+      },
+      {
+        "name": "Amazon Elastic Container Service",
+        "amount": 98.34
+      },
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 78.15
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -34,22 +34,18 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 47.7
+        "amount": 49.23
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 20.5
+        "amount": 21.02
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 14.88
+        "amount": 15.3
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-14",
-        "amount": 14.89
-      },
       {
         "date": "2026-08-15",
         "amount": 12.42
@@ -92,15 +88,19 @@
       },
       {
         "date": "2026-08-25",
-        "amount": 36.8
+        "amount": 36.85
       },
       {
         "date": "2026-08-26",
-        "amount": 11.64
+        "amount": 12.31
       },
       {
         "date": "2026-08-27",
-        "amount": 43.74
+        "amount": 105.06
+      },
+      {
+        "date": "2026-08-28",
+        "amount": 0.0
       }
     ]
   },
@@ -117,10 +117,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-14",
-        "amount": 0.01
-      },
       {
         "date": "2026-08-15",
         "amount": 0.01
@@ -223,10 +219,6 @@
     ],
     "daily": [
       {
-        "date": "2026-08-14",
-        "amount": 33.39
-      },
-      {
         "date": "2026-08-15",
         "amount": 8.0
       },
@@ -277,21 +269,25 @@
       {
         "date": "2026-08-27",
         "amount": 0.0
+      },
+      {
+        "date": "2026-08-28",
+        "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 910.29,
+    "total": 933.27,
     "services": [
       {
         "name": "unknown",
-        "amount": 910.29
+        "amount": 933.27
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 909.23
+        "amount": 932.21
       },
       {
         "name": "chipchop",
@@ -299,10 +295,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-14",
-        "amount": 228.29
-      },
       {
         "date": "2026-08-15",
         "amount": 37.13
@@ -329,7 +321,7 @@
       },
       {
         "date": "2026-08-21",
-        "amount": 7.15
+        "amount": 7.17
       },
       {
         "date": "2026-08-22",
@@ -353,9 +345,85 @@
       },
       {
         "date": "2026-08-27",
+        "amount": 22.95
+      },
+      {
+        "date": "2026-08-28",
         "amount": 0.0
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 73.67,
+    "services": [
+      {
+        "name": "Foundry Models",
+        "amount": 73.67
+      }
+    ],
+    "users": [
+      {
+        "name": "rg-chipchopgpt",
+        "amount": 73.67
+      }
+    ],
+    "daily": [
+      {
+        "date": "2026-08-15",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-16",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-17",
+        "amount": 2.7
+      },
+      {
+        "date": "2026-08-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-28",
+        "amount": 0.0
+      }
+    ]
+  }
 }
