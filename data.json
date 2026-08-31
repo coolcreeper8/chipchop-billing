@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T12:45:19.808660Z",
+  "generated_at": "2026-08-31T22:28:42.610386Z",
   "month": "2026-08",
   "budget": {
     "aws": 3000.0,
@@ -10,39 +10,39 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 760.0,
+    "total": 777.27,
     "services": [
       {
-        "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 177.21
+        "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
+        "amount": 189.7
       },
       {
-        "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 176.84
+        "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
+        "amount": 177.26
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 109.32
+        "amount": 112.07
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 88.83
-      },
-      {
-        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-        "amount": 56.65
+        "amount": 91.58
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 55.35
+        "amount": 56.88
+      },
+      {
+        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
+        "amount": 56.66
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 23.12
+        "amount": 23.65
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 17.01
+        "amount": 17.44
       }
     ],
     "daily": [
@@ -96,20 +96,20 @@
       },
       {
         "date": "2026-08-30",
-        "amount": 30.58
+        "amount": 39.09
       },
       {
         "date": "2026-08-31",
-        "amount": 0.0
+        "amount": 13.78
       }
     ]
   },
   "gcp": {
-    "total": 0.2,
+    "total": 0.21,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.19
+        "amount": 0.2
       },
       {
         "name": "Vertex AI",
