@@ -543,7 +543,7 @@
     {
       "month": "2026-08",
       "aws": {
-        "total": 738.97,
+        "total": 750.98,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -551,15 +551,15 @@
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-            "amount": 158.46
+            "amount": 172.41
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 106.58
+            "amount": 107.95
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 86.41
+            "amount": 87.62
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -567,15 +567,15 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 53.82
+            "amount": 54.59
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 22.6
+            "amount": 22.86
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 16.59
+            "amount": 16.81
           }
         ]
       },
@@ -593,19 +593,19 @@
         ]
       },
       "anthropic": {
-        "total": 1200.34,
+        "total": 1214.63,
         "services": [
           {
             "name": "claude-sonnet-4-6",
-            "amount": 802.45
+            "amount": 802.54
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 246.61
+            "amount": 247.44
           },
           {
             "name": "claude-opus-5",
-            "amount": 121.85
+            "amount": 135.21
           },
           {
             "name": "claude-sonnet-4-5-20250929",
@@ -630,11 +630,11 @@
         ]
       },
       "openai": {
-        "total": 938.84,
+        "total": 939.09,
         "services": [
           {
             "name": "unknown",
-            "amount": 938.84
+            "amount": 939.09
           }
         ]
       }
