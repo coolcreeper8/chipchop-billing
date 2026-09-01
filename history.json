@@ -657,6 +657,10 @@
       "openai": {
         "total": 0,
         "services": []
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     }
   ]
