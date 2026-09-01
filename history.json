@@ -647,7 +647,12 @@
       },
       "gcp": {
         "total": 0.0,
-        "services": []
+        "services": [
+          {
+            "name": "Cloud DNS",
+            "amount": 0.0
+          }
+        ]
       },
       "openai": {
         "total": 0,
