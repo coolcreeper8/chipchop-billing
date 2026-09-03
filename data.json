@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T20:31:21.436133Z",
+  "generated_at": "2026-09-03T03:01:28.400855Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -10,46 +10,42 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 6.2,
+    "total": 20.71,
     "services": [
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 1.83
+        "amount": 5.95
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 1.38
+        "amount": 5.37
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 1.02
-      },
-      {
-        "name": "Amazon Route 53",
-        "amount": 0.5
+        "amount": 3.31
       },
       {
         "name": "AWS WAF",
-        "amount": 0.3
-      },
-      {
-        "name": "Elastic Load Balancing",
-        "amount": 0.27
-      },
-      {
-        "name": "Amazon Relational Database Service",
-        "amount": 0.26
+        "amount": 1.02
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 0.26
+        "amount": 0.97
+      },
+      {
+        "name": "Amazon Relational Database Service",
+        "amount": 0.91
+      },
+      {
+        "name": "Elastic Load Balancing",
+        "amount": 0.88
+      },
+      {
+        "name": "Amazon ElastiCache",
+        "amount": 0.62
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-20",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-21",
         "amount": 0.0
@@ -96,10 +92,14 @@
       },
       {
         "date": "2026-09-01",
-        "amount": 6.2
+        "amount": 12.92
       },
       {
         "date": "2026-09-02",
+        "amount": 7.78
+      },
+      {
+        "date": "2026-09-03",
         "amount": 0.0
       }
     ]
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-20",
-        "amount": 0.01
-      },
       {
         "date": "2026-08-21",
         "amount": 0.01
@@ -172,15 +168,15 @@
     ]
   },
   "anthropic": {
-    "total": 58.7,
+    "total": 60.89,
     "services": [
       {
         "name": "claude-opus-4-6",
-        "amount": 56.66
+        "amount": 58.7
       },
       {
         "name": "claude-sonnet-5",
-        "amount": 2.01
+        "amount": 2.15
       },
       {
         "name": "claude-haiku-4-5-20251001",
@@ -190,14 +186,10 @@
     "users": [
       {
         "name": "Claude Code",
-        "amount": 58.7
+        "amount": 60.89
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-20",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-21",
         "amount": 0.0
@@ -248,29 +240,29 @@
       },
       {
         "date": "2026-09-02",
+        "amount": 2.19
+      },
+      {
+        "date": "2026-09-03",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 4.23,
+    "total": 7.42,
     "services": [
       {
         "name": "unknown",
-        "amount": 4.23
+        "amount": 7.42
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 4.23
+        "amount": 7.42
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-20",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-21",
         "amount": 0.0
@@ -321,6 +313,10 @@
       },
       {
         "date": "2026-09-02",
+        "amount": 3.19
+      },
+      {
+        "date": "2026-09-03",
         "amount": 0.0
       }
     ]
