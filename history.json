@@ -642,35 +642,35 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 20.71,
+        "total": 23.72,
         "services": [
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 5.95
+            "amount": 6.87
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 5.37
+            "amount": 6.17
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.31
+            "amount": 3.83
           },
           {
             "name": "AWS WAF",
-            "amount": 1.02
+            "amount": 1.17
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 0.97
+            "amount": 1.12
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 0.91
+            "amount": 1.06
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 0.88
+            "amount": 1.02
           },
           {
             "name": "Amazon ElastiCache",
