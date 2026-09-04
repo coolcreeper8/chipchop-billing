@@ -637,44 +637,53 @@
             "amount": 939.09
           }
         ]
+      },
+      "azure": {
+        "total": 73.67,
+        "services": [
+          {
+            "name": "Foundry Models",
+            "amount": 73.67
+          }
+        ]
       }
     },
     {
       "month": "2026-09",
       "aws": {
-        "total": 33.17,
+        "total": 36.69,
         "services": [
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 9.61
+            "amount": 10.68
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 8.95
+            "amount": 9.88
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 5.36
+            "amount": 5.95
           },
           {
             "name": "AWS WAF",
-            "amount": 1.62
+            "amount": 1.79
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 1.6
+            "amount": 1.78
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 1.49
+            "amount": 1.66
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 1.42
+            "amount": 1.58
           },
           {
             "name": "Amazon ElastiCache",
-            "amount": 0.99
+            "amount": 1.12
           }
         ]
       },
