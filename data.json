@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T03:02:20.035539Z",
+  "generated_at": "2026-09-05T09:59:20.097998Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -7,42 +7,42 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 56.07,
+    "total": 63.61,
     "services": [
       {
+        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
+        "amount": 14.56
+      },
+      {
         "name": "Amazon Elastic Container Service",
-        "amount": 13.27
+        "amount": 14.35
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 12.52
-      },
-      {
-        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-        "amount": 10.53
+        "amount": 13.45
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 7.4
+        "amount": 7.99
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 2.22
+        "amount": 2.42
       },
       {
         "name": "AWS WAF",
-        "amount": 2.22
+        "amount": 2.4
       },
       {
         "name": "Amazon Relational Database Service",
-        "amount": 2.07
+        "amount": 2.23
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 1.96
+        "amount": 2.21
       }
     ],
     "daily": [
@@ -96,7 +96,7 @@
       },
       {
         "date": "2026-09-04",
-        "amount": 17.71
+        "amount": 25.25
       },
       {
         "date": "2026-09-05",
@@ -105,11 +105,11 @@
     ]
   },
   "gcp": {
-    "total": 0.02,
+    "total": 0.03,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.02
+        "amount": 0.03
       }
     ],
     "daily": [
@@ -163,7 +163,7 @@
       },
       {
         "date": "2026-09-04",
-        "amount": 0.0
+        "amount": 0.01
       }
     ]
   },
@@ -321,5 +321,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-08-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-08-31",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-05",
+        "amount": 0.0
+      }
+    ]
+  }
 }
