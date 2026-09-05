@@ -651,39 +651,39 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 41.03,
+        "total": 56.07,
         "services": [
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 11.9
+            "amount": 13.27
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 11.3
+            "amount": 12.52
+          },
+          {
+            "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
+            "amount": 10.53
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 6.63
+            "amount": 7.4
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 1.99
+            "amount": 2.22
           },
           {
             "name": "AWS WAF",
-            "amount": 1.99
+            "amount": 2.22
           },
           {
             "name": "Amazon Relational Database Service",
-            "amount": 1.85
+            "amount": 2.07
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 1.76
-          },
-          {
-            "name": "Amazon ElastiCache",
-            "amount": 1.25
+            "amount": 1.96
           }
         ]
       },
@@ -714,11 +714,11 @@
         ]
       },
       "openai": {
-        "total": 44.46,
+        "total": 56.02,
         "services": [
           {
             "name": "unknown",
-            "amount": 44.46
+            "amount": 56.02
           }
         ]
       }
