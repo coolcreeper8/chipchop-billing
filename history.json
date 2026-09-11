@@ -651,23 +651,23 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 168.68,
+        "total": 172.61,
         "services": [
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 35.83
+            "amount": 37.06
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 30.15
+            "amount": 30.52
+          },
+          {
+            "name": "Amazon Virtual Private Cloud",
+            "amount": 23.34
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
             "amount": 23.18
-          },
-          {
-            "name": "Amazon Virtual Private Cloud",
-            "amount": 22.18
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -679,11 +679,11 @@
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 7.97
+            "amount": 8.33
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 5.99
+            "amount": 6.22
           }
         ]
       },
@@ -697,15 +697,15 @@
         ]
       },
       "anthropic": {
-        "total": 727.8,
+        "total": 790.46,
         "services": [
           {
             "name": "claude-opus-5",
-            "amount": 537.46
+            "amount": 596.0
           },
           {
             "name": "claude-sonnet-5",
-            "amount": 129.27
+            "amount": 133.39
           },
           {
             "name": "claude-opus-4-6",
@@ -718,11 +718,11 @@
         ]
       },
       "openai": {
-        "total": 114.58,
+        "total": 147.89,
         "services": [
           {
             "name": "unknown",
-            "amount": 114.58
+            "amount": 147.89
           }
         ]
       }

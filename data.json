@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T20:26:43.205220Z",
+  "generated_at": "2026-09-11T03:07:10.512997Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -10,23 +10,23 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 168.68,
+    "total": 172.61,
     "services": [
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 35.83
+        "amount": 37.06
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 30.15
+        "amount": 30.52
+      },
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 23.34
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
         "amount": 23.18
-      },
-      {
-        "name": "Amazon Virtual Private Cloud",
-        "amount": 22.18
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -38,18 +38,14 @@
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 7.97
+        "amount": 8.33
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 5.99
+        "amount": 6.22
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-28",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-29",
         "amount": 0.0
@@ -100,7 +96,11 @@
       },
       {
         "date": "2026-09-10",
-        "amount": 16.52
+        "amount": 20.45
+      },
+      {
+        "date": "2026-09-11",
+        "amount": 0.0
       }
     ]
   },
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-28",
-        "amount": 0.01
-      },
       {
         "date": "2026-08-29",
         "amount": 0.01
@@ -172,15 +168,15 @@
     ]
   },
   "anthropic": {
-    "total": 727.8,
+    "total": 790.46,
     "services": [
       {
         "name": "claude-opus-5",
-        "amount": 537.46
+        "amount": 596.0
       },
       {
         "name": "claude-sonnet-5",
-        "amount": 129.27
+        "amount": 133.39
       },
       {
         "name": "claude-opus-4-6",
@@ -194,14 +190,10 @@
     "users": [
       {
         "name": "Claude Code",
-        "amount": 727.8
+        "amount": 790.46
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-28",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-29",
         "amount": 0.0
@@ -252,29 +244,29 @@
       },
       {
         "date": "2026-09-10",
+        "amount": 62.66
+      },
+      {
+        "date": "2026-09-11",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 114.58,
+    "total": 147.89,
     "services": [
       {
         "name": "unknown",
-        "amount": 114.58
+        "amount": 147.89
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 114.58
+        "amount": 147.89
       }
     ],
     "daily": [
-      {
-        "date": "2026-08-28",
-        "amount": 0.0
-      },
       {
         "date": "2026-08-29",
         "amount": 0.0
@@ -325,6 +317,10 @@
       },
       {
         "date": "2026-09-10",
+        "amount": 33.31
+      },
+      {
+        "date": "2026-09-11",
         "amount": 0.0
       }
     ]
