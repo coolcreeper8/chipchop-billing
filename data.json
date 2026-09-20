@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T20:05:12.715180Z",
+  "generated_at": "2026-09-20T03:31:14.595954Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 7000.0
   },
   "aws": {
-    "total": 653.61,
+    "total": 657.85,
     "services": [
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -26,30 +26,26 @@
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 69.01
+        "amount": 70.08
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 53.52
+        "amount": 54.54
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 52.71
+        "amount": 53.66
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 17.69
+        "amount": 18.01
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 13.03
+        "amount": 13.24
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-06",
-        "amount": 12.93
-      },
       {
         "date": "2026-09-07",
         "amount": 13.01
@@ -96,11 +92,15 @@
       },
       {
         "date": "2026-09-18",
-        "amount": 53.93
+        "amount": 54.05
       },
       {
         "date": "2026-09-19",
-        "amount": 3.5
+        "amount": 7.63
+      },
+      {
+        "date": "2026-09-20",
+        "amount": 0.0
       }
     ]
   },
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-06",
-        "amount": 0.01
-      },
       {
         "date": "2026-09-07",
         "amount": 0.01
@@ -199,10 +195,6 @@
     ],
     "daily": [
       {
-        "date": "2026-09-06",
-        "amount": 219.06
-      },
-      {
         "date": "2026-09-07",
         "amount": 28.87
       },
@@ -253,28 +245,28 @@
       {
         "date": "2026-09-19",
         "amount": 0.0
+      },
+      {
+        "date": "2026-09-20",
+        "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 493.97,
+    "total": 501.7,
     "services": [
       {
         "name": "unknown",
-        "amount": 493.97
+        "amount": 501.7
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 493.97
+        "amount": 501.7
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-06",
-        "amount": 5.62
-      },
       {
         "date": "2026-09-07",
         "amount": 0.0
@@ -325,6 +317,10 @@
       },
       {
         "date": "2026-09-19",
+        "amount": 7.73
+      },
+      {
+        "date": "2026-09-20",
         "amount": 0.0
       }
     ]
