@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T12:03:14.469426Z",
+  "generated_at": "2026-09-21T21:43:15.648128Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -7,14 +7,14 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 715.97,
+    "total": 739.8,
     "services": [
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 210.52
+        "amount": 229.86
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -26,23 +26,23 @@
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 75.27
+        "amount": 76.33
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 59.47
+        "amount": 60.48
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 58.58
+        "amount": 59.86
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 19.54
+        "amount": 19.85
       },
       {
         "name": "AmazonCloudWatch",
-        "amount": 14.27
+        "amount": 14.48
       }
     ],
     "daily": [
@@ -96,20 +96,20 @@
       },
       {
         "date": "2026-09-20",
-        "amount": 31.06
+        "amount": 32.3
       },
       {
         "date": "2026-09-21",
-        "amount": 0.0
+        "amount": 22.59
       }
     ]
   },
   "gcp": {
-    "total": 0.13,
+    "total": 0.14,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.13
+        "amount": 0.14
       }
     ],
     "daily": [
@@ -329,5 +329,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-09-08",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-09",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-10",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-11",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-13",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-14",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-15",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-16",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-17",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-21",
+        "amount": 0.0
+      }
+    ]
+  }
 }
