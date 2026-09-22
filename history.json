@@ -717,15 +717,6 @@
           }
         ]
       },
-      "openai": {
-        "total": 570.62,
-        "services": [
-          {
-            "name": "unknown",
-            "amount": 570.62
-          }
-        ]
-      },
       "azure": {
         "total": 0.0,
         "services": []
