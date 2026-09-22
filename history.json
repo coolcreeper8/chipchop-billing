@@ -651,7 +651,7 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 739.8,
+        "total": 757.64,
         "services": [
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -667,23 +667,23 @@
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 76.33
+            "amount": 77.71
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 60.48
+            "amount": 61.79
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 59.86
+            "amount": 61.07
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 19.85
+            "amount": 20.26
           },
           {
             "name": "AmazonCloudWatch",
-            "amount": 14.48
+            "amount": 14.75
           }
         ]
       },
@@ -718,11 +718,11 @@
         ]
       },
       "openai": {
-        "total": 513.74,
+        "total": 570.62,
         "services": [
           {
             "name": "unknown",
-            "amount": 513.74
+            "amount": 570.62
           }
         ]
       },
