@@ -688,11 +688,11 @@
         ]
       },
       "gcp": {
-        "total": 0.15,
+        "total": 0.16,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.15
+            "amount": 0.16
           }
         ]
       },
