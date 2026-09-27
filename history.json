@@ -651,7 +651,7 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 1000.42,
+        "total": 1004.54,
         "services": [
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -688,11 +688,11 @@
         ]
       },
       "gcp": {
-        "total": 0.17,
+        "total": 0.18,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.17
+            "amount": 0.18
           }
         ]
       },
