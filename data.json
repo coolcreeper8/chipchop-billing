@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T11:57:56.422015Z",
+  "generated_at": "2026-09-30T17:49:08.601696Z",
   "month": "2026-09",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 1121.7,
+    "total": 1152.37,
     "services": [
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -164,6 +164,10 @@
       {
         "date": "2026-09-29",
         "amount": 0.01
+      },
+      {
+        "date": "2026-09-30",
+        "amount": 0.0
       }
     ]
   },

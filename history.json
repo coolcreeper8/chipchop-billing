@@ -651,7 +651,7 @@
     {
       "month": "2026-09",
       "aws": {
-        "total": 1121.7,
+        "total": 1152.37,
         "services": [
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
