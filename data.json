@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T12:29:21.666899Z",
+  "generated_at": "2026-10-01T22:22:00.128702Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -7,11 +7,44 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 6000.0
+    "total": 7000.0
   },
   "aws": {
     "total": 1189.68,
-    "services": [],
+    "services": [
+      {
+        "name": "Amazon Virtual Private Cloud",
+        "amount": 1.34
+      },
+      {
+        "name": "Amazon Elastic Container Service",
+        "amount": 1.23
+      },
+      {
+        "name": "Amazon Route 53",
+        "amount": 1.0
+      },
+      {
+        "name": "Amazon Elastic Compute Cloud",
+        "amount": 0.86
+      },
+      {
+        "name": "Elastic Load Balancing",
+        "amount": 0.36
+      },
+      {
+        "name": "AWS WAF",
+        "amount": 0.19
+      },
+      {
+        "name": "Amazon Relational Database Service",
+        "amount": 0.17
+      },
+      {
+        "name": "AmazonCloudWatch",
+        "amount": 0.17
+      }
+    ],
     "daily": [
       {
         "date": "2026-09-18",
@@ -67,7 +100,7 @@
       },
       {
         "date": "2026-10-01",
-        "amount": 0.0
+        "amount": 5.6
       }
     ]
   },
@@ -202,5 +235,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-09-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-22",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-23",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-01",
+        "amount": 0.0
+      }
+    ]
+  }
 }

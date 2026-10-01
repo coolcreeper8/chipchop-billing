@@ -735,7 +735,40 @@
       "month": "2026-10",
       "aws": {
         "total": 1189.68,
-        "services": []
+        "services": [
+          {
+            "name": "Amazon Virtual Private Cloud",
+            "amount": 1.34
+          },
+          {
+            "name": "Amazon Elastic Container Service",
+            "amount": 1.23
+          },
+          {
+            "name": "Amazon Route 53",
+            "amount": 1.0
+          },
+          {
+            "name": "Amazon Elastic Compute Cloud",
+            "amount": 0.86
+          },
+          {
+            "name": "Elastic Load Balancing",
+            "amount": 0.36
+          },
+          {
+            "name": "AWS WAF",
+            "amount": 0.19
+          },
+          {
+            "name": "Amazon Relational Database Service",
+            "amount": 0.17
+          },
+          {
+            "name": "AmazonCloudWatch",
+            "amount": 0.17
+          }
+        ]
       },
       "gcp": {
         "total": 0.0,
@@ -748,6 +781,10 @@
       },
       "openai": {
         "total": 0,
+        "services": []
+      },
+      "azure": {
+        "total": 0.0,
         "services": []
       }
     }
