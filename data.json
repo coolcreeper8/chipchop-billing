@@ -1,122 +1,80 @@
 {
-  "generated_at": "2026-09-30T21:53:46.898370Z",
-  "month": "2026-09",
+  "generated_at": "2026-10-01T04:17:17.038047Z",
+  "month": "2026-10",
   "budget": {
     "aws": 3000.0,
     "gcp": 2000.0,
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 8000.0
+    "total": 7000.0
   },
   "aws": {
     "total": 1189.68,
-    "services": [
-      {
-        "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 386.49
-      },
-      {
-        "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-        "amount": 195.95
-      },
-      {
-        "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 168.0
-      },
-      {
-        "name": "Amazon Elastic Container Service",
-        "amount": 110.38
-      },
-      {
-        "name": "Amazon Virtual Private Cloud",
-        "amount": 94.01
-      },
-      {
-        "name": "Amazon Elastic Compute Cloud",
-        "amount": 92.98
-      },
-      {
-        "name": "Elastic Load Balancing",
-        "amount": 29.89
-      },
-      {
-        "name": "AmazonCloudWatch",
-        "amount": 21.26
-      }
-    ],
+    "services": [],
     "daily": [
       {
-        "date": "2026-09-17",
-        "amount": 64.86
-      },
-      {
         "date": "2026-09-18",
-        "amount": 54.05
+        "amount": 0.0
       },
       {
         "date": "2026-09-19",
-        "amount": 34.69
+        "amount": 0.0
       },
       {
         "date": "2026-09-20",
-        "amount": 32.3
+        "amount": 0.0
       },
       {
         "date": "2026-09-21",
-        "amount": 46.51
+        "amount": 0.0
       },
       {
         "date": "2026-09-22",
-        "amount": 41.38
+        "amount": 0.0
       },
       {
         "date": "2026-09-23",
-        "amount": 49.53
+        "amount": 0.0
       },
       {
         "date": "2026-09-24",
-        "amount": 46.83
+        "amount": 0.0
       },
       {
         "date": "2026-09-25",
-        "amount": 86.3
+        "amount": 0.0
       },
       {
         "date": "2026-09-26",
-        "amount": 14.48
+        "amount": 0.0
       },
       {
         "date": "2026-09-27",
-        "amount": 20.8
+        "amount": 0.0
       },
       {
         "date": "2026-09-28",
-        "amount": 46.55
+        "amount": 0.0
       },
       {
         "date": "2026-09-29",
-        "amount": 60.36
+        "amount": 0.0
       },
       {
         "date": "2026-09-30",
-        "amount": 28.4
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-01",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 0.2,
-    "services": [
-      {
-        "name": "Cloud DNS",
-        "amount": 0.2
-      }
-    ],
+    "total": 0.0,
+    "services": [],
     "daily": [
-      {
-        "date": "2026-09-17",
-        "amount": 0.01
-      },
       {
         "date": "2026-09-18",
         "amount": 0.01
@@ -171,145 +129,47 @@
       }
     ]
   },
-  "anthropic": {
-    "total": 883.2,
-    "services": [
-      {
-        "name": "claude-opus-5",
-        "amount": 682.06
-      },
-      {
-        "name": "claude-sonnet-5",
-        "amount": 140.07
-      },
-      {
-        "name": "claude-opus-4-6",
-        "amount": 60.99
-      },
-      {
-        "name": "claude-haiku-4-5-20251001",
-        "amount": 0.08
-      }
-    ],
-    "users": [
-      {
-        "name": "Claude Code",
-        "amount": 883.2
-      }
-    ],
-    "daily": [
-      {
-        "date": "2026-09-17",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-18",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-19",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-20",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-21",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-22",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-23",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-24",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-25",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-26",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-27",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-28",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-29",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-09-30",
-        "amount": 0.0
-      }
-    ]
-  },
+  "anthropic": null,
   "openai": {
-    "total": 1039.99,
-    "services": [
-      {
-        "name": "unknown",
-        "amount": 1039.99
-      }
-    ],
-    "users": [
-      {
-        "name": "Default project",
-        "amount": 1039.99
-      }
-    ],
+    "total": 0,
+    "services": [],
+    "users": [],
     "daily": [
       {
-        "date": "2026-09-17",
-        "amount": 27.94
-      },
-      {
         "date": "2026-09-18",
-        "amount": 22.72
+        "amount": 0.0
       },
       {
         "date": "2026-09-19",
-        "amount": 7.73
+        "amount": 0.0
       },
       {
         "date": "2026-09-20",
-        "amount": 12.04
+        "amount": 0.0
       },
       {
         "date": "2026-09-21",
-        "amount": 56.88
+        "amount": 0.0
       },
       {
         "date": "2026-09-22",
-        "amount": 68.11
+        "amount": 0.0
       },
       {
         "date": "2026-09-23",
-        "amount": 57.08
+        "amount": 0.0
       },
       {
         "date": "2026-09-24",
-        "amount": 13.25
+        "amount": 0.0
       },
       {
         "date": "2026-09-25",
-        "amount": 90.66
+        "amount": 0.0
       },
       {
         "date": "2026-09-26",
-        "amount": 159.33
+        "amount": 0.0
       },
       {
         "date": "2026-09-27",
@@ -317,14 +177,18 @@
       },
       {
         "date": "2026-09-28",
-        "amount": 50.3
+        "amount": 0.0
       },
       {
         "date": "2026-09-29",
-        "amount": 30.65
+        "amount": 0.0
       },
       {
         "date": "2026-09-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-01",
         "amount": 0.0
       }
     ]
@@ -335,10 +199,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-09-17",
-        "amount": 0.0
-      },
-      {
         "date": "2026-09-18",
         "amount": 0.0
       },
@@ -388,6 +248,10 @@
       },
       {
         "date": "2026-09-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-01",
         "amount": 0.0
       }
     ]

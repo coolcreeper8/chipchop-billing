@@ -730,6 +730,25 @@
         "total": 0.0,
         "services": []
       }
+    },
+    {
+      "month": "2026-10",
+      "aws": {
+        "total": 1189.68,
+        "services": []
+      },
+      "gcp": {
+        "total": 0.0,
+        "services": []
+      },
+      "openai": {
+        "total": 0,
+        "services": []
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
+      }
     }
   ]
 }
