@@ -734,7 +734,7 @@
     {
       "month": "2026-10",
       "aws": {
-        "total": 1189.68,
+        "total": 5.66,
         "services": [
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -771,11 +771,11 @@
         ]
       },
       "gcp": {
-        "total": 0.0,
+        "total": 0.01,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.0
+            "amount": 0.01
           }
         ]
       },
@@ -791,10 +791,6 @@
             "amount": 53.06
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
