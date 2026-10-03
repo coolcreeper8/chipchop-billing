@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T21:50:41.546564Z",
+  "generated_at": "2026-10-03T03:53:05.471657Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -18,38 +18,34 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 3.65
-      },
-      {
-        "name": "Amazon Elastic Container Service",
-        "amount": 2.98
+        "amount": 6.62
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 2.74
+        "amount": 5.49
+      },
+      {
+        "name": "Amazon Elastic Container Service",
+        "amount": 3.89
+      },
+      {
+        "name": "Elastic Load Balancing",
+        "amount": 1.8
       },
       {
         "name": "Amazon Route 53",
         "amount": 1.0
       },
       {
-        "name": "Elastic Load Balancing",
-        "amount": 0.99
-      },
-      {
-        "name": "AmazonCloudWatch",
-        "amount": 0.53
-      },
-      {
         "name": "AWS WAF",
-        "amount": 0.53
+        "amount": 0.97
+      },
+      {
+        "name": "Amazon Relational Database Service",
+        "amount": 0.93
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-19",
-        "amount": 0.0
-      },
       {
         "date": "2026-09-20",
         "amount": 0.0
@@ -96,10 +92,14 @@
       },
       {
         "date": "2026-10-01",
-        "amount": 31.82
+        "amount": 33.51
       },
       {
         "date": "2026-10-02",
+        "amount": 7.54
+      },
+      {
+        "date": "2026-10-03",
         "amount": 0.0
       }
     ]
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-19",
-        "amount": 0.01
-      },
       {
         "date": "2026-09-20",
         "amount": 0.01
@@ -177,10 +173,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-09-19",
-        "amount": 0.0
-      },
-      {
         "date": "2026-09-20",
         "amount": 0.0
       },
@@ -230,29 +222,29 @@
       },
       {
         "date": "2026-10-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-03",
         "amount": 0.0
       }
     ]
   },
   "openai": {
-    "total": 53.06,
+    "total": 124.81,
     "services": [
       {
         "name": "unknown",
-        "amount": 53.06
+        "amount": 124.81
       }
     ],
     "users": [
       {
         "name": "Default project",
-        "amount": 53.06
+        "amount": 124.81
       }
     ],
     "daily": [
-      {
-        "date": "2026-09-19",
-        "amount": 0.0
-      },
       {
         "date": "2026-09-20",
         "amount": 0.0
@@ -303,6 +295,10 @@
       },
       {
         "date": "2026-10-02",
+        "amount": 71.75
+      },
+      {
+        "date": "2026-10-03",
         "amount": 0.0
       }
     ]
@@ -313,10 +309,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-09-19",
-        "amount": 0.0
-      },
-      {
         "date": "2026-09-20",
         "amount": 0.0
       },
@@ -366,6 +358,10 @@
       },
       {
         "date": "2026-10-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-03",
         "amount": 0.0
       }
     ]

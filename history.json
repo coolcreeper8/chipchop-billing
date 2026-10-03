@@ -742,31 +742,31 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 3.65
-          },
-          {
-            "name": "Amazon Elastic Container Service",
-            "amount": 2.98
+            "amount": 6.62
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 2.74
+            "amount": 5.49
+          },
+          {
+            "name": "Amazon Elastic Container Service",
+            "amount": 3.89
+          },
+          {
+            "name": "Elastic Load Balancing",
+            "amount": 1.8
           },
           {
             "name": "Amazon Route 53",
             "amount": 1.0
           },
           {
-            "name": "Elastic Load Balancing",
-            "amount": 0.99
-          },
-          {
-            "name": "AmazonCloudWatch",
-            "amount": 0.53
-          },
-          {
             "name": "AWS WAF",
-            "amount": 0.53
+            "amount": 0.97
+          },
+          {
+            "name": "Amazon Relational Database Service",
+            "amount": 0.93
           }
         ]
       },
@@ -784,11 +784,11 @@
         "services": []
       },
       "openai": {
-        "total": 53.06,
+        "total": 124.81,
         "services": [
           {
             "name": "unknown",
-            "amount": 53.06
+            "amount": 124.81
           }
         ]
       },
