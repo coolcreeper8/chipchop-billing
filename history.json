@@ -784,11 +784,11 @@
         "services": []
       },
       "openai": {
-        "total": 224.98,
+        "total": 288.12,
         "services": [
           {
             "name": "unknown",
-            "amount": 224.98
+            "amount": 288.12
           }
         ]
       },
