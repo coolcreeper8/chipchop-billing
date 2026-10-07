@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T04:26:10.010809Z",
+  "generated_at": "2026-10-07T12:41:40.943111Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -7,42 +7,42 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 350.77,
+    "total": 435.21,
     "services": [
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-        "amount": 108.09
+        "amount": 130.3
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 101.1
+        "amount": 121.14
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 32.39
+        "amount": 65.17
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 22.14
+        "amount": 24.45
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 19.45
+        "amount": 21.66
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 8.64
+        "amount": 9.35
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 6.03
+        "amount": 6.67
       },
       {
         "name": "AWS WAF",
-        "amount": 3.25
+        "amount": 3.59
       }
     ],
     "daily": [
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-10-06",
-        "amount": 42.36
+        "amount": 122.97
       },
       {
         "date": "2026-10-07",
-        "amount": 0.0
+        "amount": 1.72
       }
     ]
   },
@@ -163,6 +163,10 @@
       },
       {
         "date": "2026-10-06",
+        "amount": 0.01
+      },
+      {
+        "date": "2026-10-07",
         "amount": 0.0
       }
     ]
@@ -303,5 +307,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-09-24",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-26",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-27",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-09-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-05",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-06",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-07",
+        "amount": 0.0
+      }
+    ]
+  }
 }
