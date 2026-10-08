@@ -738,11 +738,11 @@
         "services": [
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-            "amount": 162.58
+            "amount": 182.56
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-            "amount": 123.33
+            "amount": 130.14
           },
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -750,23 +750,23 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 26.1
+            "amount": 27.42
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 23.0
+            "amount": 24.08
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 9.85
+            "amount": 10.26
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 7.12
+            "amount": 7.48
           },
           {
             "name": "AWS WAF",
-            "amount": 3.84
+            "amount": 4.03
           }
         ]
       },
@@ -784,11 +784,11 @@
         "services": []
       },
       "openai": {
-        "total": 359.67,
+        "total": 557.45,
         "services": [
           {
             "name": "unknown",
-            "amount": 359.67
+            "amount": 557.45
           }
         ]
       },
