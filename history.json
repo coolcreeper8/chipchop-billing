@@ -791,6 +791,10 @@
             "amount": 918.55
           }
         ]
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     }
   ]
