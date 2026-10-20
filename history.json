@@ -771,11 +771,11 @@
         ]
       },
       "gcp": {
-        "total": 0.12,
+        "total": 0.13,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.12
+            "amount": 0.13
           }
         ]
       },
