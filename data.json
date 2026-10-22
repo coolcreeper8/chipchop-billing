@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T03:23:09.591276Z",
+  "generated_at": "2026-10-22T11:11:44.118263Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -7,10 +7,10 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
-    "total": 1211.56,
+    "total": 1245.94,
     "services": [
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -18,31 +18,31 @@
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-        "amount": 297.96
+        "amount": 328.1
       },
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 253.71
+        "amount": 271.51
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 80.56
+        "amount": 82.88
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 73.3
+        "amount": 79.89
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 26.55
+        "amount": 27.25
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 21.98
+        "amount": 22.61
       },
       {
         "name": "AWS WAF",
-        "amount": 11.9
+        "amount": 12.27
       }
     ],
     "daily": [
@@ -92,11 +92,11 @@
       },
       {
         "date": "2026-10-20",
-        "amount": 51.52
+        "amount": 58.46
       },
       {
         "date": "2026-10-21",
-        "amount": 5.07
+        "amount": 57.71
       },
       {
         "date": "2026-10-22",
@@ -105,11 +105,11 @@
     ]
   },
   "gcp": {
-    "total": 0.13,
+    "total": 0.14,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.13
+        "amount": 0.14
       }
     ],
     "daily": [
@@ -163,6 +163,10 @@
       },
       {
         "date": "2026-10-21",
+        "amount": 0.01
+      },
+      {
+        "date": "2026-10-22",
         "amount": 0.0
       }
     ]
@@ -303,5 +307,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-10-09",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-10",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-11",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-13",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-14",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-15",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-16",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-17",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-18",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-20",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-21",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-22",
+        "amount": 0.0
+      }
+    ]
+  }
 }
