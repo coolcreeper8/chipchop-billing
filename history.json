@@ -784,17 +784,13 @@
         "services": []
       },
       "openai": {
-        "total": 1091.51,
+        "total": 1132.61,
         "services": [
           {
             "name": "unknown",
-            "amount": 1091.51
+            "amount": 1132.61
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
