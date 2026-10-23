@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T16:29:56.544869Z",
+  "generated_at": "2026-10-23T21:00:55.708612Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -7,10 +7,10 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 8000.0
+    "total": 7000.0
   },
   "aws": {
-    "total": 1339.62,
+    "total": 1347.08,
     "services": [
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -26,23 +26,23 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 94.71
+        "amount": 98.94
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 87.83
+        "amount": 89.31
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 28.77
+        "amount": 29.22
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 23.97
+        "amount": 24.37
       },
       {
         "name": "AWS WAF",
-        "amount": 13.06
+        "amount": 13.29
       }
     ],
     "daily": [
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-10-22",
-        "amount": 79.97
+        "amount": 79.99
       },
       {
         "date": "2026-10-23",
-        "amount": 20.0
+        "amount": 27.44
       }
     ]
   },
@@ -307,67 +307,5 @@
       }
     ]
   },
-  "azure": {
-    "total": 0.0,
-    "services": [],
-    "users": [],
-    "daily": [
-      {
-        "date": "2026-10-10",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-11",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-12",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-13",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-14",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-15",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-16",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-17",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-18",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-19",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-20",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-21",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-22",
-        "amount": 0.0
-      },
-      {
-        "date": "2026-10-23",
-        "amount": 0.0
-      }
-    ]
-  }
+  "azure": null
 }
