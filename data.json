@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T15:35:18.301316Z",
+  "generated_at": "2026-10-25T20:24:04.274276Z",
   "month": "2026-10",
   "budget": {
     "aws": 3000.0,
@@ -26,23 +26,23 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 118.97
+        "amount": 122.71
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 96.08
+        "amount": 97.4
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 31.29
+        "amount": 31.7
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 26.23
+        "amount": 26.59
       },
       {
         "name": "AWS WAF",
-        "amount": 14.37
+        "amount": 14.57
       }
     ],
     "daily": [
@@ -100,7 +100,7 @@
       },
       {
         "date": "2026-10-25",
-        "amount": 4.19
+        "amount": 10.79
       }
     ]
   },

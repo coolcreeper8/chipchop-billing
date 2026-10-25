@@ -750,23 +750,23 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 118.97
+            "amount": 122.71
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 96.08
+            "amount": 97.4
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 31.29
+            "amount": 31.7
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 26.23
+            "amount": 26.59
           },
           {
             "name": "AWS WAF",
-            "amount": 14.37
+            "amount": 14.57
           }
         ]
       },
