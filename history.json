@@ -734,7 +734,7 @@
     {
       "month": "2026-10",
       "aws": {
-        "total": 1460.88,
+        "total": 1467.48,
         "services": [
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -784,17 +784,13 @@
         "services": []
       },
       "openai": {
-        "total": 1387.77,
+        "total": 1388.38,
         "services": [
           {
             "name": "unknown",
-            "amount": 1387.77
+            "amount": 1388.38
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
