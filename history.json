@@ -750,32 +750,32 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 134.37
+            "amount": 137.68
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 101.36
+            "amount": 102.52
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 32.91
+            "amount": 33.26
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 27.67
+            "amount": 27.99
           },
           {
             "name": "AWS WAF",
-            "amount": 15.21
+            "amount": 15.39
           }
         ]
       },
       "gcp": {
-        "total": 0.16,
+        "total": 0.17,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.16
+            "amount": 0.17
           }
         ]
       },
@@ -784,17 +784,13 @@
         "services": []
       },
       "openai": {
-        "total": 1388.38,
+        "total": 1421.79,
         "services": [
           {
             "name": "unknown",
-            "amount": 1388.38
+            "amount": 1421.79
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
