@@ -746,7 +746,7 @@
           },
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-            "amount": 394.61
+            "amount": 439.94
           },
           {
             "name": "Amazon Elastic Compute Cloud",
@@ -784,13 +784,17 @@
         "services": []
       },
       "openai": {
-        "total": 1474.29,
+        "total": 1498.2,
         "services": [
           {
             "name": "unknown",
-            "amount": 1474.29
+            "amount": 1498.2
           }
         ]
+      },
+      "azure": {
+        "total": 0.0,
+        "services": []
       }
     }
   ]
