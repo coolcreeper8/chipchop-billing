@@ -771,11 +771,11 @@
         ]
       },
       "gcp": {
-        "total": 0.18,
+        "total": 0.19,
         "services": [
           {
             "name": "Cloud DNS",
-            "amount": 0.18
+            "amount": 0.19
           }
         ]
       },
@@ -784,11 +784,11 @@
         "services": []
       },
       "openai": {
-        "total": 1498.2,
+        "total": 1526.17,
         "services": [
           {
             "name": "unknown",
-            "amount": 1498.2
+            "amount": 1526.17
           }
         ]
       },
