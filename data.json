@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T21:43:00.872303Z",
+  "generated_at": "2026-11-02T04:33:01.340450Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -46,10 +46,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-10-19",
-        "amount": 0.0
-      },
       {
         "date": "2026-10-20",
         "amount": 0.0
@@ -101,22 +97,22 @@
       {
         "date": "2026-11-01",
         "amount": 61.3
+      },
+      {
+        "date": "2026-11-02",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 0.0,
+    "total": 0.01,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.0
+        "amount": 0.01
       }
     ],
     "daily": [
-      {
-        "date": "2026-10-19",
-        "amount": 0.01
-      },
       {
         "date": "2026-10-20",
         "amount": 0.01
@@ -167,21 +163,16 @@
       },
       {
         "date": "2026-11-01",
-        "amount": 0.0
+        "amount": 0.01
       }
     ]
   },
-  "anthropic": null,
-  "openai": {
+  "anthropic": {
     "total": 0,
     "services": [],
     "users": [],
     "daily": [
       {
-        "date": "2026-10-19",
-        "amount": 0.0
-      },
-      {
         "date": "2026-10-20",
         "amount": 0.0
       },
@@ -231,19 +222,29 @@
       },
       {
         "date": "2026-11-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-02",
         "amount": 0.0
       }
     ]
   },
-  "azure": {
-    "total": 0.0,
-    "services": [],
-    "users": [],
-    "daily": [
+  "openai": {
+    "total": 1.98,
+    "services": [
       {
-        "date": "2026-10-19",
-        "amount": 0.0
-      },
+        "name": "unknown",
+        "amount": 1.98
+      }
+    ],
+    "users": [
+      {
+        "name": "Default project",
+        "amount": 1.98
+      }
+    ],
+    "daily": [
       {
         "date": "2026-10-20",
         "amount": 0.0
@@ -294,8 +295,13 @@
       },
       {
         "date": "2026-11-01",
+        "amount": 1.98
+      },
+      {
+        "date": "2026-11-02",
         "amount": 0.0
       }
     ]
-  }
+  },
+  "azure": null
 }
