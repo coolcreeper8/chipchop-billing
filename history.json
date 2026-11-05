@@ -850,11 +850,11 @@
         "services": []
       },
       "openai": {
-        "total": 110.68,
+        "total": 148.44,
         "services": [
           {
             "name": "unknown",
-            "amount": 110.68
+            "amount": 148.44
           }
         ]
       },
