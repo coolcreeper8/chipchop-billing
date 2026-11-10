@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T14:22:23.011840Z",
+  "generated_at": "2026-11-10T22:51:49.628312Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -7,7 +7,7 @@
     "anthropic": 1000.0,
     "openai": 1000.0,
     "azure": 1000.0,
-    "total": 7000.0
+    "total": 8000.0
   },
   "aws": {
     "total": 583.82,
@@ -18,7 +18,7 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 105.66
+        "amount": 111.36
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -26,7 +26,7 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 36.17
+        "amount": 38.15
       },
       {
         "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
@@ -34,15 +34,15 @@
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 11.06
+        "amount": 11.67
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 9.88
+        "amount": 10.42
       },
       {
         "name": "AWS WAF",
-        "amount": 5.85
+        "amount": 6.17
       }
     ],
     "daily": [
@@ -96,11 +96,11 @@
       },
       {
         "date": "2026-11-09",
-        "amount": 52.08
+        "amount": 52.17
       },
       {
         "date": "2026-11-10",
-        "amount": 1.72
+        "amount": 11.61
       }
     ]
   },
@@ -307,5 +307,67 @@
       }
     ]
   },
-  "azure": null
+  "azure": {
+    "total": 0.0,
+    "services": [],
+    "users": [],
+    "daily": [
+      {
+        "date": "2026-10-28",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-29",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-30",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-10-31",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-01",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-02",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-03",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-04",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-05",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-06",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-07",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-08",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-09",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-10",
+        "amount": 0.0
+      }
+    ]
+  }
 }
