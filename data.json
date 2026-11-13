@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T23:14:20.345444Z",
+  "generated_at": "2026-11-13T05:11:21.775607Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -18,7 +18,7 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 133.76
+        "amount": 137.75
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -30,26 +30,22 @@
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 45.75
+        "amount": 47.24
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 14.0
+        "amount": 14.46
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 12.49
+        "amount": 12.89
       },
       {
         "name": "AWS WAF",
-        "amount": 7.38
+        "amount": 7.62
       }
     ],
     "daily": [
-      {
-        "date": "2026-10-30",
-        "amount": 0.0
-      },
       {
         "date": "2026-10-31",
         "amount": 0.0
@@ -100,7 +96,11 @@
       },
       {
         "date": "2026-11-12",
-        "amount": 17.54
+        "amount": 24.88
+      },
+      {
+        "date": "2026-11-13",
+        "amount": 0.0
       }
     ]
   },
@@ -114,10 +114,6 @@
     ],
     "daily": [
       {
-        "date": "2026-10-30",
-        "amount": 0.01
-      },
-      {
         "date": "2026-10-31",
         "amount": 0.01
       },
@@ -167,7 +163,7 @@
       },
       {
         "date": "2026-11-12",
-        "amount": 0.0
+        "amount": 0.01
       }
     ]
   },
@@ -177,10 +173,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-10-30",
-        "amount": 0.0
-      },
-      {
         "date": "2026-10-31",
         "amount": 0.0
       },
@@ -230,6 +222,10 @@
       },
       {
         "date": "2026-11-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-13",
         "amount": 0.0
       }
     ]
@@ -249,10 +245,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-10-30",
-        "amount": 0.0
-      },
       {
         "date": "2026-10-31",
         "amount": 0.0
@@ -304,6 +296,10 @@
       {
         "date": "2026-11-12",
         "amount": 0.0
+      },
+      {
+        "date": "2026-11-13",
+        "amount": 0.0
       }
     ]
   },
@@ -312,10 +308,6 @@
     "services": [],
     "users": [],
     "daily": [
-      {
-        "date": "2026-10-30",
-        "amount": 0.0
-      },
       {
         "date": "2026-10-31",
         "amount": 0.0
@@ -366,6 +358,10 @@
       },
       {
         "date": "2026-11-12",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-13",
         "amount": 0.0
       }
     ]

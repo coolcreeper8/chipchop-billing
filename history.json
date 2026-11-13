@@ -808,7 +808,7 @@
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 133.76
+            "amount": 137.75
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -820,19 +820,19 @@
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 45.75
+            "amount": 47.24
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 14.0
+            "amount": 14.46
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 12.49
+            "amount": 12.89
           },
           {
             "name": "AWS WAF",
-            "amount": 7.38
+            "amount": 7.62
           }
         ]
       },
