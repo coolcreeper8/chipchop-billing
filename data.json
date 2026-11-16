@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T04:51:15.550708Z",
+  "generated_at": "2026-11-16T14:50:50.826555Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -10,7 +10,7 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 1472.1,
+    "total": 1524.88,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
@@ -164,6 +164,10 @@
       {
         "date": "2026-11-15",
         "amount": 0.01
+      },
+      {
+        "date": "2026-11-16",
+        "amount": 0.0
       }
     ]
   },
