@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T15:08:15.733156Z",
+  "generated_at": "2026-11-18T23:54:04.950465Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -105,11 +105,11 @@
     ]
   },
   "gcp": {
-    "total": 0.11,
+    "total": 0.12,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.11
+        "amount": 0.12
       }
     ],
     "daily": [
