@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T15:37:47.632212Z",
+  "generated_at": "2026-11-20T00:19:04.178170Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -26,30 +26,26 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 214.48
+        "amount": 224.62
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 71.01
+        "amount": 73.48
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 21.75
+        "amount": 22.51
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 20.28
+        "amount": 21.29
       },
       {
         "name": "AWS WAF",
-        "amount": 11.44
+        "amount": 11.84
       }
     ],
     "daily": [
-      {
-        "date": "2026-11-06",
-        "amount": 65.91
-      },
       {
         "date": "2026-11-07",
         "amount": 54.39
@@ -96,10 +92,14 @@
       },
       {
         "date": "2026-11-18",
-        "amount": 189.9
+        "amount": 193.93
       },
       {
         "date": "2026-11-19",
+        "amount": 12.25
+      },
+      {
+        "date": "2026-11-20",
         "amount": 0.0
       }
     ]
@@ -113,10 +113,6 @@
       }
     ],
     "daily": [
-      {
-        "date": "2026-11-06",
-        "amount": 0.01
-      },
       {
         "date": "2026-11-07",
         "amount": 0.01
@@ -177,10 +173,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-11-06",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-07",
         "amount": 0.0
       },
@@ -230,6 +222,10 @@
       },
       {
         "date": "2026-11-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-20",
         "amount": 0.0
       }
     ]
@@ -250,10 +246,6 @@
     ],
     "daily": [
       {
-        "date": "2026-11-06",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-07",
         "amount": 0.0
       },
@@ -303,6 +295,10 @@
       },
       {
         "date": "2026-11-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-20",
         "amount": 0.0
       }
     ]
@@ -313,10 +309,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-11-06",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-07",
         "amount": 0.0
       },
@@ -366,6 +358,10 @@
       },
       {
         "date": "2026-11-19",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-20",
         "amount": 0.0
       }
     ]
