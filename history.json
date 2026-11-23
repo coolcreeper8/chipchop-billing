@@ -800,39 +800,39 @@
     {
       "month": "2026-11",
       "aws": {
-        "total": 2592.15,
+        "total": 2635.4,
         "services": [
           {
             "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-            "amount": 1296.39
+            "amount": 1302.38
           },
           {
             "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
-            "amount": 423.42
+            "amount": 451.36
           },
           {
             "name": "Claude Opus 4.6 (Amazon Bedrock Edition)",
-            "amount": 387.42
+            "amount": 388.79
           },
           {
             "name": "Amazon Elastic Compute Cloud",
-            "amount": 278.45
+            "amount": 283.47
           },
           {
             "name": "Amazon Virtual Private Cloud",
-            "amount": 86.85
+            "amount": 88.01
           },
           {
             "name": "Elastic Load Balancing",
-            "amount": 26.77
+            "amount": 27.24
           },
           {
             "name": "Amazon Elastic Container Service",
-            "amount": 26.6
+            "amount": 26.95
           },
           {
             "name": "AWS WAF",
-            "amount": 13.99
+            "amount": 14.18
           }
         ]
       },
@@ -857,10 +857,6 @@
             "amount": 148.44
           }
         ]
-      },
-      "azure": {
-        "total": 0.0,
-        "services": []
       }
     }
   ]
