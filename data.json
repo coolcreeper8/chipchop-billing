@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T16:49:23.690365Z",
+  "generated_at": "2026-11-26T01:35:20.036530Z",
   "month": "2026-11",
   "budget": {
     "aws": 3000.0,
@@ -10,11 +10,11 @@
     "total": 8000.0
   },
   "aws": {
-    "total": 2995.86,
+    "total": 3005.52,
     "services": [
       {
         "name": "Claude Sonnet 4.6 (Amazon Bedrock Edition)",
-        "amount": 1445.15
+        "amount": 1445.32
       },
       {
         "name": "Claude Sonnet 4.5 (Amazon Bedrock Edition)",
@@ -26,30 +26,26 @@
       },
       {
         "name": "Amazon Elastic Compute Cloud",
-        "amount": 315.68
+        "amount": 321.48
       },
       {
         "name": "Amazon Virtual Private Cloud",
-        "amount": 95.93
+        "amount": 97.42
       },
       {
         "name": "Elastic Load Balancing",
-        "amount": 30.48
+        "amount": 31.09
       },
       {
         "name": "Amazon Elastic Container Service",
-        "amount": 29.38
+        "amount": 29.83
       },
       {
         "name": "AWS WAF",
-        "amount": 15.46
+        "amount": 15.7
       }
     ],
     "daily": [
-      {
-        "date": "2026-11-12",
-        "amount": 53.98
-      },
       {
         "date": "2026-11-13",
         "amount": 233.66
@@ -96,27 +92,27 @@
       },
       {
         "date": "2026-11-24",
-        "amount": 129.88
+        "amount": 129.89
       },
       {
         "date": "2026-11-25",
-        "amount": 16.03
+        "amount": 25.69
+      },
+      {
+        "date": "2026-11-26",
+        "amount": 0.0
       }
     ]
   },
   "gcp": {
-    "total": 0.16,
+    "total": 0.17,
     "services": [
       {
         "name": "Cloud DNS",
-        "amount": 0.16
+        "amount": 0.17
       }
     ],
     "daily": [
-      {
-        "date": "2026-11-12",
-        "amount": 0.01
-      },
       {
         "date": "2026-11-13",
         "amount": 0.01
@@ -167,7 +163,7 @@
       },
       {
         "date": "2026-11-25",
-        "amount": 0.0
+        "amount": 0.01
       }
     ]
   },
@@ -177,10 +173,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-11-12",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-13",
         "amount": 0.0
       },
@@ -230,6 +222,10 @@
       },
       {
         "date": "2026-11-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-26",
         "amount": 0.0
       }
     ]
@@ -250,10 +246,6 @@
     ],
     "daily": [
       {
-        "date": "2026-11-12",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-13",
         "amount": 0.0
       },
@@ -303,6 +295,10 @@
       },
       {
         "date": "2026-11-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-26",
         "amount": 0.0
       }
     ]
@@ -313,10 +309,6 @@
     "users": [],
     "daily": [
       {
-        "date": "2026-11-12",
-        "amount": 0.0
-      },
-      {
         "date": "2026-11-13",
         "amount": 0.0
       },
@@ -366,6 +358,10 @@
       },
       {
         "date": "2026-11-25",
+        "amount": 0.0
+      },
+      {
+        "date": "2026-11-26",
         "amount": 0.0
       }
     ]
